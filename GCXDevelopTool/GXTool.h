@@ -10,9 +10,6 @@
 
 @interface GXTool : NSObject
 
-+ (CGSize )sizeWithText:(NSString*)text limitSize:(CGSize )limitSize  font:(UIFont *)font;
-+ (NSString *)timeToDescStr:(NSString *)time;
-+ (NSTimeInterval)timerStrToTimeInt:(NSString *)timerStr;
-+ (BOOL)GCXIsValidName:(NSString *)albumName;
+
 
 @end
