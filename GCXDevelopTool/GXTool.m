@@ -7,7 +7,6 @@
 //
 
 #import "GXTool.h"
-#import "LCAlbumManager.h"
 
 @implementation GXTool
 
@@ -43,32 +42,7 @@
 //    return time;
 }
 
-+ (BOOL)isValidName:(NSString *)albumName {
-    if (!albumName) return FALSE;
-    if ([albumName isEqualToString:@""])   return FALSE;
-    if ([albumName isEqualToString:@"."])  return FALSE; // iOS reserved .
-    if ([albumName isEqualToString:@".."]) return FALSE; // iOS reserved ..
-    if ([[albumName substringToIndex:1] isEqualToString:@" "]) return FALSE; // check if the first characters
-    
-    NSCharacterSet * set = [NSCharacterSet characterSetWithCharactersInString:@"/\\:*?\""];
-    if ([albumName rangeOfCharacterFromSet:set].location != NSNotFound) {
-        NSLog(@"This string contains illegal characters");
-        return FALSE;
-    }
-    
-    //check if folder existed
-    if ([LCAlbumManager getAlbum:albumName])
-        return FALSE;
-    return TRUE;
-}
-+ (BOOL)GCXIsValidName:(NSString *)albumName
-{
-    if ([GXTool isValidName:albumName]) {
-        return YES;
-    }
-    [[ShareManager sharedInstance] showErrorNote:@"Invalid Name! Try Again!"];
-    return NO;
-}
+
 
 + (CGSize )sizeWithText:(NSString*)text limitSize:(CGSize )limitSize  font:(UIFont *)font
 {
