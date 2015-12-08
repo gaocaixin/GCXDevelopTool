@@ -4,22 +4,22 @@ Pod::Spec.new do |s|
 
   s.name         = "GCXDevelopTool"
 
-  s.version      = "0.0.1"
+  s.version      = "1.0.1"
 
   s.summary      = "A short description of GCXDevelopTool:Easy To Develop IOS"
 
   s.description  = <<-DESC
-                            Easy To Develop IOS
+                            更便利开发 IOS.集成各类方法.
                             DESC
   s.homepage     = "https://github.com/gaocaixin/GCXDevelopTool"
 
-  s.license      = "MIT"
+  s.license      = 'MIT'
 
   s.author             = { "高才新" => "767374741@qq.com" }
 
-  s.source       = { :git => "https://github.com/gaocaixin/GCXDevelopTool", :tag =>  s.version }
+  s.source       = { :git => "https://github.com/gaocaixin/GCXDevelopTool.git", :tag =>  s.version }
 
-  s.platform     = :ios, '4.3'
+  s.platform     = :ios, '6.0'
 
   s.requires_arc = true
 
