@@ -10,6 +10,7 @@
 
 @interface GXTool : NSObject
 
++ (CGSize )sizeWithText:(NSString*)text limitSize:(CGSize )limitSize  font:(UIFont *)font;
 
 
 @end

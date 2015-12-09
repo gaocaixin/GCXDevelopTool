@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
   s.name         = "GCXDevelopTool"
 
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
 
   s.summary      = "A short description of GCXDevelopTool:Easy To Develop IOS"
 
