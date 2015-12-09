@@ -24,6 +24,7 @@
         size = rect.size;
     }
     else
+        
     {
         //设置label的最大行数
         CGRect rect = [text boundingRectWithSize: limitSize
