@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "GCXDevelop.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100,100)];
+    btn.center = self.view.center;
+    [btn addTarget:self action:@selector(tap) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+//    btn.backgroundColor = [UIColor grayColor];
+    btn.gcxNHDTitles = @[@"tap",@"tap-h"];
+    btn.layer.cornerRadius = 50;
+    [btn setBackgroundImage:[UIImage gcxImageWithColor:[UIColor grayColor] size:CGSizeMake(100, 100) cornerRadius:50] forState:UIControlStateNormal];
+    [btn gcxAddTapRippleEffectWithColor:[UIColor grayColor] scaleMaxValue:2 duration:0.6];
+    
+}
+
+- (void)tap
+{
+    NSLog(@"tap");
 }
 
 - (void)didReceiveMemoryWarning {

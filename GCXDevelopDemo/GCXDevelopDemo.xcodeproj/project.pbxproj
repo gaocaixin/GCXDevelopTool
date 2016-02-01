@@ -15,6 +15,17 @@
 		A75987D01C5B1B4800953CB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75987CE1C5B1B4800953CB7 /* LaunchScreen.storyboard */; };
 		A75987DB1C5B1B4900953CB7 /* GCXDevelopDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75987DA1C5B1B4900953CB7 /* GCXDevelopDemoTests.m */; };
 		A75987E61C5B1B4900953CB7 /* GCXDevelopDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75987E51C5B1B4900953CB7 /* GCXDevelopDemoUITests.m */; };
+		A759885C1C5B2FD700953CB7 /* CALayer+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988431C5B2FD700953CB7 /* CALayer+GCXDevelop.m */; };
+		A759885D1C5B2FD700953CB7 /* GCXDevelopDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988461C5B2FD700953CB7 /* GCXDevelopDevice.m */; };
+		A759885F1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A759884B1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.m */; };
+		A75988601C5B2FD700953CB7 /* NSString+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A759884D1C5B2FD700953CB7 /* NSString+GCXDevelop.m */; };
+		A75988611C5B2FD700953CB7 /* UIButton+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A759884F1C5B2FD700953CB7 /* UIButton+GCXDevelop.m */; };
+		A75988621C5B2FD700953CB7 /* UIImage+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988511C5B2FD700953CB7 /* UIImage+GCXDevelop.m */; };
+		A75988631C5B2FD700953CB7 /* UIImageView+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988531C5B2FD700953CB7 /* UIImageView+GCXDevelop.m */; };
+		A75988641C5B2FD700953CB7 /* UILabel+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988551C5B2FD700953CB7 /* UILabel+GCXDevelop.m */; };
+		A75988651C5B2FD700953CB7 /* UIPageControl+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988571C5B2FD700953CB7 /* UIPageControl+GCXDevelop.m */; };
+		A75988661C5B2FD700953CB7 /* UIView+GCXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75988591C5B2FD700953CB7 /* UIView+GCXDevelop.m */; };
+		A75988671C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A759885B1C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +62,30 @@
 		A75987E11C5B1B4900953CB7 /* GCXDevelopDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCXDevelopDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75987E51C5B1B4900953CB7 /* GCXDevelopDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCXDevelopDemoUITests.m; sourceTree = "<group>"; };
 		A75987E71C5B1B4900953CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A75988421C5B2FD700953CB7 /* CALayer+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+GCXDevelop.h"; sourceTree = "<group>"; };
+		A75988431C5B2FD700953CB7 /* CALayer+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+GCXDevelop.m"; sourceTree = "<group>"; };
+		A75988441C5B2FD700953CB7 /* GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCXDevelop.h; sourceTree = "<group>"; };
+		A75988451C5B2FD700953CB7 /* GCXDevelopDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCXDevelopDevice.h; sourceTree = "<group>"; };
+		A75988461C5B2FD700953CB7 /* GCXDevelopDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCXDevelopDevice.m; sourceTree = "<group>"; };
+		A75988471C5B2FD700953CB7 /* GCXDevelopKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCXDevelopKey.h; sourceTree = "<group>"; };
+		A759884A1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GCXDevelop.h"; sourceTree = "<group>"; };
+		A759884B1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GCXDevelop.m"; sourceTree = "<group>"; };
+		A759884C1C5B2FD700953CB7 /* NSString+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GCXDevelop.h"; sourceTree = "<group>"; };
+		A759884D1C5B2FD700953CB7 /* NSString+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GCXDevelop.m"; sourceTree = "<group>"; };
+		A759884E1C5B2FD700953CB7 /* UIButton+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GCXDevelop.h"; sourceTree = "<group>"; };
+		A759884F1C5B2FD700953CB7 /* UIButton+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GCXDevelop.m"; sourceTree = "<group>"; };
+		A75988501C5B2FD700953CB7 /* UIImage+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GCXDevelop.h"; sourceTree = "<group>"; };
+		A75988511C5B2FD700953CB7 /* UIImage+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GCXDevelop.m"; sourceTree = "<group>"; };
+		A75988521C5B2FD700953CB7 /* UIImageView+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GCXDevelop.h"; sourceTree = "<group>"; };
+		A75988531C5B2FD700953CB7 /* UIImageView+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GCXDevelop.m"; sourceTree = "<group>"; };
+		A75988541C5B2FD700953CB7 /* UILabel+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GCXDevelop.h"; sourceTree = "<group>"; };
+		A75988551C5B2FD700953CB7 /* UILabel+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GCXDevelop.m"; sourceTree = "<group>"; };
+		A75988561C5B2FD700953CB7 /* UIPageControl+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageControl+GCXDevelop.h"; sourceTree = "<group>"; };
+		A75988571C5B2FD700953CB7 /* UIPageControl+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPageControl+GCXDevelop.m"; sourceTree = "<group>"; };
+		A75988581C5B2FD700953CB7 /* UIView+GCXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GCXDevelop.h"; sourceTree = "<group>"; };
+		A75988591C5B2FD700953CB7 /* UIView+GCXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GCXDevelop.m"; sourceTree = "<group>"; };
+		A759885A1C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GCXDevelopAnimation.h"; sourceTree = "<group>"; };
+		A759885B1C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GCXDevelopAnimation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +136,7 @@
 		A75987BF1C5B1B4800953CB7 /* GCXDevelopDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A75988411C5B2FD700953CB7 /* GCXDevelopTool */,
 				A75987C31C5B1B4800953CB7 /* AppDelegate.h */,
 				A75987C41C5B1B4800953CB7 /* AppDelegate.m */,
 				A75987C61C5B1B4800953CB7 /* ViewController.h */,
@@ -138,6 +174,37 @@
 				A75987E71C5B1B4900953CB7 /* Info.plist */,
 			);
 			path = GCXDevelopDemoUITests;
+			sourceTree = "<group>";
+		};
+		A75988411C5B2FD700953CB7 /* GCXDevelopTool */ = {
+			isa = PBXGroup;
+			children = (
+				A75988421C5B2FD700953CB7 /* CALayer+GCXDevelop.h */,
+				A75988431C5B2FD700953CB7 /* CALayer+GCXDevelop.m */,
+				A75988441C5B2FD700953CB7 /* GCXDevelop.h */,
+				A75988451C5B2FD700953CB7 /* GCXDevelopDevice.h */,
+				A75988461C5B2FD700953CB7 /* GCXDevelopDevice.m */,
+				A75988471C5B2FD700953CB7 /* GCXDevelopKey.h */,
+				A759884A1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.h */,
+				A759884B1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.m */,
+				A759884C1C5B2FD700953CB7 /* NSString+GCXDevelop.h */,
+				A759884D1C5B2FD700953CB7 /* NSString+GCXDevelop.m */,
+				A759884E1C5B2FD700953CB7 /* UIButton+GCXDevelop.h */,
+				A759884F1C5B2FD700953CB7 /* UIButton+GCXDevelop.m */,
+				A75988501C5B2FD700953CB7 /* UIImage+GCXDevelop.h */,
+				A75988511C5B2FD700953CB7 /* UIImage+GCXDevelop.m */,
+				A75988521C5B2FD700953CB7 /* UIImageView+GCXDevelop.h */,
+				A75988531C5B2FD700953CB7 /* UIImageView+GCXDevelop.m */,
+				A75988541C5B2FD700953CB7 /* UILabel+GCXDevelop.h */,
+				A75988551C5B2FD700953CB7 /* UILabel+GCXDevelop.m */,
+				A75988561C5B2FD700953CB7 /* UIPageControl+GCXDevelop.h */,
+				A75988571C5B2FD700953CB7 /* UIPageControl+GCXDevelop.m */,
+				A75988581C5B2FD700953CB7 /* UIView+GCXDevelop.h */,
+				A75988591C5B2FD700953CB7 /* UIView+GCXDevelop.m */,
+				A759885A1C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.h */,
+				A759885B1C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.m */,
+			);
+			path = GCXDevelopTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +337,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75988661C5B2FD700953CB7 /* UIView+GCXDevelop.m in Sources */,
+				A759885C1C5B2FD700953CB7 /* CALayer+GCXDevelop.m in Sources */,
+				A759885F1C5B2FD700953CB7 /* NSAttributedString+GCXDevelop.m in Sources */,
+				A75988611C5B2FD700953CB7 /* UIButton+GCXDevelop.m in Sources */,
+				A75988651C5B2FD700953CB7 /* UIPageControl+GCXDevelop.m in Sources */,
 				A75987C81C5B1B4800953CB7 /* ViewController.m in Sources */,
+				A75988671C5B2FD700953CB7 /* UIView+GCXDevelopAnimation.m in Sources */,
+				A75988601C5B2FD700953CB7 /* NSString+GCXDevelop.m in Sources */,
 				A75987C51C5B1B4800953CB7 /* AppDelegate.m in Sources */,
+				A75988631C5B2FD700953CB7 /* UIImageView+GCXDevelop.m in Sources */,
+				A759885D1C5B2FD700953CB7 /* GCXDevelopDevice.m in Sources */,
+				A75988641C5B2FD700953CB7 /* UILabel+GCXDevelop.m in Sources */,
+				A75988621C5B2FD700953CB7 /* UIImage+GCXDevelop.m in Sources */,
 				A75987C21C5B1B4800953CB7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
