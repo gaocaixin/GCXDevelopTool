@@ -33,7 +33,7 @@
 #import "UIPageControl+GCXDevelop.h"
 #import "UIView+GCXDevelopAnimation.h"
 #import "GCXDevelopDevice.h"
-#import "MBProgressHUD+GCXDevelop.h"
+//#import "MBProgressHUD+GCXDevelop.h"
 #import "NSAttributedString+GCXDevelop.h"
 #import "UIImage+GCXDevelop.h"
 #import "UIView+GCXDevelop.h"
