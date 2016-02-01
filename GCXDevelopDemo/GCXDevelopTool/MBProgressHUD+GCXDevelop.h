@@ -9,7 +9,7 @@
  *这是对MBProgressHUD的一层包装
  */
 
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 @interface MBProgressHUD (GCXDevelop)
