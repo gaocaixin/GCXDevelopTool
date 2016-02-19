@@ -69,7 +69,7 @@
     CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
     [strAttri addAttribute:(id)kCTKernAttributeName
                      value:(__bridge id)num
-                     range:NSMakeRange(0, [strAttri length])];
+                     range:NSMakeRange(0, [strAttri length]-1)];
     CFRelease(num);
     return strAttri;
 }

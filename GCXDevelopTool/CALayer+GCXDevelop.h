@@ -29,4 +29,8 @@ typedef enum : NSUInteger {
 - (CAGradientLayer *)gcxSetGradientLayerWithColors:(NSArray *)colors layerFrame:(CGRect)frame direction:(GCXGradientLayerDirectionOption)direction;
 
 
+/**
+ *获取 layer 上某点的颜色
+ */
+- (UIColor *)gcxGetColorFromPoint:(CGPoint)point;
 @end
