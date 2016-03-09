@@ -18,5 +18,6 @@
  *快速显示一个hud 信息   default view = window;
  */
 + (void)gcxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text ;
++ (void)gcxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text ;
 
 @end

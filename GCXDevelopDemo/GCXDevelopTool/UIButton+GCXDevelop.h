@@ -22,6 +22,8 @@ Btn.gcxNHDImages = @[image1, image2];会自动设置UIControlStateNormal和UICon
 @property (nonatomic, strong) NSArray * gcxNHDTitleColors;
 @property (nonatomic, strong) NSArray * gcxNSDImages;
 
+
+
 - (void)gcxSetNHDWithImages:(NSArray *)gcxNHDImages colors:(NSArray *)gcxNHDTitleColors titles:(NSArray *)gcxNHDTitles ;
 - (void)gcxSetNHDWithFont:(UIFont *)font colors:(NSArray *)gcxNHDTitleColors titles:(NSArray *)gcxNHDTitles;
 

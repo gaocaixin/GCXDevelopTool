@@ -32,11 +32,12 @@
 #import "UILabel+GCXDevelop.h"
 #import "UIPageControl+GCXDevelop.h"
 #import "UIView+GCXDevelopAnimation.h"
-#import "GCXDevelopDevice.h"
+#import "UIDevice+GCXDevelop.h"
 #import "MBProgressHUD+GCXDevelop.h"
 #import "NSAttributedString+GCXDevelop.h"
 #import "UIImage+GCXDevelop.h"
 #import "UIView+GCXDevelop.h"
+#import "GCXFrameInButton.h"
 
 
 #endif /* GCXDevelop_h */

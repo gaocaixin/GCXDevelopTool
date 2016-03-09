@@ -23,7 +23,7 @@
 @property (nonatomic, assign) CGFloat gcxHeightHalf;
 
 @property (nonatomic, assign) CGPoint gcxCenter;
-@property (nonatomic, assign) CGSize gcxSize;
+@property (nonatomic, assign) CGSize  gcxSize;
 /**
  *获取 view的 layer 上某点的颜色
  */

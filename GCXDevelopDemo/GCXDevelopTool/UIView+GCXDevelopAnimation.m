@@ -11,7 +11,8 @@
 @implementation UIView (GCXDevelopAnimation)
 
 
-- (void)gcxAddNotStopRotateAnimationDuration:(CGFloat)duration key:(NSString *)key{
+- (CABasicAnimation *)gcxAddNotStopRotateAnimationDuration:(CGFloat)duration key:(NSString *)key
+{
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.fromValue = @(0);
@@ -20,15 +21,18 @@
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = CGFLOAT_MAX;
     [self.layer addAnimation:rotationAnimation forKey:key];
+    return rotationAnimation;
 }
 
 
-- (CAAnimation *)gcxShakeAnimationWithShakeValue:(CGFloat)value duration:(CGFloat)duration {
+- (CAAnimation *)gcxShakeAnimationWithShakeValue:(CGFloat)value duration:(CGFloat)duration key:(NSString *)key
+{
     
     CAKeyframeAnimation * shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
     [shake setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-    [shake setDuration:value];
-    [shake setValues:@[ @(-duration), @(duration), @(-duration), @(duration), @(-duration/2), @(duration/2), @(-duration/4), @(duration/4), @(0) ]];
+    [shake setDuration:duration];
+    [shake setValues:@[ @(-value), @(value), @(-value), @(value), @(-value/2), @(value/2), @(-value/4), @(value/4), @(0) ]];
+    [self.layer addAnimation:shake forKey:key];
     return shake;
 }
 

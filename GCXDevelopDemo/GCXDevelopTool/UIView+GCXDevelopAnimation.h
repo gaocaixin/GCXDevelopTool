@@ -12,10 +12,10 @@
 /**
  *给 view 添加一个永久旋转的动画 可通过 view.layer 移除动画
  */
-- (void)gcxAddNotStopRotateAnimationDuration:(CGFloat)duration key:(NSString *)key;
+- (CABasicAnimation *)gcxAddNotStopRotateAnimationDuration:(CGFloat)duration key:(NSString *)key;
 /**
  *给 view 添加一个左右震动动画
  */
-- (CAAnimation *)gcxShakeAnimationWithShakeValue:(CGFloat)value duration:(CGFloat)duration ;
+- (CAAnimation *)gcxShakeAnimationWithShakeValue:(CGFloat)value duration:(CGFloat)duration key:(NSString *)key;
 
 @end

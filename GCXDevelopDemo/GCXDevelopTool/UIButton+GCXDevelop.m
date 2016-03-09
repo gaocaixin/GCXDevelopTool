@@ -27,6 +27,34 @@ static char gcxRippleDuration;
 static char RippleScaleMaxValue;
 
 
+
+
+- (void)gcxSetRippleColor:(UIColor *)rippleColor
+{
+    objc_setAssociatedObject(self, &gcxRippleColor, rippleColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (UIColor *)gcxGetRippleColor
+{
+    return objc_getAssociatedObject(self, &gcxRippleColor);
+}
+- (void)gcxSetRippleDuration:(CGFloat)rippleDuration
+{
+    objc_setAssociatedObject(self, &gcxRippleDuration, @(rippleDuration), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGFloat)gcxGetRippleDuration
+{
+    return [objc_getAssociatedObject(self, &gcxRippleDuration) floatValue];
+}
+
+- (void)setGcxRippleScaleMaxValue:(CGFloat)gcxRippleScaleMaxValue
+{
+    objc_setAssociatedObject(self, &RippleScaleMaxValue, @(gcxRippleScaleMaxValue), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGFloat)gcxRippleScaleMaxValue
+{
+    return [objc_getAssociatedObject(self, &RippleScaleMaxValue) floatValue];
+}
+
 - (void)setGcxNHDTitles:(NSArray *)gcxNHDTitles
 {
     [self gcxEnumerateArray:gcxNHDTitles UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
@@ -103,31 +131,7 @@ static char RippleScaleMaxValue;
 }
 
 
-- (void)gcxSetRippleColor:(UIColor *)rippleColor
-{
-    objc_setAssociatedObject(self, &gcxRippleColor, rippleColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (UIColor *)gcxGetRippleColor
-{
-    return objc_getAssociatedObject(self, &gcxRippleColor);
-}
-- (void)gcxSetRippleDuration:(CGFloat)rippleDuration
-{
-    objc_setAssociatedObject(self, &gcxRippleDuration, @(rippleDuration), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (CGFloat)gcxGetRippleDuration
-{
-    return [objc_getAssociatedObject(self, &gcxRippleDuration) floatValue];
-}
 
-- (void)setGcxRippleScaleMaxValue:(CGFloat)gcxRippleScaleMaxValue
-{
-    objc_setAssociatedObject(self, &RippleScaleMaxValue, @(gcxRippleScaleMaxValue), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (CGFloat)gcxRippleScaleMaxValue
-{
-    return [objc_getAssociatedObject(self, &RippleScaleMaxValue) floatValue];
-}
 
 - (void)gcxAddTapRippleEffectWithColor:(UIColor *)color scaleMaxValue:(CGFloat)value duration:(CGFloat)duration
 {
@@ -199,6 +203,8 @@ static char RippleScaleMaxValue;
         }
     }];
 }
+
+
 
 
 @end

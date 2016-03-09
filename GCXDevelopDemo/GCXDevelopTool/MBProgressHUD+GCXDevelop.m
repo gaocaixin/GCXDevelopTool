@@ -18,7 +18,8 @@
     hud.removeFromSuperViewOnHide = YES;
     hud.mode = MBProgressHUDModeCustomView;
     if (text.length > 0) {
-        hud.labelText = text;
+        hud.detailsLabelText = text;
+        
     }
     if (image) {
         hud.customView = [[UIImageView alloc] initWithImage:image];
@@ -29,10 +30,20 @@
     hud.cornerRadius = 8;
     hud.animationType  = MBProgressHUDAnimationFade;
     [view addSubview:hud];
-    hud.labelFont = [UIFont fontWithName:@"AvenirNext-Regular" size:[UIFont systemFontSize]];
+    hud.detailsLabelFont = [UIFont fontWithName:@"AvenirNext-Regular" size:[UIFont systemFontSize]];
 //    hud.labelFont = [UIFont systemFontSize];
-    [hud show:YES];
-    [hud hide:YES afterDelay:duration];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [hud show:YES];
+        [hud hide:YES afterDelay:duration];
+    });
+}
+
++ (void)gcxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text
+{
+#ifdef DEBUG
+    [self gcxShowNotiInView:view duration:duration image:image text:text];
+    
+#endif
 }
 
 @end

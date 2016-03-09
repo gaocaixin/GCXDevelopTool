@@ -17,7 +17,7 @@
     layer.colors = colors;
     CGPoint  start = CGPointMake(0.5, 0);
     CGPoint end = CGPointMake(0.5, 1);
-
+    
     switch (direction) {
         case GCXGradientLayerDirectionTopToDown:
         {
