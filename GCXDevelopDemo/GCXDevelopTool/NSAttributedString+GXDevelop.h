@@ -1,5 +1,5 @@
 //
-//  NSAttributedString+GCXDevelop.h
+//  NSAttributedString+GXDevelop.h
 //  LOCO
 //
 //  Created by 高才新 on 16/1/19.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-@interface NSAttributedString (GCXDevelop)
+@interface NSAttributedString (GXDevelop)
 /**
  *计算 size
  */
-- (CGSize )gcxSizeWithLimitSize:(CGSize )limitSize;
+- (CGSize )gxSizeWithLimitSize:(CGSize )limitSize;
 
 @end

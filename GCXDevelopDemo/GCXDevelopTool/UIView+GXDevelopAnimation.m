@@ -1,17 +1,17 @@
 //
-//  UIView+GCXDevelopAnimation.m
+//  UIView+GXDevelopAnimation.m
 //  LOCO
 //
 //  Created by 高才新 on 15/12/24.
 //  Copyright © 2015年 IU-Apps. All rights reserved.
 //
 
-#import "UIView+GCXDevelopAnimation.h"
+#import "UIView+GXDevelopAnimation.h"
 
-@implementation UIView (GCXDevelopAnimation)
+@implementation UIView (GXDevelopAnimation)
 
 
-- (CABasicAnimation *)gcxAddNotStopRotateAnimationDuration:(CGFloat)duration key:(NSString *)key
+- (CABasicAnimation *)gxAddNotStopRotateAnimationDuration:(CGFloat)duration key:(NSString *)key
 {
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -25,7 +25,7 @@
 }
 
 
-- (CAAnimation *)gcxShakeAnimationWithShakeValue:(CGFloat)value duration:(CGFloat)duration key:(NSString *)key
+- (CAAnimation *)gxShakeAnimationWithShakeValue:(CGFloat)value duration:(CGFloat)duration key:(NSString *)key
 {
     
     CAKeyframeAnimation * shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];

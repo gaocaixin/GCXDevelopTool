@@ -1,13 +1,13 @@
 //
 //  ViewController.m
-//  GCXDevelopDemo
+//  GXDevelopDemo
 //
 //  Created by 高才新 on 16/1/29.
 //  Copyright © 2016年 高才新. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "GCXDevelop.h"
+#import "GXDevelop.h"
 @interface ViewController ()
 
 @end
@@ -23,10 +23,10 @@
     [btn addTarget:self action:@selector(tap) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 //    btn.backgroundColor = [UIColor grayColor];
-    btn.gcxNHDTitles = @[@"tap",@"tap-h"];
+    btn.gxNHDTitles = @[@"tap",@"tap-h"];
     btn.layer.cornerRadius = 50;
-    [btn setBackgroundImage:[UIImage gcxImageWithColor:[UIColor grayColor] size:CGSizeMake(100, 100) cornerRadius:50] forState:UIControlStateNormal];
-    [btn gcxAddTapRippleEffectWithColor:[UIColor grayColor] scaleMaxValue:2 duration:0.6];
+    [btn setBackgroundImage:[UIImage gxImageWithColor:[UIColor grayColor] size:CGSizeMake(100, 100) cornerRadius:50] forState:UIControlStateNormal];
+    [btn gxAddTapRippleEffectWithColor:[UIColor grayColor] scaleMaxValue:2 duration:0.6];
     
 }
 

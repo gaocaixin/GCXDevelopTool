@@ -1,6 +1,6 @@
 //
-//  GCXDevelopDemoUITests.m
-//  GCXDevelopDemoUITests
+//  GXDevelopDemoUITests.m
+//  GXDevelopDemoUITests
 //
 //  Created by 高才新 on 16/1/29.
 //  Copyright © 2016年 高才新. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface GCXDevelopDemoUITests : XCTestCase
+@interface GXDevelopDemoUITests : XCTestCase
 
 @end
 
-@implementation GCXDevelopDemoUITests
+@implementation GXDevelopDemoUITests
 
 - (void)setUp {
     [super setUp];

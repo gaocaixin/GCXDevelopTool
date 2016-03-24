@@ -1,5 +1,5 @@
 //
-//  GCXFrameInButton.h
+//  GXFrameInButton.h
 //  LOCO
 //
 //  Created by 高才新 on 16/2/26.
@@ -10,8 +10,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GCXFrameInButton : UIButton
+@interface GXFrameInButton : UIButton
 
-@property (nonatomic) CGRect gcxTitleLabelFrame;
-@property (nonatomic) CGRect gcxImageViewFrame;
+@property (nonatomic) CGRect gxTitleLabelFrame;
+@property (nonatomic) CGRect gxImageViewFrame;
 @end

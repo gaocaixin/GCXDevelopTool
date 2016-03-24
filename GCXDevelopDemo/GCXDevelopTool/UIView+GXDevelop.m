@@ -1,137 +1,137 @@
 //
-//  UIView+GCXDevelop.m
+//  UIView+GXDevelop.m
 //  LOCO
 //
 //  Created by 高才新 on 16/1/28.
 //  Copyright © 2016年 IU-Apps. All rights reserved.
 //
 
-#import "UIView+GCXDevelop.h"
+#import "UIView+GXDevelop.h"
 
-@implementation UIView (GCXDevelop)
+@implementation UIView (GXDevelop)
 
-- (CGFloat)gcxMinX
+- (CGFloat)gxMinX
 {
     return CGRectGetMinX(self.frame);
 }
-- (CGFloat)gcxMinY
+- (CGFloat)gxMinY
 {
     return CGRectGetMinY(self.frame);
 }
-- (CGFloat)gcxMaxX
+- (CGFloat)gxMaxX
 {
     return CGRectGetMaxX(self.frame);
 }
-- (CGFloat)gcxMaxY
+- (CGFloat)gxMaxY
 {
     return CGRectGetMaxY(self.frame);
 }
-- (CGFloat)gcxMidX
+- (CGFloat)gxMidX
 {
     return CGRectGetMidX(self.frame);
 }
-- (CGFloat)gcxMidY
+- (CGFloat)gxMidY
 {
     return CGRectGetMidY(self.frame);
 }
-- (CGFloat)gcxWidth
+- (CGFloat)gxWidth
 {
     return CGRectGetWidth(self.frame);
 }
-- (CGFloat)gcxWidthHalf
+- (CGFloat)gxWidthHalf
 {
     return CGRectGetWidth(self.frame)/2.0;
 }
-- (CGFloat)gcxHeight
+- (CGFloat)gxHeight
 {
     return CGRectGetHeight(self.frame);
 }
-- (CGFloat)gcxHeightHalf
+- (CGFloat)gxHeightHalf
 {
     return CGRectGetHeight(self.frame)/2.0;
 }
 
-- (void)setGcxMinX:(CGFloat)gcxMinX
+- (void)setGcxMinX:(CGFloat)gxMinX
 {
     CGRect frame = self.frame;
-    frame.origin.x = gcxMinX;
+    frame.origin.x = gxMinX;
     self.frame = frame;
 }
-- (void)setGcxMinY:(CGFloat)gcxMinY
+- (void)setGcxMinY:(CGFloat)gxMinY
 {
     CGRect frame = self.frame;
-    frame.origin.y = gcxMinY;
+    frame.origin.y = gxMinY;
     self.frame = frame;
 }
-- (void)setGcxMaxX:(CGFloat)gcxMaxX
+- (void)setGcxMaxX:(CGFloat)gxMaxX
 {
     CGRect frame = self.frame;
-    frame.origin.x = gcxMaxX-self.gcxWidth;
+    frame.origin.x = gxMaxX-self.gxWidth;
     self.frame = frame;
 }
-- (void)setGcxMaxY:(CGFloat)gcxMaxY
+- (void)setGcxMaxY:(CGFloat)gxMaxY
 {
     CGRect frame = self.frame;
-    frame.origin.y = gcxMaxY-self.gcxHeight;
+    frame.origin.y = gxMaxY-self.gxHeight;
     self.frame = frame;
 }
-- (void)setGcxMidX:(CGFloat)gcxMidX
+- (void)setGcxMidX:(CGFloat)gxMidX
 {
     CGRect frame = self.frame;
-    frame.origin.x = gcxMidX-self.gcxWidthHalf;
+    frame.origin.x = gxMidX-self.gxWidthHalf;
     self.frame = frame;
 }
-- (void)setGcxMidY:(CGFloat)gcxMidY
+- (void)setGcxMidY:(CGFloat)gxMidY
 {
     CGRect frame = self.frame;
-    frame.origin.y = gcxMidY - self.gcxHeightHalf;
+    frame.origin.y = gxMidY - self.gxHeightHalf;
     self.frame = frame;
 }
-- (void)setGcxHeight:(CGFloat)gcxHeight
+- (void)setGcxHeight:(CGFloat)gxHeight
 {
     CGRect frame = self.frame;
-    frame.size.height = gcxHeight;
+    frame.size.height = gxHeight;
     self.frame = frame;
 }
-- (void)setGcxWidth:(CGFloat)gcxWidth
+- (void)setGcxWidth:(CGFloat)gxWidth
 {
     CGRect frame = self.frame;
-    frame.size.width = gcxWidth;
+    frame.size.width = gxWidth;
     self.frame = frame;
 }
-- (void)setGcxHeightHalf:(CGFloat)gcxHeightHalf
+- (void)setGcxHeightHalf:(CGFloat)gxHeightHalf
 {
     CGRect frame = self.frame;
-    frame.size.height = gcxHeightHalf*2;
+    frame.size.height = gxHeightHalf*2;
     self.frame = frame;
 }
-- (void)setGcxWidthHalf:(CGFloat)gcxWidthHalf
+- (void)setGcxWidthHalf:(CGFloat)gxWidthHalf
 {
     CGRect frame = self.frame;
-    frame.size.width = gcxWidthHalf*2;
+    frame.size.width = gxWidthHalf*2;
     self.frame = frame;
 }
 
-- (CGSize)gcxSize
+- (CGSize)gxSize
 {
     return self.frame.size;
 }
-- (CGPoint)gcxCenter
+- (CGPoint)gxCenter
 {
     return self.center;
 }
-- (void)setGcxSize:(CGSize)gcxSize
+- (void)setGcxSize:(CGSize)gxSize
 {
     CGRect frame = self.frame;
-    frame.size = gcxSize;
+    frame.size = gxSize;
     self.frame = frame;
 }
-- (void)setGcxCenter:(CGPoint)gcxCenter
+- (void)setGcxCenter:(CGPoint)gxCenter
 {
-    self.center = gcxCenter;
+    self.center = gxCenter;
 }
 
-- (UIColor *)gcxGetColorFromPoint:(CGPoint)point
+- (UIColor *)gxGetColorFromPoint:(CGPoint)point
 {
     unsigned char pixel[4] = {0};
     

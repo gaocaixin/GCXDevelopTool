@@ -1,20 +1,20 @@
 //
-//  GCXFrameInButton.m
+//  GXFrameInButton.m
 //  LOCO
 //
 //  Created by 高才新 on 16/2/26.
 //  Copyright © 2016年 IU-Apps. All rights reserved.
 //
 
-#import "GCXFrameInButton.h"
+#import "GXFrameInButton.h"
 
-@implementation GCXFrameInButton
+@implementation GXFrameInButton
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        _gcxTitleLabelFrame  = CGRectZero;
-        _gcxImageViewFrame = CGRectZero;
+        _gxTitleLabelFrame  = CGRectZero;
+        _gxImageViewFrame = CGRectZero;
 
     }
     return self;
@@ -22,18 +22,18 @@
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect
 {
-    if ([NSStringFromCGRect(_gcxTitleLabelFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
+    if ([NSStringFromCGRect(_gxTitleLabelFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
         return [super titleRectForContentRect:contentRect];
     } else {
-        return _gcxTitleLabelFrame;
+        return _gxTitleLabelFrame;
     }
 }
 - (CGRect)imageRectForContentRect:(CGRect)contentRect
 {
-    if ([NSStringFromCGRect(_gcxImageViewFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
+    if ([NSStringFromCGRect(_gxImageViewFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
         return [super imageRectForContentRect:contentRect];
     } else {
-        return _gcxImageViewFrame;
+        return _gxImageViewFrame;
     }
 }
 

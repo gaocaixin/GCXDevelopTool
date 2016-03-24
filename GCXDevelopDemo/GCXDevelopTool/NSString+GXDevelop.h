@@ -1,5 +1,5 @@
 //
-//  NSString+GCXString.h
+//  NSString+GXString.h
 //  LOCO
 //
 //  Created by 高才新 on 15/12/16.
@@ -11,42 +11,46 @@
 #import <Foundation/Foundation.h>
 // 常用验证宏
 // email
-#define kGCXValidateEmali @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+#define kGXValidateEmali @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 // n - m 位字符
-#define kGCXValidateCharsBetween(n, m) [NSString stringWithFormat:@"^[A-Za-z0-9]{%d,%d}$",(n), (m)]
+#define kGXValidateCharsBetween(n, m) [NSString stringWithFormat:@"^[A-Za-z0-9]{%d,%d}$",(n), (m)]
 // n位数字
-#define kGCXValidateNum(n) [NSString stringWithFormat:@"^\\d{%d}$",(n)]
+#define kGXValidateNum(n) [NSString stringWithFormat:@"^\\d{%d}$",(n)]
+
+#define gxLocalized(Key) [NSString gxLocalizedString:(key)]
 
 
-
-@interface NSString (GCXDevelop)
+@interface NSString (GXDevelop)
 
 /**
  *正则判断
  */
-- (BOOL)gcxValidateWithRegexStr:(NSString *)regexStr;
+- (BOOL)gxValidateWithRegexStr:(NSString *)regexStr;
 /**
  *计算size
  */
-- (CGSize )gcxSizeWithLimitSize:(CGSize )limitSize  font:(UIFont *)font;
+- (CGSize )gxSizeWithLimitSize:(CGSize )limitSize  font:(UIFont *)font;
 /**
  *md5
  */
-- (NSString *)gcxMd5;
+- (NSString *)gxMd5;
 /**
  * 添加文字间距
  */
-- (NSMutableAttributedString *) gcxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing;
+- (NSMutableAttributedString *) gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing;
 /**
  * 添加文字间距 行间距
  */
-- (NSMutableAttributedString *)gcxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
 /**
  *将16进制转成 color
  */
-- (UIColor *) gcxHexStringTransformUIColorWithAlpha:(CGFloat)alpha;
+- (UIColor *) gxHexStringTransformUIColorWithAlpha:(CGFloat)alpha;
 
-
+/**
+ *本地化
+ */
++(NSString*)gxLocalizedString:(NSString *)key;
 
 @end
 

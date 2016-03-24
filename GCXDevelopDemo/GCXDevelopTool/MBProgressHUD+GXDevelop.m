@@ -1,16 +1,16 @@
 //
-//  MBProgressHUD+GCXDevelop.m
+//  MBProgressHUD+GXDevelop.m
 //  LOCO
 //
 //  Created by 高才新 on 16/1/7.
 //  Copyright © 2016年 IU-Apps. All rights reserved.
 //
 
-#import "MBProgressHUD+GCXDevelop.h"
+#import "MBProgressHUD+GXDevelop.h"
 
-@implementation MBProgressHUD (GCXDevelop)
+@implementation MBProgressHUD (GXDevelop)
 
-+ (void)gcxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text {
++ (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text {
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
     }
@@ -38,10 +38,10 @@
     });
 }
 
-+ (void)gcxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text
++ (void)gxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text
 {
 #ifdef DEBUG
-    [self gcxShowNotiInView:view duration:duration image:image text:text];
+    [self gxShowNotiInView:view duration:duration image:image text:text];
     
 #endif
 }

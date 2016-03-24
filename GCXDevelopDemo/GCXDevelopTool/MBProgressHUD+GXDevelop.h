@@ -1,5 +1,5 @@
 //
-//  MBProgressHUD+GCXDevelop.h
+//  MBProgressHUD+GXDevelop.h
 //  LOCO
 //
 //  Created by 高才新 on 16/1/7.
@@ -12,12 +12,12 @@
 #import "MBProgressHUD.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-@interface MBProgressHUD (GCXDevelop)
+@interface MBProgressHUD (GXDevelop)
 
 /**
  *快速显示一个hud 信息   default view = window;
  */
-+ (void)gcxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text ;
-+ (void)gcxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text ;
++ (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text ;
++ (void)gxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text ;
 
 @end

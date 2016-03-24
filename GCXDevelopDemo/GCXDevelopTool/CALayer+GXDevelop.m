@@ -1,16 +1,16 @@
 //
-//  CALayer+GCXDevelop.m
+//  CALayer+GXDevelop.m
 //  LOCO
 //
 //  Created by 高才新 on 15/12/16.
 //  Copyright © 2015年 IU-Apps. All rights reserved.
 //
 
-#import "CALayer+GCXDevelop.h"
+#import "CALayer+GXDevelop.h"
 
-@implementation CALayer (GCXDevelop)
+@implementation CALayer (GXDevelop)
 
-- (CAGradientLayer *)gcxSetGradientLayerWithColors:(NSArray *)colors layerFrame:(CGRect)frame direction:(GCXGradientLayerDirectionOption)direction {
+- (CAGradientLayer *)gxSetGradientLayerWithColors:(NSArray *)colors layerFrame:(CGRect)frame direction:(GXGradientLayerDirectionOption)direction {
     
     CAGradientLayer * layer = [CAGradientLayer layer];
     layer.frame    = frame;
@@ -19,31 +19,31 @@
     CGPoint end = CGPointMake(0.5, 1);
     
     switch (direction) {
-        case GCXGradientLayerDirectionTopToDown:
+        case GXGradientLayerDirectionTopToDown:
         {
 //            start = CGPointMake(0.5, 0);
 //            end = CGPointMake(0.5, 1);
         }
             break;
-        case GCXGradientLayerDirectionLeftToRight:
+        case GXGradientLayerDirectionLeftToRight:
         {
             start = CGPointMake(0, 0.5);
             end = CGPointMake(1, 0.5);
         }
             break;
-        case GCXGradientLayerDirectionTopLeftToDownRight:
+        case GXGradientLayerDirectionTopLeftToDownRight:
         {
             start = CGPointMake(0, 0);
             end = CGPointMake(1, 1);
         }
             break;
-        case GCXGradientLayerDirectionTopRightToDownLeft:
+        case GXGradientLayerDirectionTopRightToDownLeft:
         {
             start = CGPointMake(1, 0);
             end = CGPointMake(0, 1);
         }
             break;
-        case GCXGradientLayerDirectionOther:
+        case GXGradientLayerDirectionOther:
         {
 //            start = CGPointMake(0.5, 0);
 //            end = CGPointMake(0.5, 1);
@@ -60,7 +60,7 @@
     return layer;
 }
 
-- (UIColor *)gcxGetColorFromPoint:(CGPoint)point
+- (UIColor *)gxGetColorFromPoint:(CGPoint)point
 {
     unsigned char pixel[4] = {0};
     

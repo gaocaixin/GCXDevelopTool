@@ -1,86 +1,89 @@
 //
-//  UIButton+GCXDevelop.m
+//  UIButton+GXDevelop.m
 //  LOCO
 //
 //  Created by 高才新 on 15/12/16.
 //  Copyright © 2015年 IU-Apps. All rights reserved.
 //
 
-#import "UIButton+GCXDevelop.h"
+#import "UIButton+GXDevelop.h"
 #import <objc/runtime.h>
 #define kGcxAddTapRippleEffectColor  @"kGcxAddTapRippleEffectColor"
 #define kGcxAddTapRippleEffectDuration  @"kGcxAddTapRippleEffectDuration"
 
 @interface UIButton ()
-@property (assign, nonatomic) CGFloat gcxRippleScaleMaxValue;
+@property (assign, nonatomic) CGFloat gxRippleScaleMaxValue;
 @end
 
-@implementation UIButton (GCXDevelop)
+@implementation UIButton (GXDevelop)
 
-@dynamic gcxNHDImages;
-@dynamic gcxNHDTitles;
-@dynamic gcxNHDTitleColors;
-@dynamic gcxNSDImages;
+@dynamic gxNHDImages;
+@dynamic gxNHDTitles;
+@dynamic gxNHDTitleColors;
+@dynamic gxNSDImages;
 
-static char gcxRippleColor;
-static char gcxRippleDuration;
+static char gxRippleColor;
+static char gxRippleDuration;
 static char RippleScaleMaxValue;
 
 
 
 
-- (void)gcxSetRippleColor:(UIColor *)rippleColor
+- (void)gxSetRippleColor:(UIColor *)rippleColor
 {
-    objc_setAssociatedObject(self, &gcxRippleColor, rippleColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &gxRippleColor, rippleColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (UIColor *)gcxGetRippleColor
+- (UIColor *)gxGetRippleColor
 {
-    return objc_getAssociatedObject(self, &gcxRippleColor);
+    return objc_getAssociatedObject(self, &gxRippleColor);
 }
-- (void)gcxSetRippleDuration:(CGFloat)rippleDuration
+- (void)gxSetRippleDuration:(CGFloat)rippleDuration
 {
-    objc_setAssociatedObject(self, &gcxRippleDuration, @(rippleDuration), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &gxRippleDuration, @(rippleDuration), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (CGFloat)gcxGetRippleDuration
+- (CGFloat)gxGetRippleDuration
 {
-    return [objc_getAssociatedObject(self, &gcxRippleDuration) floatValue];
+    return [objc_getAssociatedObject(self, &gxRippleDuration) floatValue];
 }
 
-- (void)setGcxRippleScaleMaxValue:(CGFloat)gcxRippleScaleMaxValue
+- (void)setGcxRippleScaleMaxValue:(CGFloat)gxRippleScaleMaxValue
 {
-    objc_setAssociatedObject(self, &RippleScaleMaxValue, @(gcxRippleScaleMaxValue), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &RippleScaleMaxValue, @(gxRippleScaleMaxValue), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (CGFloat)gcxRippleScaleMaxValue
+- (CGFloat)gxRippleScaleMaxValue
 {
     return [objc_getAssociatedObject(self, &RippleScaleMaxValue) floatValue];
 }
 
-- (void)setGcxNHDTitles:(NSArray *)gcxNHDTitles
+- (void)setGcxNHDTitles:(NSArray *)gxNHDTitles
 {
-    [self gcxEnumerateArray:gcxNHDTitles UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+    [self gxEnumerateArray:gxNHDTitles UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setTitle:obj forState:buttonState];
     }];
 }
-- (void)setGcxNHDImages:(NSArray *)gcxNHDImages
+- (void)setGcxNHDImages:(NSArray *)gxNHDImages
 {
-    [self gcxEnumerateArray:gcxNHDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+    [self gxEnumerateArray:gxNHDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+        if ([obj  isEqual: @(0)]) {
+            obj = nil;
+        }
         [self setImage:obj forState:buttonState];
     }];
 }
-- (void)setGcxNHDTitleColors:(NSArray *)gcxNHDTitleColors
+- (void)setGcxNHDTitleColors:(NSArray *)gxNHDTitleColors
 {
-    [self gcxEnumerateArray:gcxNHDTitleColors UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+    [self gxEnumerateArray:gxNHDTitleColors UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setTitleColor:obj forState:buttonState];
     }];
 }
 
-- (void)setGcxNSDImages:(NSArray *)gcxNSDImages
+- (void)setGcxNSDImages:(NSArray *)gxNSDImages
 {
-    [self gcxEnumerateNSDArray:gcxNSDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+    [self gxEnumerateNSDArray:gxNSDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setImage:obj forState:buttonState];
     }];
 }
-- (void)gcxEnumerateNSDArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
+- (void)gxEnumerateNSDArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
 {
     __block UIControlState state = 0;
     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -99,7 +102,7 @@ static char RippleScaleMaxValue;
     }];
 }
 
-- (void)gcxEnumerateArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
+- (void)gxEnumerateArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
 {
     __block UIControlState state = 0;
     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -118,26 +121,26 @@ static char RippleScaleMaxValue;
     }];
 }
 
-- (void)gcxSetNHDWithImages:(NSArray *)gcxNHDImages colors:(NSArray *)gcxNHDTitleColors titles:(NSArray *)gcxNHDTitles {
-    self.gcxNHDImages = gcxNHDImages;
-    self.gcxNHDTitles = gcxNHDTitles;
-    self.gcxNHDTitleColors = gcxNHDTitleColors;
+- (void)gxSetNHDWithImages:(NSArray *)gxNHDImages colors:(NSArray *)gxNHDTitleColors titles:(NSArray *)gxNHDTitles {
+    self.gxNHDImages = gxNHDImages;
+    self.gxNHDTitles = gxNHDTitles;
+    self.gxNHDTitleColors = gxNHDTitleColors;
 }
 
-- (void)gcxSetNHDWithFont:(UIFont *)font colors:(NSArray *)gcxNHDTitleColors titles:(NSArray *)gcxNHDTitles {
-    self.gcxNHDTitles = gcxNHDTitles;
-    self.gcxNHDTitleColors = gcxNHDTitleColors;
+- (void)gxSetNHDWithFont:(UIFont *)font colors:(NSArray *)gxNHDTitleColors titles:(NSArray *)gxNHDTitles {
+    self.gxNHDTitles = gxNHDTitles;
+    self.gxNHDTitleColors = gxNHDTitleColors;
     self.titleLabel.font = font;
 }
 
 
 
 
-- (void)gcxAddTapRippleEffectWithColor:(UIColor *)color scaleMaxValue:(CGFloat)value duration:(CGFloat)duration
+- (void)gxAddTapRippleEffectWithColor:(UIColor *)color scaleMaxValue:(CGFloat)value duration:(CGFloat)duration
 {
-    [self gcxSetRippleColor:color];
-    [self gcxSetRippleDuration:duration];
-    self.gcxRippleScaleMaxValue = value;
+    [self gxSetRippleColor:color];
+    [self gxSetRippleDuration:duration];
+    self.gxRippleScaleMaxValue = value;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRipple)];
     [self addGestureRecognizer:tap];
@@ -146,8 +149,8 @@ static char RippleScaleMaxValue;
 
     
 //    NSLog(@"%@", self.layer.sublayers);
-    UIColor *effectColor = [self gcxGetRippleColor];
-    CGFloat animationDurtion = [self gcxGetRippleDuration];
+    UIColor *effectColor = [self gxGetRippleColor];
+    CGFloat animationDurtion = [self gxGetRippleDuration];
     // 圆圈动画
     UIColor *stroke = effectColor?effectColor:[UIColor colorWithWhite:0.8 alpha:0.8];
 
@@ -170,7 +173,7 @@ static char RippleScaleMaxValue;
     self.layer.masksToBounds = NO;
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(self.gcxRippleScaleMaxValue, self.gcxRippleScaleMaxValue, 1)];
+    scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(self.gxRippleScaleMaxValue, self.gxRippleScaleMaxValue, 1)];
     
     CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     alphaAnimation.fromValue = @1;

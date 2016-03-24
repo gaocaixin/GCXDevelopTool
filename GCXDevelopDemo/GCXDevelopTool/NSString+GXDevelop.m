@@ -1,35 +1,35 @@
 //
-//  NSString+GCXString.m
+//  NSString+GXString.m
 //  LOCO
 //
 //  Created by 高才新 on 15/12/16.
 //  Copyright © 2015年 IU-Apps. All rights reserved.
 //
 
-#import "NSString+GCXDevelop.h"
+#import "NSString+GXDevelop.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CoreText/CoreText.h>
-#import "NSAttributedString+GCXDevelop.h"
+#import "NSAttributedString+GXDevelop.h"
 
 #include <sys/sysctl.h>
 #include <net/if.h>
 #include <net/if_dl.h>
 
-@implementation NSString (GCXDevelop)
+@implementation NSString (GXDevelop)
 
-- (BOOL)gcxValidateWithRegexStr:(NSString *)regexStr {
+- (BOOL)gxValidateWithRegexStr:(NSString *)regexStr {
     NSString *emailRegex = regexStr;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:self];
     
 }
-- (CGSize )gcxSizeWithLimitSize:(CGSize )limitSize  font:(UIFont *)font {
+- (CGSize )gxSizeWithLimitSize:(CGSize )limitSize  font:(UIFont *)font {
     CGSize size;
     if([[UIDevice currentDevice].systemVersion doubleValue] >=7.0)
     {
         NSDictionary * attributes = @{NSFontAttributeName:font};
         NSAttributedString *attributedText =[[NSAttributedString alloc]initWithString:self attributes:attributes];
-        return [attributedText gcxSizeWithLimitSize:limitSize];
+        return [attributedText gxSizeWithLimitSize:limitSize];
     }
     else
     {
@@ -41,7 +41,7 @@
     }
     return size;
 }
-- (NSString *)gcxMd5 {
+- (NSString *)gxMd5 {
     const char *cStr = [self UTF8String];
     unsigned char result[16];
     CC_MD5( cStr, (unsigned int) strlen(cStr), result);
@@ -54,10 +54,41 @@
             ];
 }
 
++(NSString*)gxLocalizedString:(NSString *)key {
+    NSString* s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:@"Localizable2"];
+    if ([s isEqualToString:key])
+        s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil];
+    // We look recursively for ${...}
+    //ASSERT(s);
+    
+    while (s && [s rangeOfString:@"${"].location != NSNotFound) {
+        NSRange r1, t, s2r;
+        r1 = [s rangeOfString:@"${"];
+        NSUInteger i1 = r1.location;
+        t.location = r1.location;
+        t.length = [s length] - r1.location;
+        NSUInteger i2 = [s rangeOfString:@"}" options:NSLiteralSearch range:t].location;
+        // We now replace the string between i1 and i2
+        // Make s2r range from ${ to },
+        s2r.location = i1+2;
+        s2r.length = i2 - i1 - 2;
+        // s2 is the localized with replacement
+        NSString *subkey = [s substringWithRange:s2r];
+        NSString *s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:@"Localizable2"];
+        if ([s2 isEqualToString:subkey])
+            s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:nil];
+        // Make s2r range from ${ to }
+        s2r.location = i1;
+        s2r.length = i2 - i1 + 1;
+        s = [s stringByReplacingCharactersInRange:s2r withString:s2];
+    }
+    return s;
+}
+
 /**
  * 添加文字间距
  */
-- (NSMutableAttributedString *) gcxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing
+- (NSMutableAttributedString *) gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing
 {
     NSMutableAttributedString *strAttri = [[NSMutableAttributedString alloc] initWithString:self];
 
@@ -80,9 +111,9 @@
 /**
  * 添加文字间距 行间距
  */
-- (NSMutableAttributedString *)gcxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
 {
-    NSMutableAttributedString *attr = [self gcxAttributeStringWithFont:font color:fontColor spacing:spacing];
+    NSMutableAttributedString *attr = [self gxAttributeStringWithFont:font color:fontColor spacing:spacing];
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = linespacing;
     paragraphStyle.alignment = alignment;
@@ -90,7 +121,7 @@
     return attr;
 }
 
-- (UIColor *) gcxHexStringTransformUIColorWithAlpha:(CGFloat)alpha
+- (UIColor *) gxHexStringTransformUIColorWithAlpha:(CGFloat)alpha
 {
     //删除字符串中的空格
     NSString *cString = [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
@@ -142,7 +173,7 @@
 /**
  *Return the local MAC addy 01
  */
-+ (NSString *)gcxGetLocalMacAddress
++ (NSString *)gxGetLocalMacAddress
 {
     int                 mib[6];
     size_t              len;
@@ -183,7 +214,7 @@
 /**
  *Return the local MAC addy 02
  */
-+ (NSString *)gcxGetLocalMacAddressOther
++ (NSString *)gxGetLocalMacAddressOther
 {
     int                 mgmtInfoBase[6];
     char                *msgBuffer = NULL;
