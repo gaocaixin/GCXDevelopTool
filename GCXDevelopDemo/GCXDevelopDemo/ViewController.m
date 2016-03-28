@@ -21,19 +21,22 @@
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100,100)];
     btn.center = self.view.center;
-    [btn addTarget:self action:@selector(tap) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 //    btn.backgroundColor = [UIColor grayColor];
-    btn.gxNHDTitles = @[@"tap",@"tap-h"];
+    btn.gxTitlesNHSD = @[@"tap",[NSNull null],@"tap-s"];
     btn.layer.cornerRadius = 50;
     [btn setBackgroundImage:[UIImage gxImageWithColor:[UIColor grayColor] size:CGSizeMake(100, 100) cornerRadius:50] forState:UIControlStateNormal];
     [btn gxAddTapRippleEffectWithColor:[UIColor grayColor] scaleMaxValue:2 duration:0.6];
     
 }
 
-- (void)tap
+- (void)tap:(UIButton *)btn
 {
+    btn.selected= !btn.selected;
     NSLog(@"tap");
+    btn.gxTitleColorsNHSD = @[[UIColor redColor],[NSNull null],[UIColor blackColor]];
+
 }
 
 - (void)didReceiveMemoryWarning {

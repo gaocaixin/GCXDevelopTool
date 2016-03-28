@@ -17,17 +17,57 @@
 
 @implementation UIButton (GXDevelop)
 
-@dynamic gxNHDImages;
-@dynamic gxNHDTitles;
-@dynamic gxNHDTitleColors;
-@dynamic gxNSDImages;
+@dynamic gxImagesNHSD;
+@dynamic gxTitleColorsNHSD;
+@dynamic gxTitlesNHSD;
+
+// 快速设置属性
+- (void)setGxImagesNHSD:(NSArray *)gxImagesNHSD
+{
+    [self gxEnumerateNHSDArray:gxImagesNHSD UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+        [self setImage:obj forState:buttonState];
+    }];
+}
+- (void)setGxTitlesNHSD:(NSArray *)gxTitlesNHSD
+{
+    [self gxEnumerateNHSDArray:gxTitlesNHSD UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+        [self setTitle:obj forState:buttonState];
+    }];
+}
+- (void)setGxTitleColorsNHSD:(NSArray *)gxTitleColorsNHSD
+{
+    [self gxEnumerateNHSDArray:gxTitleColorsNHSD UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+        [self setTitleColor:obj forState:buttonState];
+    }];
+}
+
+- (void)gxEnumerateNHSDArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
+{
+    __block UIControlState state = 0;
+    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == 0) {
+            state = UIControlStateNormal;
+        } else if (idx == 1) {
+            state = UIControlStateHighlighted;
+        }else if (idx == 2) {
+            state = UIControlStateSelected;
+        }else if(idx == 3) {
+            state = UIControlStateDisabled;
+        }
+        if (![obj isKindOfClass:[NSNull class]]) { // null 跳过设置
+            if (block) {
+                block(obj, idx, stop, state);
+            }
+        }
+    }];
+}
+
+
+// 水波
 
 static char gxRippleColor;
 static char gxRippleDuration;
 static char RippleScaleMaxValue;
-
-
-
 
 - (void)gxSetRippleColor:(UIColor *)rippleColor
 {
@@ -54,87 +94,6 @@ static char RippleScaleMaxValue;
 {
     return [objc_getAssociatedObject(self, &RippleScaleMaxValue) floatValue];
 }
-
-- (void)setGxNHDTitles:(NSArray *)gxNHDTitles
-{
-    [self gxEnumerateArray:gxNHDTitles UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
-        [self setTitle:obj forState:buttonState];
-    }];
-}
-- (void)setGxNHDImages:(NSArray *)gxNHDImages
-{
-    [self gxEnumerateArray:gxNHDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
-        if ([obj  isEqual: @(0)]) {
-            obj = nil;
-        }
-        [self setImage:obj forState:buttonState];
-    }];
-}
-- (void)setGxNHDTitleColors:(NSArray *)gxNHDTitleColors
-{
-    [self gxEnumerateArray:gxNHDTitleColors UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
-        [self setTitleColor:obj forState:buttonState];
-    }];
-}
-
-- (void)setGxNSDImages:(NSArray *)gxNSDImages
-{
-    [self gxEnumerateNSDArray:gxNSDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
-        [self setImage:obj forState:buttonState];
-    }];
-}
-- (void)gxEnumerateNSDArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
-{
-    __block UIControlState state = 0;
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (idx == 0) {
-            state = UIControlStateNormal;
-        } else if (idx == 1) {
-            state = UIControlStateSelected;
-        }else if (idx == 2) {
-            state = UIControlStateDisabled;
-        }else if(idx == 3) {
-            //            state = UIControlStateDisabled;
-        }
-        if (block) {
-            block(obj, idx, stop, state);
-        }
-    }];
-}
-
-- (void)gxEnumerateArray:(NSArray *)array UsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState))block
-{
-    __block UIControlState state = 0;
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (idx == 0) {
-            state = UIControlStateNormal;
-        } else if (idx == 1) {
-            state = UIControlStateHighlighted;
-        }else if (idx == 2) {
-            state = UIControlStateDisabled;
-        }else if(idx == 3) {
-//            state = UIControlStateDisabled;
-        }
-        if (block) {
-            block(obj, idx, stop, state);
-        }
-    }];
-}
-
-- (void)gxSetNHDWithImages:(NSArray *)gxNHDImages colors:(NSArray *)gxNHDTitleColors titles:(NSArray *)gxNHDTitles {
-    self.gxNHDImages = gxNHDImages;
-    self.gxNHDTitles = gxNHDTitles;
-    self.gxNHDTitleColors = gxNHDTitleColors;
-}
-
-- (void)gxSetNHDWithFont:(UIFont *)font colors:(NSArray *)gxNHDTitleColors titles:(NSArray *)gxNHDTitles {
-    self.gxNHDTitles = gxNHDTitles;
-    self.gxNHDTitleColors = gxNHDTitleColors;
-    self.titleLabel.font = font;
-}
-
-
-
 
 - (void)gxAddTapRippleEffectWithColor:(UIColor *)color scaleMaxValue:(CGFloat)value duration:(CGFloat)duration
 {
