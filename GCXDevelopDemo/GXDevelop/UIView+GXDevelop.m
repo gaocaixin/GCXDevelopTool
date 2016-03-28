@@ -51,61 +51,61 @@
     return CGRectGetHeight(self.frame)/2.0;
 }
 
-- (void)setGcxMinX:(CGFloat)gxMinX
+- (void)setGxMinX:(CGFloat)gxMinX
 {
     CGRect frame = self.frame;
     frame.origin.x = gxMinX;
     self.frame = frame;
 }
-- (void)setGcxMinY:(CGFloat)gxMinY
+- (void)setGxMinY:(CGFloat)gxMinY
 {
     CGRect frame = self.frame;
     frame.origin.y = gxMinY;
     self.frame = frame;
 }
-- (void)setGcxMaxX:(CGFloat)gxMaxX
+- (void)setGxMaxX:(CGFloat)gxMaxX
 {
     CGRect frame = self.frame;
     frame.origin.x = gxMaxX-self.gxWidth;
     self.frame = frame;
 }
-- (void)setGcxMaxY:(CGFloat)gxMaxY
+- (void)setGxMaxY:(CGFloat)gxMaxY
 {
     CGRect frame = self.frame;
     frame.origin.y = gxMaxY-self.gxHeight;
     self.frame = frame;
 }
-- (void)setGcxMidX:(CGFloat)gxMidX
+- (void)setGxMidX:(CGFloat)gxMidX
 {
     CGRect frame = self.frame;
     frame.origin.x = gxMidX-self.gxWidthHalf;
     self.frame = frame;
 }
-- (void)setGcxMidY:(CGFloat)gxMidY
+- (void)setGxMidY:(CGFloat)gxMidY
 {
     CGRect frame = self.frame;
     frame.origin.y = gxMidY - self.gxHeightHalf;
     self.frame = frame;
 }
-- (void)setGcxHeight:(CGFloat)gxHeight
+- (void)setGxHeight:(CGFloat)gxHeight
 {
     CGRect frame = self.frame;
     frame.size.height = gxHeight;
     self.frame = frame;
 }
-- (void)setGcxWidth:(CGFloat)gxWidth
+- (void)setGxWidth:(CGFloat)gxWidth
 {
     CGRect frame = self.frame;
     frame.size.width = gxWidth;
     self.frame = frame;
 }
-- (void)setGcxHeightHalf:(CGFloat)gxHeightHalf
+- (void)setGxHeightHalf:(CGFloat)gxHeightHalf
 {
     CGRect frame = self.frame;
     frame.size.height = gxHeightHalf*2;
     self.frame = frame;
 }
-- (void)setGcxWidthHalf:(CGFloat)gxWidthHalf
+- (void)setGxWidthHalf:(CGFloat)gxWidthHalf
 {
     CGRect frame = self.frame;
     frame.size.width = gxWidthHalf*2;
@@ -120,13 +120,13 @@
 {
     return self.center;
 }
-- (void)setGcxSize:(CGSize)gxSize
+- (void)setGxSize:(CGSize)gxSize
 {
     CGRect frame = self.frame;
     frame.size = gxSize;
     self.frame = frame;
 }
-- (void)setGcxCenter:(CGPoint)gxCenter
+- (void)setGxCenter:(CGPoint)gxCenter
 {
     self.center = gxCenter;
 }

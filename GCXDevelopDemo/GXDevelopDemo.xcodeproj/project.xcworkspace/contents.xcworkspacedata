@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GCXDevelopDemo.xcodeproj">
+      location = "self:/Users/gaocaixin/Desktop/gcx/GCXDevelopTool/GCXDevelopDemo/GXDevelopDemo.xcodeproj">
    </FileRef>
 </Workspace>

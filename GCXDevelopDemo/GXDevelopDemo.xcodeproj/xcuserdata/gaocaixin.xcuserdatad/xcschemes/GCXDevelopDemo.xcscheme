@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A75987BC1C5B1B4800953CB7"
-               BuildableName = "GCXDevelopDemo.app"
-               BlueprintName = "GCXDevelopDemo"
-               ReferencedContainer = "container:GCXDevelopDemo.xcodeproj">
+               BuildableName = "GXDevelopDemo.app"
+               BlueprintName = "GXDevelopDemo"
+               ReferencedContainer = "container:GXDevelopDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A75987D51C5B1B4900953CB7"
-               BuildableName = "GCXDevelopDemoTests.xctest"
-               BlueprintName = "GCXDevelopDemoTests"
-               ReferencedContainer = "container:GCXDevelopDemo.xcodeproj">
+               BuildableName = "GXDevelopDemo.xctest"
+               BlueprintName = "GXDevelopDemoTests"
+               ReferencedContainer = "container:GXDevelopDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A75987E01C5B1B4900953CB7"
-               BuildableName = "GCXDevelopDemoUITests.xctest"
-               BlueprintName = "GCXDevelopDemoUITests"
-               ReferencedContainer = "container:GCXDevelopDemo.xcodeproj">
+               BuildableName = "GXDevelopDemo.xctest"
+               BlueprintName = "GXDevelopDemoUITests"
+               ReferencedContainer = "container:GXDevelopDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A75987BC1C5B1B4800953CB7"
-            BuildableName = "GCXDevelopDemo.app"
-            BlueprintName = "GCXDevelopDemo"
-            ReferencedContainer = "container:GCXDevelopDemo.xcodeproj">
+            BuildableName = "GXDevelopDemo.app"
+            BlueprintName = "GXDevelopDemo"
+            ReferencedContainer = "container:GXDevelopDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A75987BC1C5B1B4800953CB7"
-            BuildableName = "GCXDevelopDemo.app"
-            BlueprintName = "GCXDevelopDemo"
-            ReferencedContainer = "container:GCXDevelopDemo.xcodeproj">
+            BuildableName = "GXDevelopDemo.app"
+            BlueprintName = "GXDevelopDemo"
+            ReferencedContainer = "container:GXDevelopDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A75987BC1C5B1B4800953CB7"
-            BuildableName = "GCXDevelopDemo.app"
-            BlueprintName = "GCXDevelopDemo"
-            ReferencedContainer = "container:GCXDevelopDemo.xcodeproj">
+            BuildableName = "GXDevelopDemo.app"
+            BlueprintName = "GXDevelopDemo"
+            ReferencedContainer = "container:GXDevelopDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

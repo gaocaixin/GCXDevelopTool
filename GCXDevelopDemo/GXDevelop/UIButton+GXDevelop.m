@@ -8,8 +8,8 @@
 
 #import "UIButton+GXDevelop.h"
 #import <objc/runtime.h>
-#define kGcxAddTapRippleEffectColor  @"kGcxAddTapRippleEffectColor"
-#define kGcxAddTapRippleEffectDuration  @"kGcxAddTapRippleEffectDuration"
+#define kGxAddTapRippleEffectColor  @"kGxAddTapRippleEffectColor"
+#define kGxAddTapRippleEffectDuration  @"kGxAddTapRippleEffectDuration"
 
 @interface UIButton ()
 @property (assign, nonatomic) CGFloat gxRippleScaleMaxValue;
@@ -46,7 +46,7 @@ static char RippleScaleMaxValue;
     return [objc_getAssociatedObject(self, &gxRippleDuration) floatValue];
 }
 
-- (void)setGcxRippleScaleMaxValue:(CGFloat)gxRippleScaleMaxValue
+- (void)setGxRippleScaleMaxValue:(CGFloat)gxRippleScaleMaxValue
 {
     objc_setAssociatedObject(self, &RippleScaleMaxValue, @(gxRippleScaleMaxValue), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -55,13 +55,13 @@ static char RippleScaleMaxValue;
     return [objc_getAssociatedObject(self, &RippleScaleMaxValue) floatValue];
 }
 
-- (void)setGcxNHDTitles:(NSArray *)gxNHDTitles
+- (void)setGxNHDTitles:(NSArray *)gxNHDTitles
 {
     [self gxEnumerateArray:gxNHDTitles UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setTitle:obj forState:buttonState];
     }];
 }
-- (void)setGcxNHDImages:(NSArray *)gxNHDImages
+- (void)setGxNHDImages:(NSArray *)gxNHDImages
 {
     [self gxEnumerateArray:gxNHDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         if ([obj  isEqual: @(0)]) {
@@ -70,14 +70,14 @@ static char RippleScaleMaxValue;
         [self setImage:obj forState:buttonState];
     }];
 }
-- (void)setGcxNHDTitleColors:(NSArray *)gxNHDTitleColors
+- (void)setGxNHDTitleColors:(NSArray *)gxNHDTitleColors
 {
     [self gxEnumerateArray:gxNHDTitleColors UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setTitleColor:obj forState:buttonState];
     }];
 }
 
-- (void)setGcxNSDImages:(NSArray *)gxNSDImages
+- (void)setGxNSDImages:(NSArray *)gxNSDImages
 {
     [self gxEnumerateNSDArray:gxNSDImages UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setImage:obj forState:buttonState];
