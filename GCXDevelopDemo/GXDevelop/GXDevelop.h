@@ -38,6 +38,6 @@
 #import "UIView+GXDevelop.h"
 #import "GXFrameInButton.h"
 #import "NSFileManager+GXDevelop.h"
-
+#import "GXDevelopExtern.h"
 
 #endif /* GXDevelop_h */

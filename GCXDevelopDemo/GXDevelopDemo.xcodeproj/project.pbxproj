@@ -18,6 +18,7 @@
 		A75987D01C5B1B4800953CB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75987CE1C5B1B4800953CB7 /* LaunchScreen.storyboard */; };
 		A75987DB1C5B1B4900953CB7 /* GCXDevelopDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75987DA1C5B1B4900953CB7 /* GCXDevelopDemoTests.m */; };
 		A75987E61C5B1B4900953CB7 /* GCXDevelopDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75987E51C5B1B4900953CB7 /* GCXDevelopDemoUITests.m */; };
+		A7726CCB1CAA83FF00EAA31D /* GXDevelopExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = A7726CCA1CAA83FF00EAA31D /* GXDevelopExtern.m */; };
 		A7EB74321CA936F50091B3B2 /* CALayer+GXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EB74131CA936F50091B3B2 /* CALayer+GXDevelop.m */; };
 		A7EB74331CA936F50091B3B2 /* GXFrameInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EB74171CA936F50091B3B2 /* GXFrameInButton.m */; };
 		A7EB74341CA936F50091B3B2 /* MBProgressHUD+GXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EB74191CA936F50091B3B2 /* MBProgressHUD+GXDevelop.m */; };
@@ -73,6 +74,8 @@
 		A75987E11C5B1B4900953CB7 /* GXDevelopDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GXDevelopDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75987E51C5B1B4900953CB7 /* GCXDevelopDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCXDevelopDemoUITests.m; sourceTree = "<group>"; };
 		A75987E71C5B1B4900953CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7726CC91CAA83FF00EAA31D /* GXDevelopExtern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXDevelopExtern.h; sourceTree = "<group>"; };
+		A7726CCA1CAA83FF00EAA31D /* GXDevelopExtern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXDevelopExtern.m; sourceTree = "<group>"; };
 		A7EB74121CA936F50091B3B2 /* CALayer+GXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+GXDevelop.h"; sourceTree = "<group>"; };
 		A7EB74131CA936F50091B3B2 /* CALayer+GXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+GXDevelop.m"; sourceTree = "<group>"; };
 		A7EB74141CA936F50091B3B2 /* GXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXDevelop.h; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				A7EB74131CA936F50091B3B2 /* CALayer+GXDevelop.m */,
 				A7EB74141CA936F50091B3B2 /* GXDevelop.h */,
 				A7EB74151CA936F50091B3B2 /* GXDevelopKey.h */,
+				A7726CC91CAA83FF00EAA31D /* GXDevelopExtern.h */,
+				A7726CCA1CAA83FF00EAA31D /* GXDevelopExtern.m */,
 				A7EB74161CA936F50091B3B2 /* GXFrameInButton.h */,
 				A7EB74171CA936F50091B3B2 /* GXFrameInButton.m */,
 				A7EB74181CA936F50091B3B2 /* MBProgressHUD+GXDevelop.h */,
@@ -386,6 +391,7 @@
 				A7EB74381CA936F50091B3B2 /* NSString+GXDevelop.m in Sources */,
 				A75987C51C5B1B4800953CB7 /* AppDelegate.m in Sources */,
 				A7EB743C1CA936F50091B3B2 /* UIImageView+GXDevelop.m in Sources */,
+				A7726CCB1CAA83FF00EAA31D /* GXDevelopExtern.m in Sources */,
 				A7EB743F1CA936F50091B3B2 /* UIView+GXDevelop.m in Sources */,
 				A75987C21C5B1B4800953CB7 /* main.m in Sources */,
 				A72010841C5F0335007A09C5 /* MBProgressHUD.m in Sources */,

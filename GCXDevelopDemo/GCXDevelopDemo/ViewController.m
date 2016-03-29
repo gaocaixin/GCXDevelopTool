@@ -10,7 +10,7 @@
 #import "GXDevelop.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong)UIButton *btn;
 @end
 
 @implementation ViewController
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100,100)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, GXWidthFitFloat(100),GXHeightFitFloat(100))];
     btn.center = self.view.center;
     [btn addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
@@ -28,7 +28,7 @@
     btn.layer.cornerRadius = 50;
     [btn setBackgroundImage:[UIImage gxImageWithColor:[UIColor grayColor] size:CGSizeMake(100, 100) cornerRadius:50] forState:UIControlStateNormal];
     [btn gxAddTapRippleEffectWithColor:[UIColor grayColor] scaleMaxValue:2 duration:0.6];
-    
+    _btn = btn;
 }
 
 - (void)tap:(UIButton *)btn
@@ -42,6 +42,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _btn.frame = CGRectMake(0, 0, GXWidthFitFloat(100),GXHeightFitFloat(100));
 }
 
 @end

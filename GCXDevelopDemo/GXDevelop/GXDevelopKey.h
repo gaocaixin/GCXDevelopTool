@@ -9,6 +9,7 @@
 #ifndef GXDevelopKey_h
 #define GXDevelopKey_h
 
+#import "GXDevelopExtern.h"
 // 系统单例
 #define GXUserDefaults         [NSUserDefaults standardUserDefaults]
 #define GXNotificationCenter [NSNotificationCenter defaultCenter]
@@ -36,34 +37,34 @@
 /**
  *宽度比
  */
-#define  GXScreenWidthRatio            GXScreenWidth/GXDesignSize.width   // 当前屏宽/设计原稿的比例
-#define  GXWidthFitValueFloat(value)  ((value)*GXScreenWidthRatio)        // 宽度转化成适配后的float值
-#define  GXWidthFitValueCeil(value)   (ceil((value)*GXScreenWidthRatio))  // 宽度转化成适配后的ceil值(不小于float的最小整数)
-#define  GXWidthFitValueFloor(value)  (floor((value)*GXScreenWidthRatio)) // 宽度转化成适配后的floor值(不大于float的最大整数)
+#define  GXScreenWidthRatio            ([GXDevelopExtern sharedExtern].gxScreenWidthRatio)   // 当前屏宽/设计原稿的比例
+#define  GXWidthFitFloat(value)  ((value)*GXScreenWidthRatio)        // 宽度转化成适配后的float值
+#define  GXWidthFitCeil(value)   (ceil((value)*GXScreenWidthRatio))  // 宽度转化成适配后的ceil值(不小于float的最小整数)
+#define  GXWidthFitFloor(value)  (floor((value)*GXScreenWidthRatio)) // 宽度转化成适配后的floor值(不大于float的最大整数)
 
 /**
  *高度比
  */
-#define  GXScreenHeightRatio           GXScreenHeight/GXDesignSize.height // 当前屏高/设计原稿的比例
-#define  GXHeightFitValueFloat(value) ((value)*GXScreenHeightRatio)       // 高度转化成适配后的float值
-#define  GXHeightFitValueCeil(value)  (ceil((value)*GXScreenHeightRatio)) // 高度转化成适配后的ceil值(不小于float的最小整数)
-#define  GXHeightFitValueFloor(value) (floor((value)*GXScreenHeightRatio))// 高度转化成适配后的floor值(不大于float的最大整数)
+#define  GXScreenHeightRatio           ([GXDevelopExtern sharedExtern].gxScreenHeightRatio) // 当前屏高/设计原稿的比例
+#define  GXHeightFitFloat(value) ((value)*GXScreenHeightRatio)       // 高度转化成适配后的float值
+#define  GXHeightFitCeil(value)  (ceil((value)*GXScreenHeightRatio)) // 高度转化成适配后的ceil值(不小于float的最小整数)
+#define  GXHeightFitFloor(value) (floor((value)*GXScreenHeightRatio))// 高度转化成适配后的floor值(不大于float的最大整数)
 
 /**
  *宽高比最小值
  */
-#define  GXScreenMinRatio (GXScreenWidthRatio > GXScreenHeightRatio ? GXScreenHeightRatio:GXScreenWidthRatio)
-#define  GXMinFitValueFloat(value) ((value)*GXScreenMinRatio)       // 转化成适配后的float值
-#define  GXMinFitValueCeil(value) ((value)*GXScreenMinRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
-#define  GXMinFitValueFloor(value) ((value)*GXScreenMinRatio)       // 转化成适配后的floor值(不大于float的最大整数)
+#define  GXScreenMinRatio ([GXDevelopExtern sharedExtern].gxScreenMinRatio)
+#define  GXMinFitFloat(value) ((value)*GXScreenMinRatio)       // 转化成适配后的float值
+#define  GXMinFitCeil(value) ((value)*GXScreenMinRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
+#define  GXMinFitFloor(value) ((value)*GXScreenMinRatio)       // 转化成适配后的floor值(不大于float的最大整数)
 
 /**
  *宽高比最大值
  */
-#define  GXScreenMaxRatio (GXScreenWidthRatio > GXScreenHeightRatio ? GXScreenWidthRatio:GXScreenHeightRatio)
-#define  GXMaxFitValueFloat(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的float值
-#define  GXMaxFitValueCeil(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
-#define  GXMaxFitValueFloor(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的floor值(不大于float的最大整数)
+#define  GXScreenMaxRatio ([GXDevelopExtern sharedExtern].gxScreenMaxRatio)
+#define  GXMaxFitFloat(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的float值
+#define  GXMaxFitCeil(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
+#define  GXMaxFitFloor(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的floor值(不大于float的最大整数)
 // 颜色
 #define GXColorFromRGBA(R,G,B,A) [UIColor colorWithRed:R/256.f green:G/256.f blue:B/256.f alpha:A]
 /**
