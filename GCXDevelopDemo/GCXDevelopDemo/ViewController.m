@@ -9,6 +9,12 @@
 #import "ViewController.h"
 #import "GXDevelop.h"
 
+#import "BezierPath.h"
+#define UIColorFromRGBA_hex(rgbValue, alphaValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0x0000FF))/255.0 \
+alpha:alphaValue]
 @interface ViewController ()
 @property (nonatomic, strong)UIButton *btn;
 @end
@@ -31,6 +37,15 @@
     _btn = btn;
     
 //    [btn gxAddSlideHighlightedEffect];
+    
+    BezierPath *path = [[BezierPath alloc] initWithFrame:CGRectMake(50, 400, 200, 150)];
+    [self.view addSubview:path];
+    path.backgroundColor = [UIColor clearColor];
+    
+    CAGradientLayer *layer = [CAGradientLayer gxGradientLayerWithColors:@[ (__bridge id)UIColorFromRGBA_hex(0x006AFF, 1).CGColor,(__bridge id)UIColorFromRGBA_hex(0x00A8FF, 1).CGColor] layerFrame:path.frame direction:GXGradientLayerDirectionTopToDown];
+    [self.view.layer addSublayer:layer];
+    layer.mask = path.layer;
+    path.frame = layer.bounds;
 }
 
 - (void)tap:(UIButton *)btn

@@ -20,24 +20,33 @@
  *辅助宏
  */
 #import "GXDevelopKey.h"
+#import "GXDevelopExtern.h"
 
 /**
  * 辅助类方法
  */
+// 非 UI
 #import "NSString+GXDevelop.h"
+#import "UIDevice+GXDevelop.h"
+#import "NSFileManager+GXDevelop.h"
+#import "UIImage+GXDevelop.h"
+
+// UI -view
 #import "UIButton+GXDevelop.h"
 #import "UIImageView+GXDevelop.h"
-#import "CALayer+GXDevelop.h"
 #import "UILabel+GXDevelop.h"
 #import "UIPageControl+GXDevelop.h"
 #import "UIView+GXDevelopAnimation.h"
-#import "UIDevice+GXDevelop.h"
 #import "MBProgressHUD+GXDevelop.h"
 #import "NSAttributedString+GXDevelop.h"
-#import "UIImage+GXDevelop.h"
 #import "UIView+GXDevelop.h"
 #import "GXFrameInButton.h"
-#import "NSFileManager+GXDevelop.h"
-#import "GXDevelopExtern.h"
+
+// UI - layer
+#import "CAGradientLayer+GXDevelop.h"
+#import "CALayer+GXDevelop.h"
+
+// path
+#import "UIBezierPath+GXDevelop.h"
 
 #endif /* GXDevelop_h */

@@ -21,6 +21,19 @@
 #define GXRectX(rect) rect.origin.x
 #define GXRectY(rect) rect.origin.y
 
+// 获取 CGRect 的拐点坐标
+#define GXRectTopLeftPoint(rect)  CGPointMake(rect.origin.x + 0, rect.origin.y + 0)
+#define GXRectTopRightPoint(rect)  CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + 0)
+#define GXRectBottomLeftPoint(rect)  CGPointMake(rect.origin.x + 0, rect.origin.y + rect.size.height)
+#define GXRectBottomRightPoint(rect)  CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height)
+
+// 获取 CGRect 的四边的中心点坐标
+#define GXRectTopCenterPoint(rect)  CGPointMake(rect.origin.x + rect.size.width/2., rect.origin.y + 0)
+#define GXRectRightCenterPoint(rect)  CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height/2.)
+#define GXRectLeftCenterPoint(rect)  CGPointMake(rect.origin.x + 0, rect.origin.y + rect.size.height/2.)
+#define GXRectBottomCenterPoint(rect)  CGPointMake(rect.origin.x + rect.size.width/2., rect.origin.y + rect.size.height)
+
+
 /**
  *屏幕宽度
  */
