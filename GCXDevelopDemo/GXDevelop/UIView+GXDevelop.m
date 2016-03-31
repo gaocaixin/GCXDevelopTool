@@ -7,14 +7,27 @@
 //
 
 #import "UIView+GXDevelop.h"
+#import <objc/runtime.h>
+
+@interface UIView ()
+
+@property (strong, nonatomic) CAGradientLayer *slideHighlightLayer;
+@property (nonatomic) NSNumber * slideHighlightedDurtion;
+@property (nonatomic) NSNumber * slideHighlightedScale;
+@property (nonatomic) NSNumber * slideHighlightedInterval;
+@property (nonatomic) NSNumber * slideHighlightedRepeatCount;
+
+@end
 
 @implementation UIView (GXDevelop)
 
-- (CGFloat)gxMinX
+
+
+- (CGFloat)gxX
 {
     return CGRectGetMinX(self.frame);
 }
-- (CGFloat)gxMinY
+- (CGFloat)gxY
 {
     return CGRectGetMinY(self.frame);
 }
@@ -26,14 +39,14 @@
 {
     return CGRectGetMaxY(self.frame);
 }
-- (CGFloat)gxMidX
-{
-    return CGRectGetMidX(self.frame);
-}
-- (CGFloat)gxMidY
-{
-    return CGRectGetMidY(self.frame);
-}
+//- (CGFloat)gxMidX
+//{
+//    return CGRectGetMidX(self.frame);
+//}
+//- (CGFloat)gxMidY
+//{
+//    return CGRectGetMidY(self.frame);
+//}
 - (CGFloat)gxWidth
 {
     return CGRectGetWidth(self.frame);
@@ -51,16 +64,16 @@
     return CGRectGetHeight(self.frame)/2.0;
 }
 
-- (void)setGxMinX:(CGFloat)gxMinX
+- (void)setGxX:(CGFloat)gxX
 {
     CGRect frame = self.frame;
-    frame.origin.x = gxMinX;
+    frame.origin.x = gxX;
     self.frame = frame;
 }
-- (void)setGxMinY:(CGFloat)gxMinY
+- (void)setGxY:(CGFloat)gxY
 {
     CGRect frame = self.frame;
-    frame.origin.y = gxMinY;
+    frame.origin.y = gxY;
     self.frame = frame;
 }
 - (void)setGxMaxX:(CGFloat)gxMaxX
@@ -120,6 +133,17 @@
 {
     return self.center;
 }
+- (CGPoint)gxOrigin
+{
+    return self.frame.origin;
+}
+- (void)setGxOrigin:(CGPoint)gxOrigin
+{
+    CGRect frame = self.frame;
+    frame.origin = gxOrigin;
+    self.frame = frame;
+}
+
 - (void)setGxSize:(CGSize)gxSize
 {
     CGRect frame = self.frame;
@@ -130,6 +154,35 @@
 {
     self.center = gxCenter;
 }
+-(CGFloat)gxCenterX
+{
+    return self.center.x;
+}
+- (CGFloat)gxCenterY
+{
+    return self.center.y;
+}
+- (void)setGxCenterX:(CGFloat)gxCenterX
+{
+    CGPoint center = self.center;
+    center.x = gxCenterX;
+    self.center = center;
+}
+- (void)setGxCenterY:(CGFloat)gxCenterY
+{
+    CGPoint center = self.center;
+    center.y = gxCenterY;
+    self.center = center;
+}
+- (CGFloat)gxCenterInX
+{
+    return self.frame.size.width/2.;
+}
+- (CGFloat)gxCenterInY
+{
+    return self.frame.size.height/2.;
+}
+
 
 - (UIColor *)gxGetColorFromPoint:(CGPoint)point
 {
@@ -153,4 +206,115 @@
     return color;
 }
 
+// 添加高光
+- (CAGradientLayer *)slideHighlightLayer
+{
+    return objc_getAssociatedObject(self, @selector(slideHighlightLayer));
+}
+- (void)setSlideHighlightLayer:(CAGradientLayer *)slideHighlightLayer
+{
+    objc_setAssociatedObject(self, @selector(slideHighlightLayer), slideHighlightLayer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(NSNumber *)slideHighlightedDurtion
+{
+    return objc_getAssociatedObject(self, @selector(slideHighlightedDurtion));
+}
+- (void)setSlideHighlightedDurtion:(NSNumber *)slideHighlightedDurtion
+{
+    objc_setAssociatedObject(self, @selector(slideHighlightedDurtion), slideHighlightedDurtion, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(NSNumber *)slideHighlightedInterval
+{
+    return objc_getAssociatedObject(self, @selector(slideHighlightedInterval));
+}
+- (void)setSlideHighlightedInterval:(NSNumber *)slideHighlightedInterval
+{
+    objc_setAssociatedObject(self, @selector(slideHighlightedInterval), slideHighlightedInterval, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(NSNumber *)slideHighlightedRepeatCount
+{
+    return objc_getAssociatedObject(self, @selector(slideHighlightedRepeatCount));
+}
+- (void)setSlideHighlightedRepeatCount:(NSNumber *)slideHighlightedRepeatCount
+{
+    objc_setAssociatedObject(self, @selector(slideHighlightedRepeatCount), slideHighlightedRepeatCount, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(NSNumber *)slideHighlightedScale
+{
+    return objc_getAssociatedObject(self, @selector(slideHighlightedScale));
+}
+- (void)setSlideHighlightedScale:(NSNumber *)slideHighlightedScale
+{
+    objc_setAssociatedObject(self, @selector(slideHighlightedScale), slideHighlightedScale, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CAGradientLayer *)gxAddSlideHighlightedEffectWithHighlightedColor:(UIColor *)highlightColor lowlightColor:(UIColor *)lowlightColor scale:(CGFloat)scale animDuration:(CGFloat)duration animInterval:(CGFloat)interval animRepeatCount:(NSInteger)repeatCount
+{
+    if (!highlightColor) {
+        highlightColor = [UIColor whiteColor];
+    }
+    if (!lowlightColor) {
+        lowlightColor = [UIColor blackColor];
+    }
+    if (!scale) {
+        scale = 0.25;
+    }
+    if (!duration) {
+        duration = 2.2;
+    }
+    if (!interval) {
+        interval = 1;
+    }
+    if (!repeatCount) {
+        repeatCount = MAXFLOAT;
+    }
+    self.slideHighlightedDurtion = @(duration);
+    self.slideHighlightedInterval = @(interval);
+    self.slideHighlightedRepeatCount = @(repeatCount);
+    self.slideHighlightedScale = @(scale);
+    
+    CAGradientLayer *layerGr = [[CAGradientLayer alloc] init];
+    layerGr.frame = self.frame;
+    [self.superview.layer addSublayer:layerGr];
+    self.slideHighlightLayer = layerGr;
+    layerGr.colors = @[(__bridge id)lowlightColor.CGColor ,(__bridge id)highlightColor.CGColor ,(__bridge id)lowlightColor.CGColor];
+    layerGr.locations = @[@(-scale*2), @(-scale), @(0)];
+    layerGr.startPoint = CGPointMake(0, 0);
+    layerGr.endPoint = CGPointMake(1, 0);
+    
+    layerGr.mask = self.layer;
+    self.frame = layerGr.bounds;
+    
+    [self slideHighlightedEffectAnimation];
+    
+    return layerGr;
+}
+
+- (void)slideHighlightedEffectAnimation
+{
+    CABasicAnimation* fadeAnim = [CABasicAnimation animationWithKeyPath:@"locations"];
+    fadeAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    fadeAnim.removedOnCompletion = NO;
+    fadeAnim.repeatCount = self.slideHighlightedRepeatCount.integerValue ;
+    //    fadeAnim.repeatCount = 1;
+    fadeAnim.beginTime = CACurrentMediaTime()+ self.slideHighlightedInterval.floatValue;
+    CGFloat scale = self.slideHighlightedScale.floatValue;
+    fadeAnim.fromValue = @[@(-scale*2), @(-scale), @(0)];
+    fadeAnim.toValue   = @[@(1.0), @(1+scale), @(1+scale*2)];
+    fadeAnim.duration  = self.slideHighlightedDurtion.floatValue;
+    fadeAnim.delegate = self;
+    [self.slideHighlightLayer addAnimation:fadeAnim forKey:@"slideHighlightedEffectAnimation"];
+}
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+//    if (self.slideHighlightedRepeatCount.intValue > 0) {
+//        [self slideHighlightedEffectAnimation];
+//        int count  = self.slideHighlightedRepeatCount.intValue;
+//        self.slideHighlightedRepeatCount = @(count-1);
+//    }
+}
+- (void)gxAddSlideHighlightedEffect
+{
+    [self gxAddSlideHighlightedEffectWithHighlightedColor:nil lowlightColor:nil scale:0 animDuration:0 animInterval:0 animRepeatCount:0];
+}
 @end

@@ -29,6 +29,8 @@
     [btn setBackgroundImage:[UIImage gxImageWithColor:[UIColor grayColor] size:CGSizeMake(100, 100) cornerRadius:50] forState:UIControlStateNormal];
     [btn gxAddTapRippleEffectWithColor:[UIColor grayColor] scaleMaxValue:2 duration:0.6];
     _btn = btn;
+    
+//    [btn gxAddSlideHighlightedEffect];
 }
 
 - (void)tap:(UIButton *)btn
@@ -47,7 +49,6 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _btn.frame = CGRectMake(0, 0, GXWidthFitFloat(100),GXHeightFitFloat(100));
 }
 
 @end
