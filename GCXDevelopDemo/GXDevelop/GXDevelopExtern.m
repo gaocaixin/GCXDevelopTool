@@ -56,18 +56,23 @@
 
 - (void)refreshDataIfNeed
 {
-    if (_gxScreenWidth != [UIScreen mainScreen].bounds.size.width) {
+    if (_gxScreenWidth == 0) {
         [self refreshData];
     }
 }
 
 - (void)refreshData
 {
+    
     _gxScreenWidth = [UIScreen mainScreen].bounds.size.width;
     _gxScreenHeight = [UIScreen mainScreen].bounds.size.height;
-    
-    _gxScreenWidthRatio = _gxScreenWidth/GXDesignSize.width;
-    _gxScreenHeightRatio = _gxScreenHeight/GXDesignSize.height;
+    if (_gxScreenHeight > _gxScreenWidth) { // 竖屏
+        _gxScreenWidthRatio = _gxScreenWidth/GXDesignSize.width;
+        _gxScreenHeightRatio = _gxScreenHeight/GXDesignSize.height;
+    } else { // 横屏
+        _gxScreenWidthRatio = _gxScreenWidth/GXDesignSize.height;
+        _gxScreenHeightRatio = _gxScreenHeight/GXDesignSize.width;
+    }
     _gxScreenMinRatio = MIN(_gxScreenWidthRatio, _gxScreenHeightRatio);
     _gxScreenMaxRatio = MAX(_gxScreenWidthRatio, _gxScreenHeightRatio);
 }

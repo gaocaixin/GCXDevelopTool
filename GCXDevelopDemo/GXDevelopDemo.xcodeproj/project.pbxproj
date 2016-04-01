@@ -21,6 +21,7 @@
 		A75987D01C5B1B4800953CB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75987CE1C5B1B4800953CB7 /* LaunchScreen.storyboard */; };
 		A75987DB1C5B1B4900953CB7 /* GCXDevelopDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75987DA1C5B1B4900953CB7 /* GCXDevelopDemoTests.m */; };
 		A75987E61C5B1B4900953CB7 /* GCXDevelopDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A75987E51C5B1B4900953CB7 /* GCXDevelopDemoUITests.m */; };
+		A75C63A51CAE1DE700C6BD66 /* NSURL+GXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A75C63A41CAE1DE700C6BD66 /* NSURL+GXDevelop.m */; };
 		A7726CCB1CAA83FF00EAA31D /* GXDevelopExtern.m in Sources */ = {isa = PBXBuildFile; fileRef = A7726CCA1CAA83FF00EAA31D /* GXDevelopExtern.m */; };
 		A7EB74321CA936F50091B3B2 /* CALayer+GXDevelop.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EB74131CA936F50091B3B2 /* CALayer+GXDevelop.m */; };
 		A7EB74331CA936F50091B3B2 /* GXFrameInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EB74171CA936F50091B3B2 /* GXFrameInButton.m */; };
@@ -83,6 +84,8 @@
 		A75987E11C5B1B4900953CB7 /* GXDevelopDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GXDevelopDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75987E51C5B1B4900953CB7 /* GCXDevelopDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCXDevelopDemoUITests.m; sourceTree = "<group>"; };
 		A75987E71C5B1B4900953CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A75C63A31CAE1DE700C6BD66 /* NSURL+GXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+GXDevelop.h"; sourceTree = "<group>"; };
+		A75C63A41CAE1DE700C6BD66 /* NSURL+GXDevelop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+GXDevelop.m"; sourceTree = "<group>"; };
 		A7726CC91CAA83FF00EAA31D /* GXDevelopExtern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXDevelopExtern.h; sourceTree = "<group>"; };
 		A7726CCA1CAA83FF00EAA31D /* GXDevelopExtern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXDevelopExtern.m; sourceTree = "<group>"; };
 		A7EB74121CA936F50091B3B2 /* CALayer+GXDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+GXDevelop.h"; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				A7EB74311CA936F50091B3B2 /* UIView+GXDevelopAnimation.m */,
 				A7578B6B1CAD1D6000BCE34F /* UIBezierPath+GXDevelop.h */,
 				A7578B6C1CAD1D6000BCE34F /* UIBezierPath+GXDevelop.m */,
+				A75C63A31CAE1DE700C6BD66 /* NSURL+GXDevelop.h */,
+				A75C63A41CAE1DE700C6BD66 /* NSURL+GXDevelop.m */,
 			);
 			path = GXDevelop;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 				A7EB743B1CA936F50091B3B2 /* UIImage+GXDevelop.m in Sources */,
 				A7EB743E1CA936F50091B3B2 /* UIPageControl+GXDevelop.m in Sources */,
 				A7578B6D1CAD1D6000BCE34F /* UIBezierPath+GXDevelop.m in Sources */,
+				A75C63A51CAE1DE700C6BD66 /* NSURL+GXDevelop.m in Sources */,
 				A7EB743A1CA936F50091B3B2 /* UIDevice+GXDevelop.m in Sources */,
 				A7578B701CAD2B6900BCE34F /* CAGradientLayer+GXDevelop.m in Sources */,
 				A7EB74371CA936F50091B3B2 /* NSFileManager+GXDevelop.m in Sources */,

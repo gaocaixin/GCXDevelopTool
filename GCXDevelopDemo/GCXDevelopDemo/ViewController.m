@@ -64,6 +64,11 @@ alpha:alphaValue]
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    
+    _btn.frame = CGRectMake(0, 0, GXWidthFitFloat(100),GXHeightFitFloat(100));
+    _btn.center = self.view.center;
+
+    
 }
 
 @end

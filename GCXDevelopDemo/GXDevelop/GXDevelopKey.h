@@ -46,7 +46,7 @@
 /**
  *如果需要适配 frame 将用到以下宏  需要将GXDesignSize的 key 值改成设计原稿机型的尺寸. CGSizeMake(375.f, 667.f) 是 iphone6的尺寸.
  */
-#define GXDesignSize                  CGSizeMake(375.f,667.f)              //设计原稿机型的尺寸
+#define GXDesignSize                  CGSizeMake(375.f,667.f)              //设计原稿竖屏机型的尺寸 
 /**
  *宽度比
  */
