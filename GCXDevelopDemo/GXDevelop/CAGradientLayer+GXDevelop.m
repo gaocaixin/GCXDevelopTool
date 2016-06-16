@@ -60,4 +60,15 @@
 }
 
 
++ (CAGradientLayer *)gxGradientLayerWithColors:(NSArray *)colors layerFrame:(CGRect)frame startPoint:(CGPoint)start endPoint:(CGPoint)end
+{
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.frame    = frame;
+    layer.colors = colors;
+    layer.startPoint = start;
+    layer.endPoint   = end;
+    return layer;
+}
+
+
 @end

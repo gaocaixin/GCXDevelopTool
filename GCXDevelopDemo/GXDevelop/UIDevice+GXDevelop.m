@@ -12,6 +12,7 @@
 
 #import <sys/utsname.h>
 #import <LocalAuthentication/LAContext.h>
+#import "GXDevelopKey.h"
 
 #define IPHONE_3GS_NAMESTRING @"iPhone2,1"
 #define IPHONE_4S_NAMESTRING @"iPhone4,1"
@@ -166,5 +167,24 @@
 + (CGFloat)gxGetSystemVersion
 {
     return [[UIDevice currentDevice].systemVersion floatValue];
+}
+
++ (void)gxLogDeviceFont
+{
+    NSArray *familyNames = [UIFont familyNames];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableArray *arr = [NSMutableArray array];
+
+    for(NSString *familyName in familyNames)
+    {
+        [arr removeAllObjects];
+        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
+        for(NSString *fontName in fontNames)
+        {
+            [arr addObject:fontName];
+        }
+        dict[familyName] = [arr copy];
+    }
+    GXLog(@"font-- %@", dict);
 }
 @end

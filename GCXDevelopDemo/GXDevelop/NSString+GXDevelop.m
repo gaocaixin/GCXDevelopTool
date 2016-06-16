@@ -273,4 +273,31 @@
     return macAddressString;
 }
 
+- (void)gxGetSuggestionsStringsWithCompletion:(void(^)(NSArray *))completion
+{
+    NSString *prefix = [self substringToIndex:self.length - 1];
+    // Won't get suggestions for correct words, so we are scrambling the words
+    NSString *scrambledWord = [NSString stringWithFormat:@"%@%@",self, [self getRandomCharAsNSString]];
+    UITextChecker *checker = [[UITextChecker alloc] init];
+    NSRange checkRange = NSMakeRange(0, scrambledWord.length);
+    NSRange misspelledRange = [checker rangeOfMisspelledWordInString:scrambledWord range:checkRange startingAt:checkRange.location wrap:YES  language:@"en_US"];
+    
+    NSArray *arrGuessed = [checker guessesForWordRange:misspelledRange inString:scrambledWord language:@"en_US"];
+    // NSLog(@"Arr ===== %@",arrGuessed);
+    // Filter the result based on the word
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[c] %@",self];
+    NSArray *arrayfiltered = [arrGuessed filteredArrayUsingPredicate:predicate];
+    if(arrayfiltered.count == 0)
+    {
+        // Filter the result based on the prefix
+        NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[c] %@",prefix];
+        arrayfiltered = [arrGuessed filteredArrayUsingPredicate:newPredicate];
+    }
+    completion(arrayfiltered);
+}
+
+- (NSString *)getRandomCharAsNSString {
+    return [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
+}
+
 @end

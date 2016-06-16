@@ -30,6 +30,7 @@
 #import "UIDevice+GXDevelop.h"
 #import "NSFileManager+GXDevelop.h"
 #import "UIImage+GXDevelop.h"
+#import "NSAttributedString+GXDevelop.h"
 
 // UI -view
 #import "UIButton+GXDevelop.h"
@@ -38,9 +39,10 @@
 #import "UIPageControl+GXDevelop.h"
 #import "UIView+GXDevelopAnimation.h"
 #import "MBProgressHUD+GXDevelop.h"
-#import "NSAttributedString+GXDevelop.h"
 #import "UIView+GXDevelop.h"
 #import "GXFrameInButton.h"
+#import "UINavigationBar+GXDevelop.h"
+#import "UIViewController+GXDevelop.h"
 
 // UI - layer
 #import "CAGradientLayer+GXDevelop.h"

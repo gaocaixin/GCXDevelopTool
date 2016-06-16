@@ -17,4 +17,21 @@
  *获取 layer 上某点的颜色
  */
 - (UIColor *)gxGetColorFromPoint:(CGPoint)point;
+
+/**
+ *  给layer添加阴影
+ *
+ *  @param color   颜色
+ *  @param offset  偏移量
+ *  @param blur    blur radius
+ *  @param opacity 透明
+ *  @param rect    shadowPath
+ */
+- (void)gxAddShadowWithShadowColor:(CGColorRef)color shadowOffset:(CGSize)offset shadowRadius:(CGFloat)blur shadowOpacity:(CGFloat)opacity shadowPath:(CGRect)rect;
+
+/**
+ *  设置圆角
+ */
+- (void)gxSetRoundRect;
+
 @end

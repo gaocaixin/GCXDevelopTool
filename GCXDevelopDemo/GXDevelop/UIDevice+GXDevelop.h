@@ -40,4 +40,8 @@
 + (BOOL) gxIsRunningOniPod;      //iPod
 + (CGFloat)gxGetSystemVersion;
 
+
+// 打印系统支持的字体
++ (void)gxLogDeviceFont;
+
 @end

@@ -26,6 +26,7 @@
 
 // 中心点
 @property (nonatomic, assign) CGPoint gxCenter;
+@property (nonatomic, assign, readonly) CGPoint gxCenterIn;
 @property (nonatomic, assign) CGFloat gxCenterX;
 @property (nonatomic, assign) CGFloat gxCenterY;
 @property (nonatomic, assign, readonly) CGFloat gxCenterInX;
@@ -45,5 +46,7 @@
  scale 0-1 // 高光宽度占据比例
  */
 - (CAGradientLayer *)gxAddSlideHighlightedEffectWithHighlightedColor:(UIColor *)highlightColor lowlightColor:(UIColor *)lowlightColor scale:(CGFloat)scale animDuration:(CGFloat)duration animInterval:(CGFloat)interval animRepeatCount:(NSInteger)repeatCount;
+
+- (UIImage *)gxGetViewShot;
 
 @end

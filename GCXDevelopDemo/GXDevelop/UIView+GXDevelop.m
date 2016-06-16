@@ -133,6 +133,10 @@
 {
     return self.center;
 }
+- (CGPoint)gxCenterIn
+{
+    return CGPointMake(self.gxWidthHalf, self.gxHeightHalf);
+}
 - (CGPoint)gxOrigin
 {
     return self.frame.origin;
@@ -317,4 +321,16 @@
 {
     [self gxAddSlideHighlightedEffectWithHighlightedColor:nil lowlightColor:nil scale:0 animDuration:0 animInterval:0 animRepeatCount:0];
 }
+
+
+- (UIImage *)gxGetViewShot
+{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return screenshot;
+}
+
 @end

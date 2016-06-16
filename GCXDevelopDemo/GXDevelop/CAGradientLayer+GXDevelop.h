@@ -16,7 +16,7 @@ typedef enum : NSUInteger {
     GXGradientLayerDirectionTopLeftToDownRight,
     GXGradientLayerDirectionTopRightToDownLeft,
     GXGradientLayerDirectionOther
-} GXGradientLayerDirectionOption;
+}   GXGradientLayerDirectionOption;
 
 
 @interface CAGradientLayer (GXDevelop)
@@ -25,6 +25,9 @@ typedef enum : NSUInteger {
  *    快速返回一个渐变的 layer colors 起始的颜色值
  */
 + (CAGradientLayer *)gxGradientLayerWithColors:(NSArray *)colors layerFrame:(CGRect)frame direction:(GXGradientLayerDirectionOption)direction;
-
+/*
+ *    快速返回一个渐变的 layer colors 起始的颜色值
+ */
++ (CAGradientLayer *)gxGradientLayerWithColors:(NSArray *)colors layerFrame:(CGRect)frame startPoint:(CGPoint)start endPoint:(CGPoint)end;
 
 @end

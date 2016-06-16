@@ -14,12 +14,32 @@
 /**
  *获取各类路径
  */
-@property (copy, nonatomic, readonly) NSString *gxHomePath;//沙盒路径
-@property (copy, nonatomic, readonly) NSString *gxDocumentsPath;// doc 路径
-@property (copy, nonatomic, readonly) NSString *gxtmpPath;// 临时文件路径
-@property (copy, nonatomic, readonly) NSString *gxLibraryPath;// lib 路径
-@property (copy, nonatomic, readonly) NSString *gxLibraryCachesPath;// 缓存路径
-@property (copy, nonatomic, readonly) NSString *gxLibraryPreferencesPath;//偏好设置路径
+
+/**
+ *沙盒路径
+ */
+@property (copy, nonatomic, readonly) NSString *gxHomePath;
+/**
+ *doc 路径
+ */
+@property (copy, nonatomic, readonly) NSString *gxDocumentsPath;
+/**
+ *临时文件路径
+ */
+@property (copy, nonatomic, readonly) NSString *gxtmpPath;
+/**
+ * lib 路径
+ */
+@property (copy, nonatomic, readonly) NSString *gxLibraryPath;
+/**
+ *缓存路径
+ */
+@property (copy, nonatomic, readonly) NSString *gxLibraryCachesPath;
+
+/**
+ *偏好设置路径
+ */
+@property (copy, nonatomic, readonly) NSString *gxLibraryPreferencesPath;
 
 
 

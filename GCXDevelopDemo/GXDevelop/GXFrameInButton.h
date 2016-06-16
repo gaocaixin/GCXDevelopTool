@@ -14,4 +14,8 @@
 
 @property (nonatomic) CGRect gxTitleLabelFrame;
 @property (nonatomic) CGRect gxImageViewFrame;
+
+@property (nonatomic) BOOL isExchangePosition;
+
+@property (nonatomic) BOOL isAnimationClick;
 @end

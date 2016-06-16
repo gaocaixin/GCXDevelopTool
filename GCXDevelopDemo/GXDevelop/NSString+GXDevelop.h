@@ -17,7 +17,7 @@
 // n位数字
 #define kGXValidateNum(n) [NSString stringWithFormat:@"^\\d{%d}$",(n)]
 
-#define gxLocalized(Key) [NSString gxLocalizedString:(key)]
+#define GXLocalized(Key) [NSString gxLocalizedString:Key]
 
 
 @interface NSString (GXDevelop)
@@ -51,6 +51,12 @@
  *本地化
  */
 +(NSString*)gxLocalizedString:(NSString *)key;
+
+/**
+ *获取推荐
+ */
+- (void)gxGetSuggestionsStringsWithCompletion:(void(^)(NSArray *))completion;
+
 
 @end
 

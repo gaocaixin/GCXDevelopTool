@@ -167,6 +167,15 @@ static char RippleScaleMaxValue;
 }
 
 
+- (void)gxExchangePositionLableAndImageWithInterval:(CGFloat)interval
+{
+    CGFloat imageW = self.imageView.bounds.size.width + interval/2.;
+    CGFloat lableW = self.titleLabel.bounds.size.width + interval/2.;
+    
+    [self setTitleEdgeInsets:UIEdgeInsetsMake(0, -imageW, 0, imageW)];
+    [self setImageEdgeInsets:UIEdgeInsetsMake(0, lableW, 0, -lableW)];
+}
+
 
 
 @end

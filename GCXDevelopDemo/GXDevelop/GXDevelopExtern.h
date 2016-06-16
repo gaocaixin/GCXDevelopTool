@@ -10,6 +10,7 @@
 
 @interface GXDevelopExtern : NSObject
 
+// 全局单例 记录屏幕缩放比例
 + (instancetype)sharedExtern;
 
 @property (nonatomic )  CGFloat  gxScreenWidth;

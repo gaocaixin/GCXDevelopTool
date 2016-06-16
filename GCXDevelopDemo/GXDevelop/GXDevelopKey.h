@@ -14,7 +14,7 @@
 #define GXUserDefaults         [NSUserDefaults standardUserDefaults]
 #define GXNotificationCenter [NSNotificationCenter defaultCenter]
 #define GXFileManager          [NSFileManager defaultManager]
-
+#define GXAppKeyWindow  [UIApplication sharedApplication].keyWindow
 // cgrect 获取
 #define GXRectW(rect) rect.size.width
 #define GXRectH(rect) rect.size.height
@@ -85,6 +85,9 @@
  */
 #define GXColorFromRGBhueA(RGBhue, A) [UIColor colorWithRed:((float)((RGBhue & 0xFF0000) >> 16))/255.0 green:((float)((RGBhue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBhue & 0x0000FF))/255.0 alpha:A]
 
+
+// 随机颜色
+#define GXColorRandom [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
 /**
  *自定义log (发布版本不打印任何信息)
  */
@@ -93,10 +96,29 @@
 #else
 #define GXLog(...)
 #endif
+
+//A better version of NSLog
+
+
+//#ifdef DEBUG
+//
+//        #define GXLog(format, ...) do { \
+//        fprintf(stderr, "<%s : %d> %s\n", \
+//        [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], \
+//        __LINE__, __func__); \
+//        (NSLog)((format), ##__VA_ARGS__); \
+//        fprintf(stderr, "-------\n"); \
+//        } while (0)
+//
+//#else
+//        #define GXLog(format, ...)
+//#endif
+
 /**
  *打印函数名及函数的调用者 (测试使用:如-[MyViewController dealloc])
  */
 #define GXLogFunc         GXLog(@"%s",__func__);
+#define GXLogMsg(msgName,msg) GXLog(@"%@--%@",msgName,msg);
 #define GXLogFuncMsg(msg) GXLog(@"%s-%@",__func__,msg);
 
 /**
