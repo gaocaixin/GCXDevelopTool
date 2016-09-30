@@ -9,6 +9,15 @@
 #import "GXFrameInButton.h"
 #import "UIButton+GXDevelop.h"
 
+@interface GXFrameInButton ()
+
+
+/**  记录btn的borderColor  */
+@property (nonatomic,strong) UIColor *borderColor;
+@property (nonatomic,strong) UIColor *borderColorHalf;
+
+@end
+
 @implementation GXFrameInButton
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -23,37 +32,57 @@
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect
 {
-    if ([NSStringFromCGRect(_gxTitleLabelFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
+//    if ([NSStringFromCGRect(_gxTitleLabelFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
         return [super titleRectForContentRect:contentRect];
-    } else {
-        return _gxTitleLabelFrame;
-    }
+//    } else {
+//        return _gxTitleLabelFrame;
+//    }
 }
 - (CGRect)imageRectForContentRect:(CGRect)contentRect
 {
-    if ([NSStringFromCGRect(_gxImageViewFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
+//    if ([NSStringFromCGRect(_gxImageViewFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
         return [super imageRectForContentRect:contentRect];
-    } else {
-        return _gxImageViewFrame;
+//    } else {
+//        return _gxImageViewFrame;
+//    }
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (!CGRectIsEmpty(self.gxImageViewFrame)) {
+        self.imageView.frame = self.gxImageViewFrame;
     }
+    if (!CGRectIsEmpty(self.gxTitleLabelFrame)) {
+        self.titleLabel.frame = self.gxTitleLabelFrame;
+    }
+    
+    
 }
 
 - (void)setGxTitleLabelFrame:(CGRect)gxTitleLabelFrame
 {
     _gxTitleLabelFrame = gxTitleLabelFrame;
-    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
+
+//- (CGRect)gxTitleLabelFrame
+//{
+//    return _gxTitleLabelFrame;
+//}
+
 - (void)setGxImageViewFrame:(CGRect)gxImageViewFrame
 {
     _gxImageViewFrame = gxImageViewFrame;
-    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
 {
     [super setTitle:title forState:state];
     if (_isExchangePosition) {
-        [self gxExchangePositionLableAndImageWithInterval:5];
+        [self gxExchangePositionLableAndImageWithInterval:0];
     }
 }
 
@@ -72,6 +101,20 @@
             
         }];
     }
+    if (self.isBorderAnimate) {
+        if (highlighted) {
+            self.layer.borderColor = self.borderColorHalf.CGColor;
+        } else {
+            self.layer.borderColor = self.borderColor.CGColor;
+        }
+    }
+}
+
+- (void)setBorderAnimate:(BOOL)borderAnimate
+{
+    _borderAnimate = borderAnimate;
+    self.borderColor = [UIColor colorWithCGColor:self.layer.borderColor];
+    self.borderColorHalf = [self.borderColor colorWithAlphaComponent:0.5];
 }
 
 @end

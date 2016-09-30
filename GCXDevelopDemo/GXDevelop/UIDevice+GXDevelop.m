@@ -187,4 +187,90 @@
     }
     GXLog(@"font-- %@", dict);
 }
+
++ (void)gxOpenURL:(NSString*)url fromViewController:(UIViewController *)vc
+{
+    UIResponder* responder = vc;
+    while ((responder = [responder nextResponder]) != nil) {
+        NSLog(@"responder = %@", responder);
+        if ([responder respondsToSelector:@selector(openURL:)] == YES) {
+            [responder performSelector:@selector(openURL:)
+                            withObject:[NSURL URLWithString:url]];
+        }
+    }
+}
+
++ (NSString *)gxGetAppItunesURLString:(NSString *)appid
+{
+    return [NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@",appid];
+}
+
+// AppItunesURL
++ (NSURL *)gxGetAppItunesURL:(NSString *)appid
+{
+    return [NSURL URLWithString:[self gxGetAppItunesURLString:appid]];
+}
+
+//+ (NSURL *)gxGetAppItunesCommentURLString:(NSString *)appid
+//{
+//    return [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/us/app/id%@",appid]];
+//}
+
++ (NSURL *)gxGetAppSettingsURLString
+{
+     return  [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+//    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+//        [[UIApplication sharedApplication] openURL:url];
+//    }
+}
+
++ (NSURL *)gxGetSettingsWith:(NSInteger)idx
+{
+    NSArray *arr = @[
+                           @{@"关于本机":@"prefs:root=General&path=About"},
+                           @{@"软件升级":@"prefs:root=General&path=SOFTWARE_UPDATE_LINK"},
+                           @{@"日期时间":@"prefs:root=General&path=DATE_AND_TIME"},
+                           @{@"Accessibility":@"prefs:root=General&path=ACCESSIBILITY"},
+                           @{@"键盘设置":@"prefs:root=General&path=Keyboard"},
+                           @{@"VPN":@"prefs:root=General&path=VPN"},
+                           @{@"壁纸设置":@"prefs:root=Wallpaper"},
+                           @{@"声音设置":@"prefs:root=Sounds"},
+                           @{@"隐私设置":@"prefs:root=privacy"},
+                           @{@"APP Store":@"prefs:root=STORE"},
+                           @{@"还原设置":@"prefs:root=General&path=Reset"},
+                           @{@"应用通知":@"prefs:root=NOTIFICATIONS_ID&path=应用的boundleId"}
+                           ];
+    NSURL * url = nil;
+    if (idx < arr.count) {
+        url = [NSURL URLWithString:[arr[idx] allValues].firstObject];
+    }
+    return url;
+}
+
++ (void)gxShowAllFilters
+{
+    
+    NSArray *filterNames=[CIFilter filterNamesInCategory:kCICategoryBuiltIn];
+    
+     for (NSString *filterName in filterNames) {
+        
+     CIFilter *filter=[CIFilter filterWithName:filterName];
+        
+        GXLog(@"AllFilters--name:%@ attributes:%@",filterName,[filter attributes]);
+}}
+
++ (void)gxShareItems:(NSArray *)items controller:(UIViewController *)controller {
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        activityViewController.popoverPresentationController.sourceView = controller.view;
+    }
+    
+    [controller presentViewController:activityViewController animated:YES completion:^{
+        
+    }];
+}
+
+
 @end

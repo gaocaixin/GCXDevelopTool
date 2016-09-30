@@ -42,10 +42,9 @@
  *  @param opacity 透明
  *  @param rect    shadowPath
  */
-- (void)gxAddShadowWithShadowColor:(CGColorRef)color shadowOffset:(CGSize)offset shadowRadius:(CGFloat)blur shadowOpacity:(CGFloat)opacity shadowPath:(CGRect)rect
+- (void)gxAddShadowWithShadowColor:(CGColorRef)color shadowRadius:(CGFloat)blur shadowOpacity:(CGFloat)opacity shadowPath:(CGRect)rect
 {
     self.shadowColor = color;
-    self.shadowOffset = offset;
     self.shadowRadius = blur;
     self.shadowOpacity = opacity;
     self.shadowPath = [UIBezierPath bezierPathWithRect:rect].CGPath;
@@ -56,5 +55,11 @@
     self.cornerRadius = self.bounds.size.height * 0.5;
     self.masksToBounds = YES;
 }
+- (void)gxSetCornerRadius:(CGFloat)radius
+{
+    self.cornerRadius = radius;
+    self.masksToBounds = YES;
+}
+
 
 @end

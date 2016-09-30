@@ -22,10 +22,9 @@
  */
 - (UIImage *) gxStretch;
 /**
- *
+ *缩放
  */
 -(UIImage*)gxScaleToSize:(NSInteger)size;
-
 /**
  *添加渐变
  */
@@ -60,6 +59,10 @@
  *竖向镜像
  */
 - (UIImage *)gxMirrorVertical;
+/**
+ *模糊图片blur0-1  (可能效率最高)
+ */
+- (UIImage *)gxBlurryImageWithBlurLevel:(CGFloat)blur;
 
 /**
  *  深拷贝 image
@@ -81,50 +84,19 @@
  *联合两张 image
  */
 + (UIImage *)gxImageByCombiningImage:(UIImage*)firstImage withImage:(UIImage*)secondImage;
-
-
 /**
  *返回一张带有颜色尺寸带圆角的 image
  */
 + (UIImage*)gxImageWithColor:(UIColor*)color size:(CGSize)size cornerRadius:(CGFloat)cornerRadius ;
-
 /**
  *返回一张的图片 带有指定颜色
  */
 + (UIImage *)gxImageName:(NSString *)name tintColor:(UIColor *)color;
 
 
-
 /**
- *分解 gif 成image 数组
+ *  高斯模糊
  */
-+ (NSMutableArray *)gxParseGifDataToImageArray:(NSData *)data;
-
-/**
- *image数组 合成 gif
- */
-+ (void)gxImgsToGifWithImgs:(NSArray *)imgs path:(NSString *)path intervalTime:(CGFloat)time;
-
-
-/**
- *返回视频时间点curTime(s)的图片
- */
-+ (UIImage *)gxGetImageWithVideoAsset:(AVURLAsset *)asset curTime:(CGFloat)curTime;
-/**
- *返回视频时间点curTime(s)的图片
- */
-+ (UIImage *)gxGetImageWithVideoURL:(NSURL *)videoURL curTime:(CGFloat)curTime;
-/**
- *返回视频时间点curTime(s)的图片 转换到目标尺寸
- */
-+ (UIImage *)gxGetImageWithVideoAsset:(AVURLAsset *)asset curTime:(CGFloat)curTime targetSize:(CGSize)size;
-/**
- *返回从 minTime到maxTime 的imageCount张视屏缩略图
- */
-+ (NSMutableArray *)gxGetImagesWithAsset:(AVURLAsset *)asset minTime:(CGFloat)minTime maxTime:(CGFloat)maxTime imageCount:(NSInteger )imageCount;
-/**
- *返回从 minTime到maxTime 的imageCount张视屏缩略图 (转换到目标尺寸)
- */
-+ (NSMutableArray *)gxGetImagesWithAsset:(AVURLAsset *)asset minTime:(CGFloat)minTime maxTime:(CGFloat)maxTime imageCount:(NSInteger )imageCount targetSize:(CGSize)size;
+- (UIImage *)gximageGaussianBlur:(CGFloat)blur;
 
 @end

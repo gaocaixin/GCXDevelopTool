@@ -91,21 +91,25 @@
 - (NSMutableAttributedString *) gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing
 {
     NSMutableAttributedString *strAttri = [[NSMutableAttributedString alloc] initWithString:self];
-
-    [strAttri addAttribute:NSFontAttributeName
+    
+    if (self.length > 0) {
+        
+        [strAttri addAttribute:NSFontAttributeName
                          value:font
                          range:NSMakeRange(0, [strAttri length])];
-    
-    [strAttri addAttribute:NSForegroundColorAttributeName
-                     value:fontColor
-                     range:NSMakeRange(0, [strAttri length])];
-    
-    long number = spacing;
-    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
-    [strAttri addAttribute:(id)kCTKernAttributeName
-                     value:(__bridge id)num
-                     range:NSMakeRange(0, [strAttri length]-1)];
-    CFRelease(num);
+        
+        [strAttri addAttribute:NSForegroundColorAttributeName
+                         value:fontColor
+                         range:NSMakeRange(0, [strAttri length])];
+        
+        long number = spacing;
+        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+        [strAttri addAttribute:(id)kCTKernAttributeName
+                         value:(__bridge id)num
+                         range:NSMakeRange(0, [strAttri length]-1)];
+        CFRelease(num);
+        
+    }
     return strAttri;
 }
 /**
@@ -299,5 +303,42 @@
 - (NSString *)getRandomCharAsNSString {
     return [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
 }
+
+
+/**
+ *  添加文字间距 行间距
+ *
+ *  @返回 attributedString 和 size
+ */
+- (NSDictionary *)gxAttributeStringWithLimitSize:(CGSize)limitSize font:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
+{
+    NSMutableAttributedString *attr = [self gxAttributeStringWithFont:font color:fontColor spacing:spacing];
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = linespacing;
+    paragraphStyle.alignment = alignment;
+    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [attr length])];
+    
+    CGSize size = [attr gxSizeWithLimitSize:limitSize];
+    
+    return @{@"attr":attr,@"size":NSStringFromCGSize(size)};
+}
+
+
+//- (CGSize)prefersizeWith:(CGSize)size{
+//    CGFloat width = size.width;
+//    CGFloat height = size.height;
+//    if (width == 0)
+//        width = CGFLOAT_MAX;
+//    
+//    if (height == 0)
+//        height = CGFLOAT_MAX;
+//    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)self);
+//    CGSize textSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0,0), NULL, CGSizeMake(width, height), NULL);
+//    CFRelease(framesetter);
+//    return textSize;
+//}
+
+
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "UILabel+GXDevelop.h"
+#import "NSString+GXDevelop.h"
 
 @implementation UILabel (GXDevelop)
 
@@ -19,6 +20,18 @@
         bgColor = [UIColor clearColor];
     }
     self.backgroundColor = bgColor;
+}
+
++ (UILabel *)gxSetTextAlignment:(NSTextAlignment)textAlignment font:(UIFont *)font textColor:(UIColor *)textColor bgColor:(UIColor *)bgColor text:(NSString *)text
+{
+    UILabel *label = [[UILabel alloc] init];
+    [label gxSetTextAlignment:textAlignment font:font textColor:textColor bgColor:bgColor text:text];
+    return label;
+}
+
+- (CGSize)gxGetTextSize
+{
+    return [self.text gxSizeWithLimitSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) font:self.font];
 }
 
 @end

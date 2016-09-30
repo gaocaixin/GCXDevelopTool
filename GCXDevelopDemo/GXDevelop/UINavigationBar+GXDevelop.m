@@ -55,4 +55,12 @@
     [self setBackgroundImage:[UIImage gxImageWithColor:GXColorFromRGBhueA(0x000000, 0) size:CGSizeMake(GXScreenWidth, 64) cornerRadius:0] forBarMetrics:UIBarMetricsDefault];
 }
 
+- (void)gxUpdateNavBarAppearanceFont:(UIFont *)font titleColor:(UIColor *)titleColor barBgColor:(UIColor *)barBgColor
+{
+    self.titleTextAttributes =
+    @{NSFontAttributeName: font,
+      NSForegroundColorAttributeName: titleColor};
+    self.backgroundColor = barBgColor;
+}
+
 @end

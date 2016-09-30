@@ -31,4 +31,12 @@
  */
 - (void)gxSetNavBarFullClear;
 
+
+/**
+ *  @author Gordon_LY, 16-09-13 10:09:44
+ *
+ *  更改导航栏的背景色，title等
+ */
+- (void)gxUpdateNavBarAppearanceFont:(UIFont *)font titleColor:(UIColor *)titleColor barBgColor:(UIColor *)barBgColor;
+
 @end

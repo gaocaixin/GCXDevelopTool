@@ -13,5 +13,9 @@
  *快速设置属性
  */
 - (void)gxSetTextAlignment:(NSTextAlignment)textAlignment font:(UIFont *)font textColor:(UIColor *)textColor bgColor:(UIColor *)bgColor text:(NSString *)text ;
++ (UILabel *)gxSetTextAlignment:(NSTextAlignment)textAlignment font:(UIFont *)font textColor:(UIColor *)textColor bgColor:(UIColor *)bgColor text:(NSString *)text;
+
+// 返回文字宽度  提前赋值 font, text
+- (CGSize)gxGetTextSize;
 
 @end

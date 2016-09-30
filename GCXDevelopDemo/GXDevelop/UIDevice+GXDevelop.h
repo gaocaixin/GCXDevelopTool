@@ -40,8 +40,24 @@
 + (BOOL) gxIsRunningOniPod;      //iPod
 + (CGFloat)gxGetSystemVersion;
 
+// AppItunesURL 
++ (NSURL *)gxGetAppItunesURL:(NSString *)appid;
+// AppItunesURLstr
++ (NSString *)gxGetAppItunesURLString:(NSString *)appid;
 
 // 打印系统支持的字体
 + (void)gxLogDeviceFont;
+//打印系统支持的滤镜
++(void)gxShowAllFilters;
 
+// 多点 open Url
++ (void)gxOpenURL:(NSString*)url fromViewController:(UIViewController *)vc;
+
+// 跳转到 app 设置页面
++ (NSURL *)gxGetAppSettingsURLString;
+
+// 设置各种 url
++ (NSURL *)gxGetSettingsWith:(NSInteger)idx;
+
++ (void)gxShareItems:(NSArray *)items controller:(UIViewController *)controller;
 @end

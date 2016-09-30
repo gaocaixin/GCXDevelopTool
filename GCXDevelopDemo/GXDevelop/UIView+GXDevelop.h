@@ -47,6 +47,17 @@
  */
 - (CAGradientLayer *)gxAddSlideHighlightedEffectWithHighlightedColor:(UIColor *)highlightColor lowlightColor:(UIColor *)lowlightColor scale:(CGFloat)scale animDuration:(CGFloat)duration animInterval:(CGFloat)interval animRepeatCount:(NSInteger)repeatCount;
 
+/**
+ *获取屏幕截图
+ */
 - (UIImage *)gxGetViewShot;
+
+/**
+ *获取屏幕截图 marge:内边距
+ */
+- (UIImage *)gxGetViewShotWith:(CGFloat)marge;
+
+- (void)gxConvertCoordinationTo:(UIView *)subView with:(CGContextRef)context;
+
 
 @end

@@ -26,4 +26,20 @@
     }
 }
 
+- (void)gxPushViewController:(UIViewController *)vc animationed:(BOOL)animationed completion:(void (^)(void))complete
+{
+    if (self.navigationController) {
+        [self.navigationController pushViewController:vc animated:animationed];
+        if (complete) {
+            complete();
+        }
+    } else {
+        [self presentViewController:vc animated:YES completion:^{
+            if (complete) {
+                complete();
+            }
+        }];
+    }
+}
+
 @end

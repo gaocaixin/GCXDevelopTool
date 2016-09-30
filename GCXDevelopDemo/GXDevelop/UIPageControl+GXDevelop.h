@@ -13,7 +13,9 @@
  *快速设置属性
  */
 - (void)gxSetWithFrame:(CGRect)frame totalPages:(NSUInteger)totalPages curPage:(NSUInteger)curPage pageColor:(UIColor *)pageColor curPageColor:(UIColor *)curPageColor bgColor:(UIColor *)bgColor;
+- (void)gxSetWithTotalPages:(NSUInteger)totalPages curPage:(NSUInteger)curPage pageColor:(UIColor *)pageColor curPageColor:(UIColor *)curPageColor bgColor:(UIColor *)bgColor;
 
 + (UIPageControl *)gxPagetWithFrame:(CGRect)frame totalPages:(NSUInteger)totalPages curPage:(NSUInteger)curPage pageColor:(UIColor *)pageColor curPageColor:(UIColor *)curPageColor bgColor:(UIColor *)bgColor ;
++ (UIPageControl *)gxPagetWithTotalPages:(NSUInteger)totalPages curPage:(NSUInteger)curPage pageColor:(UIColor *)pageColor curPageColor:(UIColor *)curPageColor bgColor:(UIColor *)bgColor ;
 
 @end

@@ -12,10 +12,19 @@
 
 @interface GXFrameInButton : UIButton
 
-@property (nonatomic) CGRect gxTitleLabelFrame;
-@property (nonatomic) CGRect gxImageViewFrame;
+/**  设定 button titlelabel 的 frame  */
+@property (nonatomic, assign) CGRect gxTitleLabelFrame;
+/**  设定 button ImageView 的 frame  */
+@property (nonatomic, assign) CGRect gxImageViewFrame;
 
+/**  互换 label 和 imageview 的位置  */
 @property (nonatomic) BOOL isExchangePosition;
 
+/**  添加点击交互  */
 @property (nonatomic) BOOL isAnimationClick;
+
+
+/**  改变border时的效果  */
+@property (nonatomic,assign,getter=isBorderAnimate) BOOL borderAnimate;
+
 @end

@@ -27,11 +27,14 @@
  *  @param opacity 透明
  *  @param rect    shadowPath
  */
-- (void)gxAddShadowWithShadowColor:(CGColorRef)color shadowOffset:(CGSize)offset shadowRadius:(CGFloat)blur shadowOpacity:(CGFloat)opacity shadowPath:(CGRect)rect;
+- (void)gxAddShadowWithShadowColor:(CGColorRef)color shadowRadius:(CGFloat)blur shadowOpacity:(CGFloat)opacity shadowPath:(CGRect)rect;
 
 /**
  *  设置圆角
  */
 - (void)gxSetRoundRect;
+
+- (void)gxSetCornerRadius:(CGFloat)radius;
+
 
 @end

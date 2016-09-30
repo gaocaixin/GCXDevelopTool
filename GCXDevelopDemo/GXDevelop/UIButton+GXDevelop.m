@@ -11,7 +11,7 @@
 #define kGxAddTapRippleEffectColor  @"kGxAddTapRippleEffectColor"
 #define kGxAddTapRippleEffectDuration  @"kGxAddTapRippleEffectDuration"
 
-@interface UIButton ()
+@interface UIButton ()<CAAnimationDelegate>
 @property (assign, nonatomic) CGFloat gxRippleScaleMaxValue;
 @end
 

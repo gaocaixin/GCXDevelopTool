@@ -17,7 +17,11 @@
 // n位数字
 #define kGXValidateNum(n) [NSString stringWithFormat:@"^\\d{%d}$",(n)]
 
+// 字母数字下划线
+#define kGXValidUserName @"^[0-9a-zA-Z_]{2,20}$"
+
 #define GXLocalized(Key) [NSString gxLocalizedString:Key]
+
 
 
 @interface NSString (GXDevelop)
@@ -57,6 +61,16 @@
  */
 - (void)gxGetSuggestionsStringsWithCompletion:(void(^)(NSArray *))completion;
 
+
+/**
+ *  添加文字间距 行间距
+ *
+ *  @返回 attributedString 和 size
+ */
+- (NSDictionary *)gxAttributeStringWithLimitSize:(CGSize )limitSize  font:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
+
+
+//- (CGSize)prefersizeWith:(CGSize)size;
 
 @end
 

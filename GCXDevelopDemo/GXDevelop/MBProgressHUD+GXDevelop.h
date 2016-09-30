@@ -9,9 +9,14 @@
  *这是对MBProgressHUD的一层包装
  */
 
-#import "MBProgressHUD.h"
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
+#ifdef MB_INSTANCETYPE
+
+#import "MBProgressHUD.h"
+
 @interface MBProgressHUD (GXDevelop)
 
 /**
@@ -28,3 +33,5 @@
 + (void)gxHideInView:(UIView *)view animated:(BOOL)animated;
 
 @end
+
+#endif

@@ -11,13 +11,16 @@
 #import "MBProgressHUD+GXDevelop.h"
 #import <UIKit/UIKit.h>
 
-
+#ifdef MB_INSTANCETYPE
 
 @implementation MBProgressHUD (GXDevelop)
 
 + (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text font:(UIFont *)font{
 
 
+    if (!view) {
+        return;
+    }
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
     hud.mode = MBProgressHUDModeCustomView;
@@ -47,7 +50,9 @@
 
 + (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text font:(UIFont *)font margin:(CGFloat)margin {
     
-
+    if (!view) {
+        return;
+    }
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
     hud.mode = MBProgressHUDModeCustomView;
@@ -88,6 +93,10 @@
 + (void)gxShowWaitInView:(UIView *)view text:(NSString *)text font:(UIFont *)font
 {
 
+    if (!view) {
+        return;
+    }
+    
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
     if (text.length > 0) {
@@ -108,6 +117,9 @@
 
 + (void)gxShowWaitInView:(UIView *)view text:(NSString *)text font:(UIFont *)font margin:(CGFloat)margin
 {
+    if (!view) {
+        return;
+    }
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
@@ -130,10 +142,17 @@
 
 + (void)gxHideInView:(UIView *)view animated:(BOOL)animated
 {
+    if (!view) {
+        return;
+    }
+//    dispatch_sync(dispatch_get_main_queue(), ^{
 
-    [MBProgressHUD hideHUDForView:view animated:animated];
+        [MBProgressHUD hideHUDForView:view animated:animated];
+//    });
 }
 
 
 @end
 
+
+#endif

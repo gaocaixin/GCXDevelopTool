@@ -14,4 +14,5 @@
  */
 - (CGSize )gxSizeWithLimitSize:(CGSize )limitSize;
 
+- (CGSize)gxPrefersizeWith:(CGSize)size;
 @end

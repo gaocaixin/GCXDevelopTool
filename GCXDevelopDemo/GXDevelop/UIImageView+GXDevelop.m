@@ -10,7 +10,8 @@
 
 @implementation UIImageView (GXDevelop)
 
-- (void)gxSetFrame:(CGRect)frame contentMode:(UIViewContentMode)contentMode backgroundColor:(UIColor *)backgroundColor image:(UIImage *)image{
+- (void)gxSetFrame:(CGRect)frame contentMode:(UIViewContentMode)contentMode backgroundColor:(UIColor *)backgroundColor image:(UIImage *)image
+{
     [self setFrame:frame];
     self.contentMode = contentMode;
     if (image) {
@@ -22,13 +23,48 @@
     self.backgroundColor = backgroundColor;
 }
 
-+ (UIImageView *)gxImageViewFrame:(CGRect)frame contentMode:(UIViewContentMode)contentMode backgroundColor:(UIColor *)backgroundColor image:(UIImage *)image{
+- (void)gxSetContentMode:(UIViewContentMode)contentMode backgroundColor:(UIColor *)backgroundColor image:(UIImage *)image
+{
+    self.contentMode = contentMode;
+    if (image) {
+        self.image = image;
+    }
+    if (!backgroundColor) {
+        backgroundColor = [UIColor clearColor];
+    }
+    self.backgroundColor = backgroundColor;
+}
+
++ (UIImageView *)gxImageViewFrame:(CGRect)frame contentMode:(UIViewContentMode)contentMode backgroundColor:(UIColor *)backgroundColor image:(UIImage *)image
+{
     UIImageView *imageView = [[UIImageView alloc] init];
     [imageView gxSetFrame:frame contentMode:contentMode backgroundColor:backgroundColor image:image];
     return imageView;
 }
 
++ (UIImageView *)gxImageViewContentMode:(UIViewContentMode)contentMode backgroundColor:(UIColor *)backgroundColor image:(UIImage *)image
+{
+    UIImageView *imageView = [[UIImageView alloc] init];
+    [imageView gxSetContentMode:contentMode backgroundColor:backgroundColor image:image];
+    return imageView;
+}
 
-
+/**
+ *  @author Gordon_LY, 16-09-08 14:09:41
+ *
+ *  旋转
+ */
+- (void)gxRotate360DegreeWithDuration:(NSTimeInterval)duration repeatCount:(CGFloat)repeatCount
+{
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = duration;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = repeatCount;
+    [self.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+}
+- (void)gxStopRotate {
+    [self.layer removeAllAnimations];
+}
 
 @end

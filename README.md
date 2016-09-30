@@ -11,7 +11,7 @@
 ###项目预期
 ####拥有此库不在需要其他助手类.目前此库已经完成:
 
-//#ifndef GXDevelop_h
+#ifndef GXDevelop_h
 //#define GXDevelop_h
 //辅助宏
 //#import "GXDevelopKey.h" // 添加各种常用宏

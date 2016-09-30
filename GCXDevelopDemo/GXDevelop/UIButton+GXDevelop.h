@@ -26,7 +26,7 @@ Btn.gxImagesNHSD = @[image1,[nsnull null], image2];会自动设置UIControlState
 - (void)gxAddTapRippleEffectWithColor:(UIColor *)color scaleMaxValue:(CGFloat)value duration:(CGFloat)duration;
 
 /**
- *交换图片和 label 的位置  右图字左
+ *交换图片和 label 的位置  右图字左 interval:间隔值
  */
 - (void)gxExchangePositionLableAndImageWithInterval:(CGFloat)interval;
 

@@ -9,7 +9,7 @@
 #import "UIView+GXDevelop.h"
 #import <objc/runtime.h>
 
-@interface UIView ()
+@interface UIView ()<CAAnimationDelegate>
 
 @property (strong, nonatomic) CAGradientLayer *slideHighlightLayer;
 @property (nonatomic) NSNumber * slideHighlightedDurtion;
@@ -270,7 +270,7 @@
         interval = 1;
     }
     if (!repeatCount) {
-        repeatCount = MAXFLOAT;
+        repeatCount = NSIntegerMax;
     }
     self.slideHighlightedDurtion = @(duration);
     self.slideHighlightedInterval = @(interval);
@@ -326,11 +326,46 @@
 - (UIImage *)gxGetViewShot
 {
     UIGraphicsBeginImageContext(self.bounds.size);
-    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
-    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return screenshot;
+    BOOL isCom = [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
+    if (isCom) {
+        UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return screenshot;
+    } else {
+        return nil;
+    }
 }
+- (UIImage *)gxGetViewShotWith:(CGFloat)marge
+{
+    CGRect frame = CGRectMake(-marge, -marge, CGRectGetWidth(self.bounds)+2*marge, CGRectGetHeight(self.bounds)+2*marge);
+
+    UIGraphicsBeginImageContext(self.bounds.size);
+    BOOL isCom = [self drawViewHierarchyInRect:frame afterScreenUpdates:NO];
+    if (isCom) {
+        UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return screenshot;
+    } else {
+        return nil;
+    }
+}
+
+
+
+- (void)gxConvertCoordinationTo:(UIView *)subView with:(CGContextRef)context{
+    if (!subView || !context)
+        return;
+    
+    NSAssert(([subView superview]==self), @"should be subview");
+    
+    CGPoint center = CGPointMake(subView.bounds.size.width/2, subView.bounds.size.height/2);
+    center = [subView convertPoint:center toView:[subView superview]];
+    CGContextTranslateCTM(context, center.x, center.y);
+    CGContextConcatCTM(context, subView.transform);
+    CGContextTranslateCTM(context, -subView.bounds.size.width/2, -subView.bounds.size.height/2);
+}
+
 
 @end

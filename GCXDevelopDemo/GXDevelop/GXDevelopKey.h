@@ -8,13 +8,15 @@
 
 #ifndef GXDevelopKey_h
 #define GXDevelopKey_h
-
+#import "GXDevelopCustom.h"
 #import "GXDevelopExtern.h"
 // 系统单例
 #define GXUserDefaults         [NSUserDefaults standardUserDefaults]
 #define GXNotificationCenter [NSNotificationCenter defaultCenter]
 #define GXFileManager          [NSFileManager defaultManager]
-#define GXAppKeyWindow  [UIApplication sharedApplication].keyWindow
+#define GXSharedAppKeyWindow  [UIApplication sharedApplication].keyWindow
+#define GXSharedApp  [UIApplication sharedApplication]
+
 // cgrect 获取
 #define GXRectW(rect) rect.size.width
 #define GXRectH(rect) rect.size.height
@@ -33,61 +35,49 @@
 #define GXRectLeftCenterPoint(rect)  CGPointMake(rect.origin.x + 0, rect.origin.y + rect.size.height/2.)
 #define GXRectBottomCenterPoint(rect)  CGPointMake(rect.origin.x + rect.size.width/2., rect.origin.y + rect.size.height)
 
-
-/**
- *屏幕宽度
- */
+//屏幕宽高
 #define GXScreenWidth [UIScreen mainScreen].bounds.size.width
-/**
- *屏幕高度
- */
 #define GXScreenHeight  [UIScreen mainScreen].bounds.size.height
 
+
 /**
- *如果需要适配 frame 将用到以下宏  需要将GXDesignSize的 key 值改成设计原稿机型的尺寸. CGSizeMake(375.f, 667.f) 是 iphone6的尺寸.
+ *适配相关
  */
-#define GXDesignSize                  CGSizeMake(375.f,667.f)              //设计原稿竖屏机型的尺寸 
-/**
- *宽度比
- */
+
+// 宽度比例适配
 #define  GXScreenWidthRatio            ([GXDevelopExtern sharedExtern].gxScreenWidthRatio)   // 当前屏宽/设计原稿的比例
 #define  GXWidthFitFloat(value)  ((value)*GXScreenWidthRatio)        // 宽度转化成适配后的float值
 #define  GXWidthFitCeil(value)   (ceil((value)*GXScreenWidthRatio))  // 宽度转化成适配后的ceil值(不小于float的最小整数)
 #define  GXWidthFitFloor(value)  (floor((value)*GXScreenWidthRatio)) // 宽度转化成适配后的floor值(不大于float的最大整数)
 
-/**
- *高度比
- */
+// 高度比例适配
 #define  GXScreenHeightRatio           ([GXDevelopExtern sharedExtern].gxScreenHeightRatio) // 当前屏高/设计原稿的比例
 #define  GXHeightFitFloat(value) ((value)*GXScreenHeightRatio)       // 高度转化成适配后的float值
 #define  GXHeightFitCeil(value)  (ceil((value)*GXScreenHeightRatio)) // 高度转化成适配后的ceil值(不小于float的最小整数)
 #define  GXHeightFitFloor(value) (floor((value)*GXScreenHeightRatio))// 高度转化成适配后的floor值(不大于float的最大整数)
 
-/**
- *宽高比最小值
- */
+// 宽高比例最小值适配
 #define  GXScreenMinRatio ([GXDevelopExtern sharedExtern].gxScreenMinRatio)
 #define  GXMinFitFloat(value) ((value)*GXScreenMinRatio)       // 转化成适配后的float值
 #define  GXMinFitCeil(value) ((value)*GXScreenMinRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
 #define  GXMinFitFloor(value) ((value)*GXScreenMinRatio)       // 转化成适配后的floor值(不大于float的最大整数)
 
-/**
- *宽高比最大值
- */
+// 宽高比例最大值适配
 #define  GXScreenMaxRatio ([GXDevelopExtern sharedExtern].gxScreenMaxRatio)
 #define  GXMaxFitFloat(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的float值
 #define  GXMaxFitCeil(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
 #define  GXMaxFitFloor(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的floor值(不大于float的最大整数)
-// 颜色
-#define GXColorFromRGBA(R,G,B,A) [UIColor colorWithRed:R/256.f green:G/256.f blue:B/256.f alpha:A]
+
 /**
- *    GXColorFromRGBhueA(0x000000(16进制颜色), 0);
+ *    颜色
  */
+// 256颜色表示
+#define GXColorFromRGBA(R,G,B,A) [UIColor colorWithRed:(R)/256.f green:(G)/256.f blue:(B)/256.f alpha:(A)]
+// 16进制颜色表示
 #define GXColorFromRGBhueA(RGBhue, A) [UIColor colorWithRed:((float)((RGBhue & 0xFF0000) >> 16))/255.0 green:((float)((RGBhue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBhue & 0x0000FF))/255.0 alpha:A]
-
-
 // 随机颜色
 #define GXColorRandom [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
+
 /**
  *自定义log (发布版本不打印任何信息)
  */
@@ -98,8 +88,6 @@
 #endif
 
 //A better version of NSLog
-
-
 //#ifdef DEBUG
 //
 //        #define GXLog(format, ...) do { \
@@ -114,17 +102,21 @@
 //        #define GXLog(format, ...)
 //#endif
 
-/**
- *打印函数名及函数的调用者 (测试使用:如-[MyViewController dealloc])
- */
+// 打印函数名及函数的调用者 (测试使用:如-[MyViewController dealloc])
 #define GXLogFunc         GXLog(@"%s",__func__);
 #define GXLogMsg(msgName,msg) GXLog(@"%@--%@",msgName,msg);
 #define GXLogFuncMsg(msg) GXLog(@"%s-%@",__func__,msg);
 
 /**
- *快速生成 weakself 主要用于 block 前声明
+ *快速生成 weak指针 
  */
 #define GXWeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define GXWeakPoiner(weakPoiner, obj)  __weak __typeof(&*obj)weakPoiner = obj;
 
+// 打开设置页面
+#define GXAppOpenSetting if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]]) { [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]]; }
+
+// 快速转化 int -> string
+#define GXStringInt(int) [NSString stringWithFormat:@"%ld", int]
 
 #endif /* GXDevelopKey_h */
