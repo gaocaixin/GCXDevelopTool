@@ -20,14 +20,19 @@
 @interface MBProgressHUD (GXDevelop)
 
 /**
- *快速显示一个hud 信息   default view = window;
+ *快速显示一个hud 信息
  */
 + (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text font:(UIFont *)font;
 + (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text font:(UIFont *)font margin:(CGFloat)margin;
 
 + (void)gxShowNotiInDebugInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image text:(NSString *)text font:(UIFont *)font;
 
++ (void)gxShowNotiInView:(UIView *)view duration:(CGFloat)duration image:(UIImage *)image attrText:(NSMutableAttributedString *)attrText;
+
+
 + (void)gxShowWaitInView:(UIView *)view text:(NSString *)text font:(UIFont *)font;
++ (void)gxShowWaitInView:(UIView *)view attrText:(NSMutableAttributedString *)attrText;
+
 + (void)gxShowWaitInView:(UIView *)view text:(NSString *)text font:(UIFont *)font margin:(CGFloat)margin;
 
 + (void)gxHideInView:(UIView *)view animated:(BOOL)animated;

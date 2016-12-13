@@ -29,5 +29,13 @@ Btn.gxImagesNHSD = @[image1,[nsnull null], image2];会自动设置UIControlState
  *交换图片和 label 的位置  右图字左 interval:间隔值
  */
 - (void)gxExchangePositionLableAndImageWithInterval:(CGFloat)interval;
+/**
+ *图片和 label 的间隔 interval:间隔值
+ */
+- (void)gxSetInterval:(CGFloat)interval;
 
+/**
+ *图片和 label 的间隔 interval:间隔值
+ */
+- (void)gxSetImageAboveLabelWithInterval:(CGFloat)interval;
 @end

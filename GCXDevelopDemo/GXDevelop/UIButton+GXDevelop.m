@@ -176,6 +176,29 @@ static char RippleScaleMaxValue;
     [self setImageEdgeInsets:UIEdgeInsetsMake(0, lableW, 0, -lableW)];
 }
 
+- (void)gxSetInterval:(CGFloat)interval
+{
+    CGFloat scale = interval/2.;
+    [self setTitleEdgeInsets:UIEdgeInsetsMake(0, scale, 0, -scale)];
+    [self setImageEdgeInsets:UIEdgeInsetsMake(0, -scale, 0, scale)];
+}
 
+- (void)gxSetImageAboveLabelWithInterval:(CGFloat)interval{
+    CGRect titleRect = self.titleLabel.frame;        //文本控件在按钮中的frame值。
+    CGRect imageRect = self.imageView.frame;  //图片控件在按钮中的frame值。
+    CGFloat padding = interval;                                     //用于指定文本和图片的间隔值。
+    CGFloat selfWidth = self.width;                                   //按钮控件的宽度
+    CGFloat selfHeight = self.height;                                  //按钮控件的高度
+    CGFloat totalHeight=titleRect.size.height+padding+imageRect.size.height;  //图文上下布局时所占用的总高度，注意这里也算上他们之间的间隔值padding
+    self.titleEdgeInsets =UIEdgeInsetsMake(((selfHeight - totalHeight)/2 + imageRect.size.height + padding - titleRect.origin.y),
+                                      (selfWidth/2 - titleRect.origin.x - titleRect.size.width /2) - (selfWidth - titleRect.size.width) /2,
+                                      -((selfHeight - totalHeight)/2 + imageRect.size.height + padding - titleRect.origin.y),
+                                      -(selfWidth/2 - titleRect.origin.x - titleRect.size.width /2) - (selfWidth - titleRect.size.width) /2);
+    
+    self.imageEdgeInsets =UIEdgeInsetsMake(((selfHeight - totalHeight)/2 - imageRect.origin.y),
+                                      (selfWidth /2 - imageRect.origin.x - imageRect.size.width /2),
+                                      -((selfHeight - totalHeight)/2 - imageRect.origin.y),
+                                      -(selfWidth /2 - imageRect.origin.x - imageRect.size.width /2));
+}
 
 @end

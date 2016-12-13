@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <Accelerate/Accelerate.h>
 
 @class AVURLAsset;
 
@@ -98,5 +99,57 @@
  *  高斯模糊
  */
 - (UIImage *)gximageGaussianBlur:(CGFloat)blur;
+
+/**
+ *  裁剪一块区域
+ */
+- (UIImage *)gxClipImageInRect:(CGRect)rect;
+
+
+
+- (UIImage *)gxApplySubtleEffect;
+- (UIImage *)gxApplyLightEffect;
+- (UIImage *)gxApplyExtraLightEffect;
+- (UIImage *)gxApplyDarkEffect;
+- (UIImage *)gxApplyTintEffectWithColor:(UIColor *)tintColor;
+- (UIImage *)gxApplyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage;
+- (UIImage *)gxApplyGaussianBlur:(CGFloat)blurLevel;
+- (UIImage *)gxApplyBlur:(CGFloat)blur;
+
+
+//- (CGRect)frameFitTo:(CGRect)frame;
+//- (CGRect)frameFillTo:(CGRect)frame;
+//- (CGSize)sizeFitTo:(CGSize)size;
+//- (CGSize)sizeFillTo:(CGSize)size;
+//- (UIImage *)stretch;
+//- (UIImage *)fitToSize:(CGSize)size;
+//- (UIImage *)coverToSize:(CGSize)size;
+//- (UIImage*)scaleToSize:(NSInteger)size;
+//+ (UIImage *)imageWithFileName:(NSString *)fileName;
+//+ (UIImage *)imageNamedFromUIFrame:(NSString *)name;
+//+ (UIImage *)imageNamedFromUICommon:(NSString *)name;
+//+ (UIImage *)imageNamedFromBundle:(NSString *)fileName bundleName:(NSString *)bundleName;
+//+ (UIImage *)imageDeepCopy:(UIImage *)imageToCopy;
+//+ (UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size;
+
+- (CGRect)gxFrameFitTo:(CGRect)frame;
+- (CGRect)gxFrameFillTo:(CGRect)frame;
+- (CGSize)gxSizeFitTo:(CGSize)size;
+- (CGSize)gxSizeFillTo:(CGSize)size;
+- (UIImage *)gxFitToSize:(CGSize)size;
+- (UIImage *)gxCoverToSize:(CGSize)size;
++ (UIImage *)gxImageWithFileName:(NSString *)fileName;
++ (UIImage *)gxImageNamedFromUIFrame:(NSString *)name;
++ (UIImage *)gxImageNamedFromUICommon:(NSString *)name;
++ (UIImage *)gxImageNamedFromBundle:(NSString *)fileName bundleName:(NSString *)bundleName;
++ (UIImage *)gxImageWithColor:(UIColor *)color andSize:(CGSize)size;
+
+- (CGFloat)width;
+- (CGFloat)height;
+- (void)gxBlurredImageAsyncWithRadius:(CGFloat)radius saturationDeltaFactor:(CGFloat)factor tintColor:(UIColor *)tintColor onComplete:(void(^)(UIImage *img))complete;
+- (UIImage *)gxMosaicImagewithLevel:(int)level;
+- (UIImage *)gxTransToMosaicImageblockLevel:(NSUInteger)level;
++ (UIImage *)gxDecodedImageWithImage:(UIImage *)image;
+
 
 @end

@@ -18,13 +18,13 @@
 @property (nonatomic, assign) CGRect gxImageViewFrame;
 
 /**  互换 label 和 imageview 的位置  */
-@property (nonatomic) BOOL isExchangePosition;
+@property (nonatomic) BOOL gxIsExchangePosition;
 
 /**  添加点击交互  */
-@property (nonatomic) BOOL isAnimationClick;
+@property (nonatomic) BOOL gxIsAnimationClick;
 
 
 /**  改变border时的效果  */
-@property (nonatomic,assign,getter=isBorderAnimate) BOOL borderAnimate;
+@property (nonatomic,assign,getter=isBorderAnimate) BOOL gxBorderAnimate;
 
 @end

@@ -70,11 +70,13 @@
 - (NSDictionary *)gxAttributeStringWithLimitSize:(CGSize )limitSize  font:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
 
 
-//- (CGSize)prefersizeWith:(CGSize)size;
++ (NSString *)gxRandString;
+
+//- (CGSize)gxPrefersizeWith:(CGSize)size;
 
 @end
 
-
+//验证只有空格: ^[\s]*$
 //验证数字：^[0-9]*$
 //验证n位的数字：^\d{n}$
 //验证至少n位数字：^\d{n,}$

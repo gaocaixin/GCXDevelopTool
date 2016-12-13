@@ -15,9 +15,11 @@
     if (self.navigationController) {
         if (self.navigationController.viewControllers.count > 1) {
             [self.navigationController popViewControllerAnimated:animationed];
-            if (complete) {
-                complete();
-            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (complete) {
+                    complete();
+                }
+            });
         } else {
             [self.navigationController dismissViewControllerAnimated:animationed completion:complete];
         }
@@ -30,9 +32,11 @@
 {
     if (self.navigationController) {
         [self.navigationController pushViewController:vc animated:animationed];
-        if (complete) {
-            complete();
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (complete) {
+                complete();
+            }
+        });
     } else {
         [self presentViewController:vc animated:YES completion:^{
             if (complete) {

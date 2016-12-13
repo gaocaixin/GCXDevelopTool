@@ -13,19 +13,21 @@
 
 + (UIBezierPath *)gxBezierPathRectRemoveSemicircular:(CGRect)rect directionOption:(GXBezierPathRemoveSemicircularDirectionOption)directionOption
 {
-    CGPoint pathPoint0;
-    CGPoint pathPoint1;
-    CGPoint pathPoint2;
-    CGPoint pathPoint3;
-    CGPoint pathPoint4;
-    
-    CGPoint controlPoint0;
-    CGPoint controlPoint1;
-    CGPoint controlPoint2;
-    CGPoint controlPoint3;
-    
     CGFloat w = rect.size.width;
     CGFloat h = rect.size.height;
+    
+    CGPoint pathPoint0 = CGPointMake(0, 0);;
+    CGPoint pathPoint1 = CGPointMake(w/2., w/2.);
+    CGPoint pathPoint2 = CGPointMake(w, 0);
+    CGPoint pathPoint3 = CGPointMake(w, h);
+    CGPoint pathPoint4 = CGPointMake(0, h);
+    
+    CGPoint controlPoint0 = CGPointMake(0, w/4.);
+    CGPoint controlPoint1 = CGPointMake(w/4., w/2.);
+    CGPoint controlPoint2 = CGPointMake(w/4.*3, w/2.);
+    CGPoint controlPoint3 = CGPointMake(w, w/4.);
+    
+
     switch (directionOption) {
         case GXBezierPathRemoveSemicircularDirectionTop:
         {

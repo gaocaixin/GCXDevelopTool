@@ -46,24 +46,27 @@
 
 // 宽度比例适配
 #define  GXScreenWidthRatio            ([GXDevelopExtern sharedExtern].gxScreenWidthRatio)   // 当前屏宽/设计原稿的比例
-#define  GXWidthFitFloat(value)  ((value)*GXScreenWidthRatio)        // 宽度转化成适配后的float值
+#define  GXWidthFitFloat(value)  ((value)*GXScreenWidthRatio)  
 #define  GXWidthFitCeil(value)   (ceil((value)*GXScreenWidthRatio))  // 宽度转化成适配后的ceil值(不小于float的最小整数)
 #define  GXWidthFitFloor(value)  (floor((value)*GXScreenWidthRatio)) // 宽度转化成适配后的floor值(不大于float的最大整数)
+#define  GXWidthFitRound(value) (round((value)*GXScreenWidthRatio))
+
 
 // 高度比例适配
 #define  GXScreenHeightRatio           ([GXDevelopExtern sharedExtern].gxScreenHeightRatio) // 当前屏高/设计原稿的比例
 #define  GXHeightFitFloat(value) ((value)*GXScreenHeightRatio)       // 高度转化成适配后的float值
 #define  GXHeightFitCeil(value)  (ceil((value)*GXScreenHeightRatio)) // 高度转化成适配后的ceil值(不小于float的最小整数)
 #define  GXHeightFitFloor(value) (floor((value)*GXScreenHeightRatio))// 高度转化成适配后的floor值(不大于float的最大整数)
+#define  GXHeightFitRound(value) (round((value)*GXScreenHeightRatio))
 
 // 宽高比例最小值适配
-#define  GXScreenMinRatio ([GXDevelopExtern sharedExtern].gxScreenMinRatio)
+#define  GXScreenMinRatio ([GXDevelopExtern sharedExtern].gxScreenWHminRatio)
 #define  GXMinFitFloat(value) ((value)*GXScreenMinRatio)       // 转化成适配后的float值
 #define  GXMinFitCeil(value) ((value)*GXScreenMinRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
 #define  GXMinFitFloor(value) ((value)*GXScreenMinRatio)       // 转化成适配后的floor值(不大于float的最大整数)
 
 // 宽高比例最大值适配
-#define  GXScreenMaxRatio ([GXDevelopExtern sharedExtern].gxScreenMaxRatio)
+#define  GXScreenMaxRatio ([GXDevelopExtern sharedExtern].gxScreenWHmaxRatio)
 #define  GXMaxFitFloat(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的float值
 #define  GXMaxFitCeil(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
 #define  GXMaxFitFloor(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的floor值(不大于float的最大整数)
@@ -103,8 +106,11 @@
 //#endif
 
 // 打印函数名及函数的调用者 (测试使用:如-[MyViewController dealloc])
-#define GXLogFunc         GXLog(@"%s",__func__);
+#define GXLogFunc             GXLog(@"%s",__func__);
+#define GXLogFuncId(id)         GXLog(@"%s__%@",__func__, id);
 #define GXLogMsg(msgName,msg) GXLog(@"%@--%@",msgName,msg);
+#define GXLogMsgFloat(msgName,msg) GXLog(@"%@--%lf",msgName,msg);
+
 #define GXLogFuncMsg(msg) GXLog(@"%s-%@",__func__,msg);
 
 /**

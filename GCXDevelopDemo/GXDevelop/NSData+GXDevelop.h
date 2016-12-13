@@ -13,10 +13,22 @@
 /**
  *AES 解密
  */
-- (NSData *)gxAES256DecryptWithKey:(NSString *)key;
+- (nullable NSData *)gxAES256DecryptWithKey:(nullable NSString *)key;
 /**
  *AES 加密 
  */
-- (NSData *)gxAES256EncryptWithKey:(NSString *)key;
+- (nullable NSData *)gxAES256EncryptWithKey:(nullable NSString *)key;
+
+//- (nullable id)jsonObject;
+//- (nullable NSData *)gzippedDataWithCompressionLevel:(float)level;
+//- (nullable NSData *)gzippedData;
+//- (nullable NSData *)gunzippedData;
+//- (BOOL)isGzippedData;
+
+- (nullable id)gxJsonObject;
+- (nullable NSData *)gxGzippedDataWithCompressionLevel:(float)level;
+- (nullable NSData *)gxGzippedData;
+- (nullable NSData *)gxGunzippedData;
+- (BOOL)gxIsGzippedData;
 
 @end

@@ -102,8 +102,14 @@
                          value:fontColor
                          range:NSMakeRange(0, [strAttri length])];
         
-        long number = spacing;
-        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+        union{
+            long l_number;
+            int8_t i8_number;
+        } number;
+        
+        number.l_number = spacing;
+        
+        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number.i8_number);
         [strAttri addAttribute:(id)kCTKernAttributeName
                          value:(__bridge id)num
                          range:NSMakeRange(0, [strAttri length]-1)];
@@ -324,7 +330,7 @@
 }
 
 
-//- (CGSize)prefersizeWith:(CGSize)size{
+//- (CGSize)gxPrefersizeWith:(CGSize)size{
 //    CGFloat width = size.width;
 //    CGFloat height = size.height;
 //    if (width == 0)
@@ -337,7 +343,11 @@
 //    CFRelease(framesetter);
 //    return textSize;
 //}
-
++ (NSString *)gxRandString{
+    char data[32];
+    for (int x=0;x<32;data[x++] = (char)('A' + (arc4random_uniform(26))));
+    return [[NSString alloc] initWithBytes:data length:32 encoding:NSUTF8StringEncoding];
+}
 
 
 

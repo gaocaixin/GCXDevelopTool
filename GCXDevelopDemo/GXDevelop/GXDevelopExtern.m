@@ -11,7 +11,6 @@
 
 @implementation GXDevelopExtern
 
-//@dynamic gxScreenWidth;
 
 + (instancetype)sharedExtern
 {
@@ -46,12 +45,12 @@
 - (CGFloat)gxScreenMinRatio
 {
     [self refreshDataIfNeed];
-    return _gxScreenMinRatio;
+    return _gxScreenWHminRatio;
 }
 - (CGFloat)gxScreenMaxRatio
 {
     [self refreshDataIfNeed];
-    return _gxScreenMaxRatio;
+    return _gxScreenWHmaxRatio;
 }
 
 - (void)refreshDataIfNeed
@@ -66,6 +65,7 @@
     
     _gxScreenWidth = [UIScreen mainScreen].bounds.size.width;
     _gxScreenHeight = [UIScreen mainScreen].bounds.size.height;
+    _gxScreenRatio = MIN((_gxScreenWidth/_gxScreenHeight), (_gxScreenHeight/_gxScreenWidth));
     if (_gxScreenHeight > _gxScreenWidth) { // 竖屏
         _gxScreenWidthRatio = _gxScreenWidth/GXDesignSize.width;
         _gxScreenHeightRatio = _gxScreenHeight/GXDesignSize.height;
@@ -73,8 +73,8 @@
         _gxScreenWidthRatio = _gxScreenWidth/GXDesignSize.width;
         _gxScreenHeightRatio = _gxScreenHeight/GXDesignSize.height;
     }
-    _gxScreenMinRatio = MIN(_gxScreenWidthRatio, _gxScreenHeightRatio);
-    _gxScreenMaxRatio = MAX(_gxScreenWidthRatio, _gxScreenHeightRatio);
+    _gxScreenWHminRatio = MIN(_gxScreenWidthRatio, _gxScreenHeightRatio);
+    _gxScreenWHmaxRatio = MAX(_gxScreenWidthRatio, _gxScreenHeightRatio);
 }
 
 @end

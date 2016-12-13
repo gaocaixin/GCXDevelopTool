@@ -15,4 +15,12 @@
 - (CGSize )gxSizeWithLimitSize:(CGSize )limitSize;
 
 - (CGSize)gxPrefersizeWith:(CGSize)size;
+
+- (CGSize)gxBoundingRectWithSize:(CGSize)size;
+
+//- (CGSize)gxPrefersizeWith:(CGSize)size withLastLine:(CGRect *)rect;
+//- (CGSize)gxPrefersizeWith:(CGSize)size;
+
+- (CGSize)gxPrefersizeWith:(CGSize)size withLastLine:(CGRect *)rect;
+
 @end

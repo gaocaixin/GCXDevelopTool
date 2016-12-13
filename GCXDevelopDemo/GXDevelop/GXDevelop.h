@@ -15,12 +15,20 @@
 #ifndef GXDevelop_h
 #define GXDevelop_h
 
+#define MB_INSTANCETYPE // 项目没引用 mb 的话 就注释此行
+
+
+/**
+ *自定义宏
+ */
+#import "GXDevelopCustom.h" // 如果第一次使用此库 请配置里面的数据
+
+
 /**
  *辅助宏
  */
-#import "GXDevelopCustom.h" // 如果第一次使用此库 请配置里面的数据
-#import "GXDevelopKey.h" // 添加各种常用宏(如果用到适配的宏,需要配置好GXDevelopCustom.h)
 #import "GXDevelopExtern.h" // 全局记录信息,方便快速调用.
+#import "GXDevelopKey.h" // 添加各种常用宏(如果用到适配的宏,需要配置好GXDevelopCustom.h)
 
 /**
  * 辅助类方法
@@ -35,8 +43,10 @@
 #import "UIApplication+GXDevelop.h"
 #import "GXVideo.h" // 视频的相关操作
 #import "GXGif.h" // gif 的相关操作
+#import "NSData+GXDevelop.h"
 
 // UI -view //快速创建方法
+
 #import "UIButton+GXDevelop.h"
 #import "UIImageView+GXDevelop.h"
 #import "UILabel+GXDevelop.h"
@@ -48,6 +58,7 @@
 #import "UINavigationBar+GXDevelop.h"// 全透明及半透明设置
 #import "UIViewController+GXDevelop.h"
 #import "UIColor+GXDevelop.h"
+#import "UIScrollView+GXDevelop.h"
 
 // UI - layer
 #import "CAGradientLayer+GXDevelop.h"
@@ -55,5 +66,7 @@
 
 // path
 #import "UIBezierPath+GXDevelop.h"
+
+
 
 #endif /* GXDevelop_h */

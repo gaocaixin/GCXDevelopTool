@@ -81,7 +81,7 @@
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
 {
     [super setTitle:title forState:state];
-    if (_isExchangePosition) {
+    if (_gxIsExchangePosition) {
         [self gxExchangePositionLableAndImageWithInterval:0];
     }
 }
@@ -89,7 +89,7 @@
 - (void)setHighlighted:(BOOL)highlighted
 {
     [super setHighlighted:highlighted];
-    if (_isAnimationClick) {
+    if (_gxIsAnimationClick) {
         [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
             
             if (highlighted) {
@@ -112,7 +112,7 @@
 
 - (void)setBorderAnimate:(BOOL)borderAnimate
 {
-    _borderAnimate = borderAnimate;
+    _gxBorderAnimate = borderAnimate;
     self.borderColor = [UIColor colorWithCGColor:self.layer.borderColor];
     self.borderColorHalf = [self.borderColor colorWithAlphaComponent:0.5];
 }

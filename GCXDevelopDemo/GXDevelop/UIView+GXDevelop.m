@@ -325,6 +325,8 @@
 
 - (UIImage *)gxGetViewShot
 {
+    NSAssert([NSThread isMainThread], nil);
+    
     UIGraphicsBeginImageContext(self.bounds.size);
     BOOL isCom = [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
     if (isCom) {
