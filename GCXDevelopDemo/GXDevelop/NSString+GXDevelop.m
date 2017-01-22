@@ -350,5 +350,14 @@
 }
 
 
+- (BOOL)gxFileExist:(BOOL)preferDictionary{
+    BOOL bDictinary = NO;
+    BOOL bExist = NO;
+    bExist = [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:&bDictinary];
+    if (preferDictionary)
+        return (bExist && bDictinary);
+    else
+        return (bExist && !bDictinary);
+}
 
 @end

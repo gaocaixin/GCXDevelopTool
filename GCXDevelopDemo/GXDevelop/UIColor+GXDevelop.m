@@ -157,13 +157,13 @@
             NSInteger red = [arr[0] integerValue];
             NSInteger green = [arr[1] integerValue];
             NSInteger blue = [arr[2] integerValue];
-            return UIColorFromRGB_dec(red, green, blue);
+            return GXColorFromRGBA(red, green, blue,1);
         }else if (arr.count == 4){
             CGFloat alpha = MAX(MIN([arr[0] floatValue], 1.0), 0.0);
             NSInteger red = [arr[1] integerValue];
             NSInteger green = [arr[2] integerValue];
             NSInteger blue = [arr[3] integerValue];
-            return UIColorFromRGBA_dec(red, green, blue, alpha);
+            return GXColorFromRGBA(red, green, blue,alpha);
         }
         return nil;
     }

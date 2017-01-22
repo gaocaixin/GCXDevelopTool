@@ -138,7 +138,6 @@
 - (CGSize)gxSizeFillTo:(CGSize)size;
 - (UIImage *)gxFitToSize:(CGSize)size;
 - (UIImage *)gxCoverToSize:(CGSize)size;
-+ (UIImage *)gxImageWithFileName:(NSString *)fileName;
 + (UIImage *)gxImageNamedFromUIFrame:(NSString *)name;
 + (UIImage *)gxImageNamedFromUICommon:(NSString *)name;
 + (UIImage *)gxImageNamedFromBundle:(NSString *)fileName bundleName:(NSString *)bundleName;

@@ -27,48 +27,16 @@
 {
     return CGRectGetMinX(self.frame);
 }
-- (CGFloat)gxY
-{
-    return CGRectGetMinY(self.frame);
-}
-- (CGFloat)gxMaxX
-{
-    return CGRectGetMaxX(self.frame);
-}
-- (CGFloat)gxMaxY
-{
-    return CGRectGetMaxY(self.frame);
-}
-//- (CGFloat)gxMidX
-//{
-//    return CGRectGetMidX(self.frame);
-//}
-//- (CGFloat)gxMidY
-//{
-//    return CGRectGetMidY(self.frame);
-//}
-- (CGFloat)gxWidth
-{
-    return CGRectGetWidth(self.frame);
-}
-- (CGFloat)gxWidthHalf
-{
-    return CGRectGetWidth(self.frame)/2.0;
-}
-- (CGFloat)gxHeight
-{
-    return CGRectGetHeight(self.frame);
-}
-- (CGFloat)gxHeightHalf
-{
-    return CGRectGetHeight(self.frame)/2.0;
-}
-
 - (void)setGxX:(CGFloat)gxX
 {
     CGRect frame = self.frame;
     frame.origin.x = gxX;
     self.frame = frame;
+}
+
+- (CGFloat)gxY
+{
+    return CGRectGetMinY(self.frame);
 }
 - (void)setGxY:(CGFloat)gxY
 {
@@ -76,11 +44,21 @@
     frame.origin.y = gxY;
     self.frame = frame;
 }
+
+- (CGFloat)gxMaxX
+{
+    return CGRectGetMaxX(self.frame);
+}
 - (void)setGxMaxX:(CGFloat)gxMaxX
 {
     CGRect frame = self.frame;
     frame.origin.x = gxMaxX-self.gxWidth;
     self.frame = frame;
+}
+
+- (CGFloat)gxMaxY
+{
+    return CGRectGetMaxY(self.frame);
 }
 - (void)setGxMaxY:(CGFloat)gxMaxY
 {
@@ -88,55 +66,7 @@
     frame.origin.y = gxMaxY-self.gxHeight;
     self.frame = frame;
 }
-- (void)setGxMidX:(CGFloat)gxMidX
-{
-    CGRect frame = self.frame;
-    frame.origin.x = gxMidX-self.gxWidthHalf;
-    self.frame = frame;
-}
-- (void)setGxMidY:(CGFloat)gxMidY
-{
-    CGRect frame = self.frame;
-    frame.origin.y = gxMidY - self.gxHeightHalf;
-    self.frame = frame;
-}
-- (void)setGxHeight:(CGFloat)gxHeight
-{
-    CGRect frame = self.frame;
-    frame.size.height = gxHeight;
-    self.frame = frame;
-}
-- (void)setGxWidth:(CGFloat)gxWidth
-{
-    CGRect frame = self.frame;
-    frame.size.width = gxWidth;
-    self.frame = frame;
-}
-- (void)setGxHeightHalf:(CGFloat)gxHeightHalf
-{
-    CGRect frame = self.frame;
-    frame.size.height = gxHeightHalf*2;
-    self.frame = frame;
-}
-- (void)setGxWidthHalf:(CGFloat)gxWidthHalf
-{
-    CGRect frame = self.frame;
-    frame.size.width = gxWidthHalf*2;
-    self.frame = frame;
-}
 
-- (CGSize)gxSize
-{
-    return self.frame.size;
-}
-- (CGPoint)gxCenter
-{
-    return self.center;
-}
-- (CGPoint)gxCenterIn
-{
-    return CGPointMake(self.gxWidthHalf, self.gxHeightHalf);
-}
 - (CGPoint)gxOrigin
 {
     return self.frame.origin;
@@ -148,23 +78,185 @@
     self.frame = frame;
 }
 
+//- (CGFloat)gxMidX
+//{
+//    return CGRectGetMidX(self.frame);
+//}
+//- (CGFloat)gxMidY
+//{
+//    return CGRectGetMidY(self.frame);
+//}
+- (CGSize)gxSize
+{
+    return self.frame.size;
+}
 - (void)setGxSize:(CGSize)gxSize
 {
     CGRect frame = self.frame;
     frame.size = gxSize;
     self.frame = frame;
 }
+
+- (CGFloat)gxWidth
+{
+    return CGRectGetWidth(self.frame);
+}
+- (void)setGxWidth:(CGFloat)gxWidth
+{
+    CGRect frame = self.frame;
+    frame.size.width = gxWidth;
+    self.frame = frame;
+}
+
+- (CGFloat)gxWidthHalf
+{
+    return CGRectGetWidth(self.frame)/2.0;
+}
+- (void)setGxWidthHalf:(CGFloat)gxWidthHalf
+{
+    CGRect frame = self.frame;
+    frame.size.width = gxWidthHalf*2;
+    self.frame = frame;
+}
+
+- (CGFloat)gxHeight
+{
+    return CGRectGetHeight(self.frame);
+}
+- (void)setGxHeight:(CGFloat)gxHeight
+{
+    CGRect frame = self.frame;
+    frame.size.height = gxHeight;
+    self.frame = frame;
+}
+
+- (CGFloat)gxHeightHalf
+{
+    return CGRectGetHeight(self.frame)/2.0;
+}
+- (void)setGxHeightHalf:(CGFloat)gxHeightHalf
+{
+    CGRect frame = self.frame;
+    frame.size.height = gxHeightHalf*2;
+    self.frame = frame;
+}
+
+
+- (CGFloat)gxBx
+{
+    return self.bounds.origin.x;
+}
+- (void)setGxBx:(CGFloat)gxBx
+{
+    CGRect frame = self.bounds;
+    frame.origin.x = gxBx;
+    self.bounds = frame;
+}
+- (CGFloat)gxBy
+{
+    return self.bounds.origin.y;
+}
+- (void)setGxBy:(CGFloat)gxBy
+{
+    CGRect frame = self.bounds;
+    frame.origin.y = gxBy;
+    self.bounds = frame;
+}
+- (CGPoint)gxBorigin
+{
+    return self.bounds.origin;
+}
+- (void)setGxBorigin:(CGPoint)gxBorigin
+{
+    CGRect frame = self.bounds;
+    frame.origin = gxBorigin;
+    self.bounds = frame;
+}
+- (CGSize)gxBsize
+{
+    return self.bounds.size;
+}
+- (void)setGxBsize:(CGSize)gxBsize
+{
+    CGRect frame = self.bounds;
+    frame.size = gxBsize;
+    self.bounds = frame;
+}
+
+- (CGFloat)gxBwidth
+{
+    return CGRectGetWidth(self.bounds);
+}
+- (void)setGxBwidth:(CGFloat)gxBwidth
+{
+    CGRect frame = self.bounds;
+    frame.size.width = gxBwidth;
+    self.bounds = frame;
+}
+
+- (CGFloat)gxBwidthHalf
+{
+    return CGRectGetWidth(self.bounds)/2.0;
+}
+- (void)setGxBwidthHalf:(CGFloat)gxBwidthHalf
+{
+    CGRect frame = self.bounds;
+    frame.size.width = gxBwidthHalf*2;
+    self.bounds = frame;
+}
+
+- (CGFloat)gxBheight
+{
+    return CGRectGetHeight(self.bounds);
+}
+- (void)setGxBheight:(CGFloat)gxBheight
+{
+    CGRect frame = self.bounds;
+    frame.size.height = gxBheight;
+    self.bounds = frame;
+}
+
+- (CGFloat)gxBheightHalf
+{
+    return CGRectGetHeight(self.bounds)/2.0;
+}
+- (void)setGxBheightHalf:(CGFloat)gxBheightHalf
+{
+    CGRect frame = self.bounds;
+    frame.size.height = gxBheightHalf*2;
+    self.bounds = frame;
+}
+
+
+
+
+
+
+
+
+
+
+
+- (CGPoint)gxCenter
+{
+    return self.center;
+}
 - (void)setGxCenter:(CGPoint)gxCenter
 {
     self.center = gxCenter;
 }
+
+- (CGPoint)gxCenterIn
+{
+    return CGPointMake(self.gxWidthHalf, self.gxHeightHalf);
+}
+
+
+
+
 -(CGFloat)gxCenterX
 {
     return self.center.x;
-}
-- (CGFloat)gxCenterY
-{
-    return self.center.y;
 }
 - (void)setGxCenterX:(CGFloat)gxCenterX
 {
@@ -172,12 +264,18 @@
     center.x = gxCenterX;
     self.center = center;
 }
+
+- (CGFloat)gxCenterY
+{
+    return self.center.y;
+}
 - (void)setGxCenterY:(CGFloat)gxCenterY
 {
     CGPoint center = self.center;
     center.y = gxCenterY;
     self.center = center;
 }
+
 - (CGFloat)gxCenterInX
 {
     return self.frame.size.width/2.;
@@ -185,6 +283,38 @@
 - (CGFloat)gxCenterInY
 {
     return self.frame.size.height/2.;
+}
+
+
+// Transform
+- (CGFloat) gxXScale {
+    CGAffineTransform t = self.transform;
+    return sqrt(t.a * t.a + t.c * t.c);
+}
+
+- (CGFloat) gxYScale {
+    CGAffineTransform t = self.transform;
+    return sqrt(t.b * t.b + t.d * t.d);
+}
+
+- (CGFloat) gxRadians { 
+    CGAffineTransform t = self.transform;
+    return atan2f(t.b, t.a);
+}
+
+- (CGFloat) gxAngle {
+    CGAffineTransform t = self.transform;
+    return atan2f(t.b, t.a) * (180 / M_PI);
+}
+
+- (CGFloat) gxTx {
+    CGAffineTransform t = self.transform;
+    return t.tx;
+}
+
+- (CGFloat) gxTy {
+    CGAffineTransform t = self.transform;
+    return t.ty;
 }
 
 
@@ -338,7 +468,7 @@
         return nil;
     }
 }
-- (UIImage *)gxGetViewShotWith:(CGFloat)marge
+- (UIImage *)gxGetViewShotWithMarge:(CGFloat)marge
 {
     CGRect frame = CGRectMake(-marge, -marge, CGRectGetWidth(self.bounds)+2*marge, CGRectGetHeight(self.bounds)+2*marge);
 
@@ -354,6 +484,27 @@
     }
 }
 
+-(UIImage *)gxGetViewShotWithScale:(CGFloat)scale
+{
+    // Create the image context
+    CGSize size = self.bounds.size;
+    size = CGSizeMake(size.width*scale, size.height*scale);
+    UIGraphicsBeginImageContextWithOptions(size, YES, 0.0);
+    
+    // Get the snapshot
+    UIImage *snapshotImage = nil;
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextScaleCTM (context, scale, scale);
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
+    
+    snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Be nice and clean your mess up
+    UIGraphicsEndImageContext();
+    
+    return snapshotImage;
+}
 
 
 - (void)gxConvertCoordinationTo:(UIView *)subView with:(CGContextRef)context{
@@ -368,6 +519,32 @@
     CGContextConcatCTM(context, subView.transform);
     CGContextTranslateCTM(context, -subView.bounds.size.width/2, -subView.bounds.size.height/2);
 }
-
+- (UIBezierPath *)gxConvertBezierPath:(UIBezierPath *)path to:(UIView *)view{
+    if (!path)
+        return nil;
+    
+    UIBezierPath *bPath = [UIBezierPath bezierPathWithCGPath:[path CGPath]];
+    
+    CGAffineTransform trans = CGAffineTransformIdentity;
+    //    CGPoint center = [self convertPoint:CGPointMake(view.b_width/2, view.b_height/2) fromView:view];
+    CGPoint topleft = [self convertPoint:CGPointMake(view.bounds.origin.x, view.bounds.origin.y) fromView:view];
+    
+    //    trans = CGAffineTransformTranslate(trans, (center.x-view.b_width/2), (center.y-view.b_height/2));
+    //    trans = CGAffineTransformConcat(trans, view.transform);
+    //    trans = CGAffineTransformInvert(trans);
+    
+    CGFloat scale = sqrt(view.transform.a*view.transform.a + view.transform.c*view.transform.c);
+    CGFloat angle = atan2f(view.transform.b, view.transform.a);;
+    
+    trans = CGAffineTransformTranslate(trans, topleft.x, topleft.y);
+    trans = CGAffineTransformScale(trans, scale, scale);
+    trans = CGAffineTransformRotate(trans, angle);
+    trans = CGAffineTransformInvert(trans);
+    
+    [bPath applyTransform:trans];
+    
+    
+    return bPath;
+}
 
 @end

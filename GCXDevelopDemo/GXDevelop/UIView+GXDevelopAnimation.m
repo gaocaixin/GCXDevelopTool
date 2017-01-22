@@ -8,8 +8,8 @@
 
 #import <objc/runtime.h>
 #import "UIView+GXDevelopAnimation.h"
-#import <FBShimmering/FBShimmeringView.h>
-#import <FBShimmering/FBShimmeringLayer.h>
+//#import <FBShimmering/FBShimmeringView.h>
+//#import <FBShimmering/FBShimmeringLayer.h>
 
 @implementation UIView (GXDevelopAnimation)
 
@@ -49,7 +49,7 @@ static char uiviewHighlightLayer;
         objc_setAssociatedObject(self, &uiviewHighlightLayer, gradiLayer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         return;
     }
-    CGSize layersize = CGSizeMake(self.b_height*3, self.b_height);
+    CGSize layersize = CGSizeMake(self.gxBheight*3, self.gxBheight);
     if (!gradiLayer) {
         gradiLayer = [CAGradientLayer layer];
         gradiLayer.frame = CGRectMake(0, 0, layersize.width, layersize.height);
@@ -71,48 +71,48 @@ static char uiviewHighlightLayer;
     
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-    rotationAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(-layersize.width/2, self.b_height/2)];
-    rotationAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake((self.b_width+layersize.width/2)*5, self.b_height/2)];
+    rotationAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(-layersize.width/2, self.gxBheight/2)];
+    rotationAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake((self.gxBwidth+layersize.width/2)*5, self.gxBheight/2)];
     rotationAnimation.duration = duration;
 //    rotationAnimation.autoreverses = YES;
     rotationAnimation.repeatCount = CGFLOAT_MAX;
     [gradiLayer addAnimation:rotationAnimation forKey:key];
 }
 
-static char uiviewShimerLayer;
-- (void)gxShimmerWith:(UIBezierPath *)path width:(CGFloat)w andColor:(UIColor *)stokeColor{
-    FBShimmeringLayer *shimmerLayer = objc_getAssociatedObject(self, &uiviewShimerLayer);
-    if (w==0)
-//        w = 2;
-    if (!stokeColor)
-        stokeColor = [UIColor whiteColor];
-    
-    if (path) {
-        if (!shimmerLayer) {
-            shimmerLayer = [FBShimmeringLayer layer];
-            shimmerLayer.frame = self.bounds;
-            objc_setAssociatedObject(self, &uiviewShimerLayer, shimmerLayer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            [self.layer addSublayer:shimmerLayer];
-        }
-        
-        CAShapeLayer *layer = (CAShapeLayer *)shimmerLayer.contentLayer;
-        if (!layer) {
-            layer = [CAShapeLayer layer];
-            layer.frame = shimmerLayer.bounds;
-            layer.strokeColor = [UIColor whiteColor].CGColor;
-            layer.fillColor = [UIColor clearColor].CGColor;
-            shimmerLayer.contentLayer = layer;
-        }
-        layer.strokeColor = [stokeColor CGColor];
-        layer.path = path.CGPath;
-        layer.lineWidth = 2;
-        shimmerLayer.shimmering = YES;
-    }else{
-        [shimmerLayer removeFromSuperlayer];
-        shimmerLayer = nil;
-        objc_setAssociatedObject(self, &uiviewShimerLayer, shimmerLayer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-}
+//static char uiviewShimerLayer;
+//- (void)gxShimmerWith:(UIBezierPath *)path width:(CGFloat)w andColor:(UIColor *)stokeColor{
+//    FBShimmeringLayer *shimmerLayer = objc_getAssociatedObject(self, &uiviewShimerLayer);
+//    if (w==0)
+////        w = 2;
+//    if (!stokeColor)
+//        stokeColor = [UIColor whiteColor];
+//    
+//    if (path) {
+//        if (!shimmerLayer) {
+//            shimmerLayer = [FBShimmeringLayer layer];
+//            shimmerLayer.frame = self.bounds;
+//            objc_setAssociatedObject(self, &uiviewShimerLayer, shimmerLayer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//            [self.layer addSublayer:shimmerLayer];
+//        }
+//        
+//        CAShapeLayer *layer = (CAShapeLayer *)shimmerLayer.contentLayer;
+//        if (!layer) {
+//            layer = [CAShapeLayer layer];
+//            layer.frame = shimmerLayer.bounds;
+//            layer.strokeColor = [UIColor whiteColor].CGColor;
+//            layer.fillColor = [UIColor clearColor].CGColor;
+//            shimmerLayer.contentLayer = layer;
+//        }
+//        layer.strokeColor = [stokeColor CGColor];
+//        layer.path = path.CGPath;
+//        layer.lineWidth = 2;
+//        shimmerLayer.shimmering = YES;
+//    }else{
+//        [shimmerLayer removeFromSuperlayer];
+//        shimmerLayer = nil;
+//        objc_setAssociatedObject(self, &uiviewShimerLayer, shimmerLayer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    }
+//}
 
 static char uiviewBreathLayer;
 - (CAAnimation *)gxBreathAnimationWith:(UIColor *)color duration:(CGFloat)duration key:(NSString *)key

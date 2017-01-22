@@ -35,6 +35,8 @@
 #define GXRectLeftCenterPoint(rect)  CGPointMake(rect.origin.x + 0, rect.origin.y + rect.size.height/2.)
 #define GXRectBottomCenterPoint(rect)  CGPointMake(rect.origin.x + rect.size.width/2., rect.origin.y + rect.size.height)
 
+#define GXRectCenterPoint(rect)  CGPointMake(rect.origin.x + rect.size.width/2., rect.origin.y + rect.size.height/2.)
+
 //屏幕宽高
 #define GXScreenWidth [UIScreen mainScreen].bounds.size.width
 #define GXScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -71,12 +73,16 @@
 #define  GXMaxFitCeil(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的ceil值(不小于float的最小整数)
 #define  GXMaxFitFloor(value) ((value)*GXScreenMaxRatio)       // 转化成适配后的floor值(不大于float的最大整数)
 
+
+#define  GXGetAdjacentvalue(value, min , max) ((fabs(value - (min)) <  fabs(value - (max)) ? (min) : (max)))       // 获取value邻近min/max值
+
 /**
  *    颜色
  */
 // 256颜色表示
 #define GXColorFromRGBA(R,G,B,A) [UIColor colorWithRed:(R)/256.f green:(G)/256.f blue:(B)/256.f alpha:(A)]
 // 16进制颜色表示
+#define GXColorFromRGBhue(RGBhue) [UIColor colorWithRed:((float)((RGBhue & 0xFF0000) >> 16))/255.0 green:((float)((RGBhue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBhue & 0x0000FF))/255.0 alpha:1.0]
 #define GXColorFromRGBhueA(RGBhue, A) [UIColor colorWithRed:((float)((RGBhue & 0xFF0000) >> 16))/255.0 green:((float)((RGBhue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBhue & 0x0000FF))/255.0 alpha:A]
 // 随机颜色
 #define GXColorRandom [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]

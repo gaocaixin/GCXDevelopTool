@@ -395,22 +395,22 @@
     return self.size.height;
 }
 - (UIImage *)gxMirrorVertical{
-    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0);
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef contex = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(contex, self.gxWidth, 0);
-    CGContextScaleCTM(contex, -1.0, 1.0);
-    CGContextDrawImage(contex, CGRectMake(0, 0, self.gxWidth, self.gxHeight), self.CGImage);
+    CGContextTranslateCTM(contex, 0, self.height);
+    CGContextScaleCTM(contex, 1.0, -1.0);
+    [self drawInRect:CGRectMake(0, 0, self.width, self.height)];
     UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return returnImage;
 }
 
 - (UIImage *)gxMirrorHorizon{
-    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0);
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef contex = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(contex, self.gxWidth, self.gxHeight);
-    CGContextScaleCTM(contex, -1.0, -1.0);
-    CGContextDrawImage(contex, CGRectMake(0, 0, self.gxWidth, self.gxHeight), self.CGImage);
+    CGContextTranslateCTM(contex, self.width, 0);
+    CGContextScaleCTM(contex, -1.0, 1.0);
+    [self drawInRect:CGRectMake(0, 0, self.width, self.height)];
     UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return returnImage;
@@ -1011,23 +1011,6 @@
     return imageCopy;
 }
 
-+ (UIImage *)gxImageWithFileName:(NSString *)fileName{
-    
-    if (fileName.length <= 0)
-        return nil;
-    
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *file = fileName;
-    NSString *type = nil;
-    if ([fileName rangeOfString:@"."].location != NSNotFound) {
-        NSArray *arr = [fileName componentsSeparatedByString:@"."];
-        type = [arr lastObject];
-        file = [file substringToIndex:fileName.length-type.length-1];
-    }
-    
-    NSString *path = [bundle pathForResource:file ofType:type];
-    return [UIImage imageWithPath:path];
-}
 
 + (UIImage *)gxImageNamedFromUIFrame:(NSString *)name{
     return [UIImage gxImageNamedFromBundle:name bundleName:@"uiframe"];

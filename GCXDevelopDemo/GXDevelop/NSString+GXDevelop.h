@@ -26,6 +26,7 @@
 
 @interface NSString (GXDevelop)
 
+
 /**
  *正则判断
  */
@@ -74,6 +75,7 @@
 
 //- (CGSize)gxPrefersizeWith:(CGSize)size;
 
+- (BOOL)gxFileExist:(BOOL)preferDictionary;
 @end
 
 //验证只有空格: ^[\s]*$

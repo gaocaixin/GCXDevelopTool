@@ -30,7 +30,7 @@
  * w          ：画笔线宽（默认为2），
  * stokeColor ：画笔颜色（默认为白色）
  */
-- (void)gxShimmerWith:(UIBezierPath *)path width:(CGFloat)w andColor:(UIColor *)stokeColor;
+//- (void)gxShimmerWith:(UIBezierPath *)path width:(CGFloat)w andColor:(UIColor *)stokeColor;
 
 /**
  * 给 view 添加一个呼吸动画

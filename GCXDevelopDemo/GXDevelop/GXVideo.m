@@ -7,6 +7,7 @@
 //
 
 #import "GXVideo.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation GXVideo
 

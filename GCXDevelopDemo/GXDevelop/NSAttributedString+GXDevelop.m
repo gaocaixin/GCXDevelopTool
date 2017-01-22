@@ -12,7 +12,11 @@
 @implementation NSAttributedString (GXDevelop)
 - (CGSize )gxSizeWithLimitSize:(CGSize )limitSize
 {
-    CGRect rect = [self boundingRectWithSize:limitSize
+    CGSize size = limitSize;
+    if (CGSizeEqualToSize(CGSizeZero, limitSize)) {
+        size = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+    }
+    CGRect rect = [self boundingRectWithSize:size
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                                context:nil];
     return rect.size;

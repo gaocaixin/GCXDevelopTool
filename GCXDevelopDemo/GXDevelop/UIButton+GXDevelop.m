@@ -187,8 +187,8 @@ static char RippleScaleMaxValue;
     CGRect titleRect = self.titleLabel.frame;        //文本控件在按钮中的frame值。
     CGRect imageRect = self.imageView.frame;  //图片控件在按钮中的frame值。
     CGFloat padding = interval;                                     //用于指定文本和图片的间隔值。
-    CGFloat selfWidth = self.width;                                   //按钮控件的宽度
-    CGFloat selfHeight = self.height;                                  //按钮控件的高度
+    CGFloat selfWidth = self.gxWidth;                                   //按钮控件的宽度
+    CGFloat selfHeight = self.gxHeight;                                  //按钮控件的高度
     CGFloat totalHeight=titleRect.size.height+padding+imageRect.size.height;  //图文上下布局时所占用的总高度，注意这里也算上他们之间的间隔值padding
     self.titleEdgeInsets =UIEdgeInsetsMake(((selfHeight - totalHeight)/2 + imageRect.size.height + padding - titleRect.origin.y),
                                       (selfWidth/2 - titleRect.origin.x - titleRect.size.width /2) - (selfWidth - titleRect.size.width) /2,

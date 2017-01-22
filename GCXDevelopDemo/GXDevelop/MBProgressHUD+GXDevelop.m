@@ -111,8 +111,8 @@
     hud.animationType  = MBProgressHUDAnimationFade;
     hud.bezelView.layer.masksToBounds = YES;
     [view addSubview:hud];
-    hud.bezelView.height = GXHeightFitCeil(60);
-    hud.bezelView.layer.cornerRadius = hud.bezelView.height/2.;
+    hud.bezelView.gxHeight = GXHeightFitCeil(60);
+    hud.bezelView.layer.cornerRadius = hud.bezelView.gxHeight/2.;
     dispatch_async(dispatch_get_main_queue(), ^{
         [hud showAnimated:YES];
 

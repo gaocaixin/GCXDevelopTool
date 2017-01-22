@@ -15,9 +15,6 @@
 #ifndef GXDevelop_h
 #define GXDevelop_h
 
-#define MB_INSTANCETYPE // 项目没引用 mb 的话 就注释此行
-
-
 /**
  *自定义宏
  */

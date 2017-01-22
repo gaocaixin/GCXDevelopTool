@@ -10,19 +10,26 @@
 #import <Foundation/Foundation.h>
 @interface UIView (GXDevelop)
 
-// 坐标
+// frame
 @property (nonatomic, assign) CGPoint gxOrigin;
 @property (nonatomic, assign) CGFloat gxX;
 @property (nonatomic, assign) CGFloat gxY;
 @property (nonatomic, assign) CGFloat gxMaxX;
 @property (nonatomic, assign) CGFloat gxMaxY;
-
-// 尺寸
 @property (nonatomic, assign) CGSize  gxSize;
 @property (nonatomic, assign) CGFloat gxWidth;
 @property (nonatomic, assign) CGFloat gxHeight;
 @property (nonatomic, assign) CGFloat gxWidthHalf;
 @property (nonatomic, assign) CGFloat gxHeightHalf;
+// bounds
+@property (nonatomic, assign) CGPoint gxBorigin;
+@property (nonatomic, assign) CGFloat gxBx;
+@property (nonatomic, assign) CGFloat gxBy;
+@property (nonatomic, assign) CGSize  gxBsize;
+@property (nonatomic, assign) CGFloat gxBwidth;
+@property (nonatomic, assign) CGFloat gxBheight;
+@property (nonatomic, assign) CGFloat gxBwidthHalf;
+@property (nonatomic, assign) CGFloat gxBheightHalf;
 
 // 中心点
 @property (nonatomic, assign) CGPoint gxCenter;
@@ -31,6 +38,21 @@
 @property (nonatomic, assign) CGFloat gxCenterY;
 @property (nonatomic, assign, readonly) CGFloat gxCenterInX;
 @property (nonatomic, assign, readonly) CGFloat gxCenterInY;
+
+/**
+ * Shortcut for transform
+ *
+ */
+@property (nonatomic, readonly) CGFloat gxRadians;  // 弧度
+@property (nonatomic, readonly) CGFloat gxAngle;    // 角度
+@property (nonatomic, readonly) CGFloat gxXScale;
+@property (nonatomic, readonly) CGFloat gxYScale;
+@property (nonatomic, readonly) CGFloat gxTx;
+@property (nonatomic, readonly) CGFloat gxTy;
+
+
+
+
 /**
  *获取 view的 layer 上某点的颜色
  */
@@ -51,13 +73,17 @@
  *获取屏幕截图
  */
 - (UIImage *)gxGetViewShot;
-
 /**
  *获取屏幕截图 marge:内边距
  */
-- (UIImage *)gxGetViewShotWith:(CGFloat)marge;
+- (UIImage *)gxGetViewShotWithMarge:(CGFloat)marge;
+/**
+ *获取屏幕截图 scale:缩放
+ */
+-(UIImage *)gxGetViewShotWithScale:(CGFloat)scale;
+
 
 - (void)gxConvertCoordinationTo:(UIView *)subView with:(CGContextRef)context;
-
+- (UIBezierPath *)gxConvertBezierPath:(UIBezierPath *)path to:(UIView *)view;
 
 @end

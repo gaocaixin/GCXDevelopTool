@@ -22,7 +22,6 @@
  *  给layer添加阴影
  *
  *  @param color   颜色
- *  @param offset  偏移量
  *  @param blur    blur radius
  *  @param opacity 透明
  *  @param rect    shadowPath
