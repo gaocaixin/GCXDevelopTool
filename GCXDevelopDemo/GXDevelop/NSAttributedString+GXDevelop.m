@@ -8,6 +8,7 @@
 
 #import "NSAttributedString+GXDevelop.h"
 #import <CoreText/CoreText.h>
+#import "NSString+GXDevelop.h"
 
 @implementation NSAttributedString (GXDevelop)
 - (CGSize )gxSizeWithLimitSize:(CGSize )limitSize
@@ -52,7 +53,10 @@
     }
     return NO;
 }
-
+- (CGSize)gxSize
+{
+    return [self gxPrefersizeWith:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+}
 - (CGSize)gxPrefersizeWith:(CGSize)size{
     CGFloat width = size.width;
     CGFloat height = size.height;
@@ -125,6 +129,11 @@
     }
     return CGSizeMake(size.width, penOffsety+h);
     
+}
+
++ (NSAttributedString *)gxAttributeStringWith:(NSString *)str font:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
+{
+    return [str gxAttributeStringWithFont:font color:fontColor spacing:spacing lineSpacing:linespacing alignment:alignment];
 }
 
 @end

@@ -14,6 +14,7 @@
 #import <Accelerate/Accelerate.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
+
 @implementation UIImage (GXDevelop)
 + (UIImage*)gxImageWithColor:(UIColor*)color size:(CGSize)size cornerRadius:(CGFloat)cornerRadius{
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
@@ -397,9 +398,9 @@
 - (UIImage *)gxMirrorVertical{
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef contex = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(contex, 0, self.height);
+    CGContextTranslateCTM(contex, 0, self.gxHeight);
     CGContextScaleCTM(contex, 1.0, -1.0);
-    [self drawInRect:CGRectMake(0, 0, self.width, self.height)];
+    [self drawInRect:CGRectMake(0, 0, self.gxWidth, self.gxHeight)];
     UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return returnImage;
@@ -408,9 +409,9 @@
 - (UIImage *)gxMirrorHorizon{
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef contex = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(contex, self.width, 0);
+    CGContextTranslateCTM(contex, self.gxWidth, 0);
     CGContextScaleCTM(contex, -1.0, 1.0);
-    [self drawInRect:CGRectMake(0, 0, self.width, self.height)];
+    [self drawInRect:CGRectMake(0, 0, self.gxWidth, self.gxHeight)];
     UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return returnImage;
@@ -838,8 +839,8 @@
     if (frame.size.width <=0.1 || frame.size.height<=0)
         return frame;
     
-    CGFloat scale = MAX(self.width/frame.size.width, self.height/frame.size.height);
-    CGSize size = CGSizeMake(self.width/scale, self.height/scale);
+    CGFloat scale = MAX(self.gxWidth/frame.size.width, self.gxHeight/frame.size.height);
+    CGSize size = CGSizeMake(self.gxWidth/scale, self.gxHeight/scale);
     return CGRectMake(frame.origin.x + (frame.size.width-size.width)/2,
                       frame.origin.y + (frame.size.height-size.height)/2,
                       size.width, size.height);
@@ -848,8 +849,8 @@
     if (frame.size.width <=0.1 || frame.size.height<=0)
         return frame;
     
-    CGFloat scale = MIN(self.width/frame.size.width, self.height/frame.size.height);
-    CGSize size = CGSizeMake(self.width/scale, self.height/scale);
+    CGFloat scale = MIN(self.gxWidth/frame.size.width, self.gxHeight/frame.size.height);
+    CGSize size = CGSizeMake(self.gxWidth/scale, self.gxHeight/scale);
     return CGRectMake(frame.origin.x + (frame.size.width-size.width)/2,
                       frame.origin.y + (frame.size.height-size.height)/2,
                       size.width, size.height);
@@ -863,11 +864,11 @@
 
 
 - (UIImage *)gxFitToSize:(CGSize)size{
-    CGFloat scale = MIN(size.width/self.width, size.height/self.height);
+    CGFloat scale = MIN(size.width/self.gxWidth, size.height/self.gxHeight);
     if (scale>1.0)
         return self;
     
-    CGSize draw_size = CGSizeMake((int)(self.width*scale), (int)(self.height*scale));
+    CGSize draw_size = CGSizeMake((int)(self.gxWidth*scale), (int)(self.gxHeight*scale));
     
     CGRect rect = CGRectMake(0, 0, draw_size.width, draw_size.height);
     
@@ -886,8 +887,8 @@
 }
 
 - (UIImage *)gxCoverToSize:(CGSize)size{
-    CGFloat scale = MAX(size.width/self.width, size.height/self.height);
-    CGSize draw_size = CGSizeMake((int)(self.width*scale), (int)(self.height*scale));
+    CGFloat scale = MAX(size.width/self.gxWidth, size.height/self.gxHeight);
+    CGSize draw_size = CGSizeMake((int)(self.gxWidth*scale), (int)(self.gxHeight*scale));
     
     CGRect rect = CGRectMake(0, 0, draw_size.width, draw_size.height);
     
@@ -1235,9 +1236,9 @@
 - (UIImage *)mirrorVertical{
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef contex = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(contex, 0, self.height);
+    CGContextTranslateCTM(contex, 0, self.gxHeight);
     CGContextScaleCTM(contex, 1.0, -1.0);
-    [self drawInRect:CGRectMake(0, 0, self.width, self.height)];
+    [self drawInRect:CGRectMake(0, 0, self.gxWidth, self.gxHeight)];
     UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return returnImage;
@@ -1246,9 +1247,9 @@
 - (UIImage *)mirrorHorizon{
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
     CGContextRef contex = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(contex, self.width, 0);
+    CGContextTranslateCTM(contex, self.gxWidth, 0);
     CGContextScaleCTM(contex, -1.0, 1.0);
-    [self drawInRect:CGRectMake(0, 0, self.width, self.height)];
+    [self drawInRect:CGRectMake(0, 0, self.gxWidth, self.gxHeight)];
     UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return returnImage;
@@ -1270,7 +1271,7 @@
     if (!complete)
         return;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        CGSize size = CGSizeMake(self.width*self.scale, self.height*self.scale);
+        CGSize size = CGSizeMake(self.gxWidth*self.scale, self.gxHeight*self.scale);
         UIImage *old = self;
         
         CGSize screensize = [UIScreen mainScreen].bounds.size;
@@ -1396,6 +1397,9 @@ static unsigned char *RequestImagePixelData(UIImage *inImage)
  */
 - (UIImage *)gxTransToMosaicImageblockLevel:(NSUInteger)level
 {
+    if (level == 0) {
+        return nil;
+    }
     //获取BitmapData
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGImageRef imgRef = self.CGImage;
@@ -1559,5 +1563,8 @@ static unsigned char *RequestImagePixelData(UIImage *inImage)
         return imageWithoutAlpha;
     }
 }
+
+
+
 
 @end

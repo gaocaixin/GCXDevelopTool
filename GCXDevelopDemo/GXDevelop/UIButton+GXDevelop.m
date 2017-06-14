@@ -8,6 +8,7 @@
 
 #import "UIButton+GXDevelop.h"
 #import <objc/runtime.h>
+#import "UIView+GXDevelop.h"
 #define kGxAddTapRippleEffectColor  @"kGxAddTapRippleEffectColor"
 #define kGxAddTapRippleEffectDuration  @"kGxAddTapRippleEffectDuration"
 
@@ -20,6 +21,7 @@
 @dynamic gxImagesNHSD;
 @dynamic gxTitleColorsNHSD;
 @dynamic gxTitlesNHSD;
+@dynamic gxAttrTitlesNHSD;
 
 // 快速设置属性
 - (void)setGxImagesNHSD:(NSArray *)gxImagesNHSD
@@ -38,6 +40,12 @@
 {
     [self gxEnumerateNHSDArray:gxTitleColorsNHSD UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
         [self setTitleColor:obj forState:buttonState];
+    }];
+}
+- (void)setGxAttrTitlesNHSD:(NSArray *)gxAttrTitlesNHSD
+{
+    [self gxEnumerateNHSDArray:gxAttrTitlesNHSD UsingBlock:^(id obj, NSUInteger idx, BOOL *stop, UIControlState buttonState) {
+        [self setAttributedTitle:obj forState:buttonState];
     }];
 }
 

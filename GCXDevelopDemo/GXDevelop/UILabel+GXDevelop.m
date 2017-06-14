@@ -8,6 +8,7 @@
 
 #import "UILabel+GXDevelop.h"
 #import "NSString+GXDevelop.h"
+#import "NSAttributedString+GXDevelop.h"
 
 @implementation UILabel (GXDevelop)
 
@@ -31,7 +32,13 @@
 
 - (CGSize)gxGetTextSize
 {
-    return [self.text gxSizeWithLimitSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) font:self.font];
+    if (self.attributedText.length > 0) {
+        return [self.attributedText gxPrefersizeWith:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+    }
+    if (self.text.length > 0) {
+        return [self.text gxSizeWithLimitSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) font:self.font];
+    }
+    return CGSizeZero;
 }
 
 @end

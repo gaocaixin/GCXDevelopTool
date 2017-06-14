@@ -10,6 +10,6 @@
 
 @interface UIScrollView (GXDevelop)
 
-- (void)gxScrollToCenterPoint:(CGPoint)point animation:(CGFloat)animationtime;
+- (void)gxScrollToCenterPoint:(CGPoint)point animation:(CGFloat)animationtime isNeedEmpty:(BOOL)empty;
 
 @end

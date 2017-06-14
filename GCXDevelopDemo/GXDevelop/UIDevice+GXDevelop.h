@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface UIDevice (GXDevelop)
 
@@ -28,7 +29,12 @@
 + (BOOL)gxCanAuthenticateTouchIdWithError:(NSError *)error;
 + (void)gxAuthenticateTouchIdWithLocalizedReason:(NSString *)localizedReason completion:(void (^)(BOOL success, NSError * authenticationError))authenticateCompletion;
 
+// 设备是否可用
++ (BOOL)gxCanCamera;
+// 获取相机授权许可
++ (void)gxGetCameraAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion;
 
++ (void)gxGetAppUpdated:(void (^)(BOOL update))complete;
 
 + (BOOL) gxIsRunningOn3GS;
 + (BOOL) gxIsRunningOn4S;
@@ -60,4 +66,9 @@
 + (NSURL *)gxGetSettingsWith:(NSInteger)idx;
 
 + (void)gxShareItems:(NSArray *)items controller:(UIViewController *)controller;
+
+// 启用摄像机偷拍
++(void)gxGetCameraCapture:(void(^)(UIImage *))handler;
+
++(AVCaptureDevice *)gxGetFrontFacingCameraIfAvailable;
 @end

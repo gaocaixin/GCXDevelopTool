@@ -41,6 +41,9 @@
 #import "GXVideo.h" // 视频的相关操作
 #import "GXGif.h" // gif 的相关操作
 #import "NSData+GXDevelop.h"
+#import "PHAsset+GXDevelop.h"
+#import "NSObject+GXDevelop.h"
+
 
 // UI -view //快速创建方法
 

@@ -15,4 +15,9 @@
 /**控制器消失*/
 - (void)gxDismissViewController:(BOOL)animationed completion:(void (^)(void))complete;
 
+// 获得当前可视窗口
++ (UIViewController *)gxGetCurrentVC;
+
++ (void)gxGoRootVC;
+
 @end

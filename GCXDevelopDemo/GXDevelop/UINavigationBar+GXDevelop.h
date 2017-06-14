@@ -39,4 +39,6 @@
  */
 - (void)gxUpdateNavBarAppearanceFont:(UIFont *)font titleColor:(UIColor *)titleColor barBgColor:(UIColor *)barBgColor;
 
+- (void)gxUpdateNavBarAppearanceFont:(UIFont *)font titleColor:(UIColor *)titleColor spaec:(CGFloat)space barBgColor:(UIColor *)barBgColor;
+
 @end

@@ -31,6 +31,11 @@
             end = CGPointMake(1, 0.5);
         }
             break;
+        case GXGradientLayerDirectionRightToLeft:{
+            start = CGPointMake(1, 0.5);
+            end = CGPointMake(0, 0.5);
+        }
+            break;
         case GXGradientLayerDirectionTopLeftToDownRight:
         {
             start = CGPointMake(0, 0);

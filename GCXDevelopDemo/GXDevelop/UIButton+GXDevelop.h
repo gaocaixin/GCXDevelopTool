@@ -18,6 +18,8 @@ Btn.gxImagesNHSD = @[image1,[nsnull null], image2];会自动设置UIControlState
  */
 @property (nonatomic, strong) NSArray * gxImagesNHSD;
 @property (nonatomic, strong) NSArray * gxTitlesNHSD;
+@property (nonatomic, strong) NSArray * gxAttrTitlesNHSD;
+
 @property (nonatomic, strong) NSArray * gxTitleColorsNHSD;
 
 /**

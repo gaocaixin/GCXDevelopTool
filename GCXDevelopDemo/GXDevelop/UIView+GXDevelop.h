@@ -13,9 +13,13 @@
 // frame
 @property (nonatomic, assign) CGPoint gxOrigin;
 @property (nonatomic, assign) CGFloat gxX;
+@property (nonatomic, assign) CGFloat left;
 @property (nonatomic, assign) CGFloat gxY;
+@property (nonatomic, assign) CGFloat top;
 @property (nonatomic, assign) CGFloat gxMaxX;
+@property (nonatomic, assign) CGFloat right;
 @property (nonatomic, assign) CGFloat gxMaxY;
+@property (nonatomic, assign) CGFloat bottom;
 @property (nonatomic, assign) CGSize  gxSize;
 @property (nonatomic, assign) CGFloat gxWidth;
 @property (nonatomic, assign) CGFloat gxHeight;
@@ -83,6 +87,10 @@
 -(UIImage *)gxGetViewShotWithScale:(CGFloat)scale;
 
 
+/**
+ 获取显示当前view的controller
+ */
+- (UIViewController*)gxViewController;
 - (void)gxConvertCoordinationTo:(UIView *)subView with:(CGContextRef)context;
 - (UIBezierPath *)gxConvertBezierPath:(UIBezierPath *)path to:(UIView *)view;
 

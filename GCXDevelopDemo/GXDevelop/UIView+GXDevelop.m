@@ -33,6 +33,12 @@
     frame.origin.x = gxX;
     self.frame = frame;
 }
+- (CGFloat)left{
+    return self.gxX;
+}
+- (void)setLeft:(CGFloat)left{
+    [self setGxX:left];
+}
 
 - (CGFloat)gxY
 {
@@ -44,7 +50,12 @@
     frame.origin.y = gxY;
     self.frame = frame;
 }
-
+- (CGFloat)top{
+    return self.gxY;
+}
+- (void)setTop:(CGFloat)top{
+    [self setGxY:top];
+}
 - (CGFloat)gxMaxX
 {
     return CGRectGetMaxX(self.frame);
@@ -54,6 +65,12 @@
     CGRect frame = self.frame;
     frame.origin.x = gxMaxX-self.gxWidth;
     self.frame = frame;
+}
+- (CGFloat)right{
+    return self.gxMaxX;
+}
+- (void)setRight:(CGFloat)right{
+    [self setGxMaxX:right];
 }
 
 - (CGFloat)gxMaxY
@@ -65,6 +82,12 @@
     CGRect frame = self.frame;
     frame.origin.y = gxMaxY-self.gxHeight;
     self.frame = frame;
+}
+- (CGFloat)bottom{
+    return self.gxMaxY;
+}
+- (void)setBottom:(CGFloat)bottom{
+    [self setGxMaxY:bottom];
 }
 
 - (CGPoint)gxOrigin
@@ -526,10 +549,10 @@
     UIBezierPath *bPath = [UIBezierPath bezierPathWithCGPath:[path CGPath]];
     
     CGAffineTransform trans = CGAffineTransformIdentity;
-    //    CGPoint center = [self convertPoint:CGPointMake(view.b_width/2, view.b_height/2) fromView:view];
+    //    CGPoint center = [self convertPoint:CGPointMake(view.gxBwidth/2, view.gxBheight/2) fromView:view];
     CGPoint topleft = [self convertPoint:CGPointMake(view.bounds.origin.x, view.bounds.origin.y) fromView:view];
     
-    //    trans = CGAffineTransformTranslate(trans, (center.x-view.b_width/2), (center.y-view.b_height/2));
+    //    trans = CGAffineTransformTranslate(trans, (center.x-view.gxBwidth/2), (center.y-view.gxBheight/2));
     //    trans = CGAffineTransformConcat(trans, view.transform);
     //    trans = CGAffineTransformInvert(trans);
     
@@ -546,5 +569,14 @@
     
     return bPath;
 }
-
+//取得View的controller
+- (UIViewController*)gxViewController {
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
 @end

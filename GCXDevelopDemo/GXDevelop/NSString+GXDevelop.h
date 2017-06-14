@@ -31,6 +31,7 @@
  *正则判断
  */
 - (BOOL)gxValidateWithRegexStr:(NSString *)regexStr;
+- (BOOL)gxIsValidEmail;
 /**
  *计算size
  */
@@ -42,11 +43,13 @@
 /**
  * 添加文字间距
  */
-- (NSMutableAttributedString *) gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing;
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing;
 /**
  * 添加文字间距 行间距
  */
 - (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing alignment:(NSTextAlignment)alignment;
+
 /**
  *将16进制转成 color
  */

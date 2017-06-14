@@ -23,6 +23,9 @@
     return [emailTest evaluateWithObject:self];
     
 }
+- (BOOL)gxIsValidEmail{
+    return [self gxValidateWithRegexStr:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
+}
 - (CGSize )gxSizeWithLimitSize:(CGSize )limitSize  font:(UIFont *)font {
     CGSize size;
     if([[UIDevice currentDevice].systemVersion doubleValue] >=7.0)
@@ -55,34 +58,37 @@
 }
 
 +(NSString*)gxLocalizedString:(NSString *)key {
-    NSString* s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:@"Localizable2"];
-    if ([s isEqualToString:key])
-        s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil];
-    // We look recursively for ${...}
-    //ASSERT(s);
     
-    while (s && [s rangeOfString:@"${"].location != NSNotFound) {
-        NSRange r1, t, s2r;
-        r1 = [s rangeOfString:@"${"];
-        NSUInteger i1 = r1.location;
-        t.location = r1.location;
-        t.length = [s length] - r1.location;
-        NSUInteger i2 = [s rangeOfString:@"}" options:NSLiteralSearch range:t].location;
-        // We now replace the string between i1 and i2
-        // Make s2r range from ${ to },
-        s2r.location = i1+2;
-        s2r.length = i2 - i1 - 2;
-        // s2 is the localized with replacement
-        NSString *subkey = [s substringWithRange:s2r];
-        NSString *s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:@"Localizable2"];
-        if ([s2 isEqualToString:subkey])
-            s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:nil];
-        // Make s2r range from ${ to }
-        s2r.location = i1;
-        s2r.length = i2 - i1 + 1;
-        s = [s stringByReplacingCharactersInRange:s2r withString:s2];
-    }
-    return s;
+        return  NSLocalizedString(key, nil);
+
+//    NSString* s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:@"Localizable2"];
+//    if ([s isEqualToString:key])
+//        s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil];
+//    // We look recursively for ${...}
+//    //ASSERT(s);
+//    
+//    while (s && [s rangeOfString:@"${"].location != NSNotFound) {
+//        NSRange r1, t, s2r;
+//        r1 = [s rangeOfString:@"${"];
+//        NSUInteger i1 = r1.location;
+//        t.location = r1.location;
+//        t.length = [s length] - r1.location;
+//        NSUInteger i2 = [s rangeOfString:@"}" options:NSLiteralSearch range:t].location;
+//        // We now replace the string between i1 and i2
+//        // Make s2r range from ${ to },
+//        s2r.location = i1+2;
+//        s2r.length = i2 - i1 - 2;
+//        // s2 is the localized with replacement
+//        NSString *subkey = [s substringWithRange:s2r];
+//        NSString *s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:@"Localizable2"];
+//        if ([s2 isEqualToString:subkey])
+//            s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:nil];
+//        // Make s2r range from ${ to }
+//        s2r.location = i1;
+//        s2r.length = i2 - i1 + 1;
+//        s = [s stringByReplacingCharactersInRange:s2r withString:s2];
+//    }
+//    return s;
 }
 
 /**
@@ -94,10 +100,11 @@
     
     if (self.length > 0) {
         
+        if (font) {
         [strAttri addAttribute:NSFontAttributeName
                          value:font
                          range:NSMakeRange(0, [strAttri length])];
-        
+        }
         [strAttri addAttribute:NSForegroundColorAttributeName
                          value:fontColor
                          range:NSMakeRange(0, [strAttri length])];
@@ -126,6 +133,15 @@
     NSMutableAttributedString *attr = [self gxAttributeStringWithFont:font color:fontColor spacing:spacing];
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = linespacing;
+    paragraphStyle.alignment = alignment;
+    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [attr length])];
+    return attr;
+}
+
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing alignment:(NSTextAlignment)alignment
+{
+    NSMutableAttributedString *attr = [self gxAttributeStringWithFont:font color:fontColor spacing:spacing];
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.alignment = alignment;
     [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [attr length])];
     return attr;

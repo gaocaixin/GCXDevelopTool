@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 @interface NSAttributedString (GXDevelop)
+
+@property (nonatomic, assign, readonly)CGSize gxSize;
 /**
  *计算 size
  */
@@ -22,5 +24,7 @@
 //- (CGSize)gxPrefersizeWith:(CGSize)size;
 
 - (CGSize)gxPrefersizeWith:(CGSize)size withLastLine:(CGRect *)rect;
+
++ (NSAttributedString *)gxAttributeStringWith:(NSString *)str font:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
 
 @end

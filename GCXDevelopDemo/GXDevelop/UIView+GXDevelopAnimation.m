@@ -8,6 +8,8 @@
 
 #import <objc/runtime.h>
 #import "UIView+GXDevelopAnimation.h"
+#import "UIView+GXDevelop.h"
+
 //#import <FBShimmering/FBShimmeringView.h>
 //#import <FBShimmering/FBShimmeringLayer.h>
 

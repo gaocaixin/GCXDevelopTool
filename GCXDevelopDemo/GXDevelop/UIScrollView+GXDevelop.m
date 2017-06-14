@@ -7,23 +7,26 @@
 //
 
 #import "UIScrollView+GXDevelop.h"
+#import "UIView+GXDevelop.h"
 
 @implementation UIScrollView (GXDevelop)
 
-- (void)gxScrollToCenterPoint:(CGPoint)point animation:(CGFloat)animationtime
+- (void)gxScrollToCenterPoint:(CGPoint)point animation:(CGFloat)animationtime isNeedEmpty:(BOOL)empty 
 {
-//    CGPoint pointrecenter = point;
     CGFloat centery = point.y;
     CGFloat scrollY = centery - self.gxHeight /2.;
-    scrollY = MIN(scrollY, self.contentSize.height-self.gxHeight);
-    scrollY = MAX(0, scrollY);
+    if (!empty) {
+        scrollY = MIN(scrollY, self.contentSize.height-self.gxHeight);
+        scrollY = MAX(0, scrollY);
+    }
     
     CGFloat centerx = point.x;
     CGFloat scrollx = centerx - self.gxWidth /2.;
-    scrollx = MIN(scrollx, self.contentSize.width-self.gxWidth);
-    scrollx = MAX(0, scrollx);
-    
-    
+    if (!empty) {
+        scrollx = MIN(scrollx, self.contentSize.width-self.gxWidth);
+        scrollx = MAX(0, scrollx);
+    }
+
     [UIView animateWithDuration:animationtime animations:^{
         self.contentOffset = CGPointMake(scrollx, scrollY);
     }];

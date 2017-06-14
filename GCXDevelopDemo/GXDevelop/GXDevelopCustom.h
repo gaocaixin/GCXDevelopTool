@@ -10,7 +10,7 @@
 #define GXDevelopCustom_h
 
 
-#define MB_INSTANCETYPE // 项目没引用 mb 的话 就注释此行
+//#define MB_INSTANCETYPE // 项目没引用 mb 的话 就注释此行
 /**
  *如果需要适配 frame 将用到以下宏  需要将GXDesignSize的值改成设计原稿机型的尺寸. CGSizeMake(375.f, 667.f) 是 iphone6的尺寸.
  */

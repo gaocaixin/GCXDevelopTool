@@ -10,6 +10,7 @@
 #include <ImageIO/ImageIO.h>
 #import <Accelerate/Accelerate.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "UIImage+GXDevelop.h"
 
 @implementation GXGif
 

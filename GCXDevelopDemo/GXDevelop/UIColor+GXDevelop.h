@@ -18,4 +18,8 @@
 + (UIColor *)gxColorWithString:(NSString *)str;
 
 
++ (UIColor *)gxColorWith:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
++ (UIColor *)gxColorWith:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
++ (UIColor *)gxColorPercent:(CGFloat)percent from:(UIColor *)fromColor to:(UIColor *)toColor;
+- (UIColor *)gxChangeColorAlpha:(CGFloat)alpha;
 @end

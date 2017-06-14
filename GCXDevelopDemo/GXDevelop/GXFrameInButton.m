@@ -30,22 +30,7 @@
     return self;
 }
 
-- (CGRect)titleRectForContentRect:(CGRect)contentRect
-{
-//    if ([NSStringFromCGRect(_gxTitleLabelFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
-        return [super titleRectForContentRect:contentRect];
-//    } else {
-//        return _gxTitleLabelFrame;
-//    }
-}
-- (CGRect)imageRectForContentRect:(CGRect)contentRect
-{
-//    if ([NSStringFromCGRect(_gxImageViewFrame) isEqualToString:NSStringFromCGRect(CGRectZero)]) {
-        return [super imageRectForContentRect:contentRect];
-//    } else {
-//        return _gxImageViewFrame;
-//    }
-}
+
 
 - (void)layoutSubviews
 {
@@ -64,7 +49,10 @@
 - (void)setGxTitleLabelFrame:(CGRect)gxTitleLabelFrame
 {
     _gxTitleLabelFrame = gxTitleLabelFrame;
-    [self setNeedsLayout];
+    if (!CGRectIsEmpty(self.gxTitleLabelFrame)) {
+        self.titleLabel.frame = self.gxTitleLabelFrame;
+    }
+   // [self setNeedsLayout];
 }
 
 //- (CGRect)gxTitleLabelFrame
@@ -75,7 +63,10 @@
 - (void)setGxImageViewFrame:(CGRect)gxImageViewFrame
 {
     _gxImageViewFrame = gxImageViewFrame;
-    [self setNeedsLayout];
+    //[self setNeedsLayout];
+    if (!CGRectIsEmpty(self.gxImageViewFrame)) {
+        self.imageView.frame = self.gxImageViewFrame;
+    }
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state

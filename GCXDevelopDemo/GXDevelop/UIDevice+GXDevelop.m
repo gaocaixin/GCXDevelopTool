@@ -7,6 +7,7 @@
 //
 
 #import "UIDevice+GXDevelop.h"
+#import "UIApplication+GXDevelop.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 
@@ -18,6 +19,8 @@
 #define IPHONE_4S_NAMESTRING @"iPhone4,1"
 
 #define IPOD_TAG_NAMESTRING @"iPod"
+
+
 
 @implementation UIDevice (GXDevelop)
 
@@ -111,6 +114,45 @@
     }
     return NO;
 }
++ (BOOL)gxCanCamera
+{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
++ (void)gxGetCameraAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion
+{
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    switch (status) {
+        case AVAuthorizationStatusNotDetermined:{
+            // 许可对话没有出现，发起授权许可
+            
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                
+                if (granted) {
+                    //第一次用户接受
+                    authenticateCompletion(YES, nil);
+                }else{
+                    //用户拒绝
+                    authenticateCompletion(NO, nil);
+                }
+            }];
+            break;
+        }
+        case AVAuthorizationStatusAuthorized:{
+            // 已经开启授权，可继续
+            authenticateCompletion(YES, nil);
+            break;
+        }
+        case AVAuthorizationStatusDenied:
+        case AVAuthorizationStatusRestricted:
+            // 用户明确地拒绝授权，或者相机设备无法访问
+            authenticateCompletion(NO, nil);
+            break;
+        default:
+            break;
+    }
+}
+
 + (void)gxAuthenticateTouchIdWithLocalizedReason:(NSString *)localizedReason completion:(void (^)(BOOL success, NSError * authenticationError))authenticateCompletion
 {
     LAContext * context = [[LAContext alloc] init];
@@ -254,10 +296,11 @@
     
      for (NSString *filterName in filterNames) {
         
-     CIFilter *filter=[CIFilter filterWithName:filterName];
+         CIFilter *filter=[CIFilter filterWithName:filterName];
         
-        GXLog(@"AllFilters--name:%@ attributes:%@",filterName,[filter attributes]);
-}}
+         GXLog(@"AllFilters--name:%@ attributes:%@",filterName,[filter attributes]);
+     }
+}
 
 + (void)gxShareItems:(NSArray *)items controller:(UIViewController *)controller {
     
@@ -272,5 +315,129 @@
     }];
 }
 
++(AVCaptureDevice *)gxGetFrontFacingCameraIfAvailable {
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *captureDevice = nil;
+    for (AVCaptureDevice *device in videoDevices) {
+        if (device.position == AVCaptureDevicePositionFront) {
+            captureDevice = device;
+            break;
+        }
+    }
+    //  couldn't find one on the front, so just get the default video device.
+    if (!captureDevice) {
+        captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    }
+    return captureDevice;
+}
+
+// 偷拍
++(void)gxGetCameraCapture:(void(^)(UIImage *))handler {
+    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    
+    if ([session canSetSessionPreset:AVCaptureSessionPreset640x480])
+        session.sessionPreset = AVCaptureSessionPreset640x480; //Sales-Check: Invader's Photo Quality Adjust
+    
+    NSError *error = nil;
+    AVCaptureDevice  * captureDevice = [UIDevice gxGetFrontFacingCameraIfAvailable];
+    
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
+    if (!input && error != nil) {
+        NSLog(@"ERROR: trying to open camera: %@", error.localizedDescription);
+        return;
+    }
+    
+    if ([session canAddInput:input]) {
+        [session addInput:input];
+    }
+    
+//    dispatch_queue_t sessionQueue = dispatch_queue_create("com.iu.camera.capture", DISPATCH_QUEUE_SERIAL);
+//    dispatch_async(sessionQueue, ^{
+//        [session startRunning];
+//    });
+        [session startRunning];
+    
+    if ([captureDevice lockForConfiguration:&error]) {
+        // locked successfully, go on with configuration
+        AVCaptureFocusMode focusMode = AVCaptureFocusModeAutoFocus;
+        if ([captureDevice isFocusModeSupported:focusMode])
+            captureDevice.focusMode = focusMode;
+        
+        AVCaptureExposureMode exposureMode = AVCaptureExposureModeAutoExpose;
+        if ([captureDevice isExposureModeSupported: exposureMode])
+            captureDevice.exposureMode = exposureMode;
+        
+        // iOS8+
+        if (([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending))
+            [captureDevice setExposureTargetBias:(captureDevice.maxExposureTargetBias + captureDevice.minExposureTargetBias)/2.f completionHandler:^(CMTime syncTime) {
+                NSLog(@"setExposureTargetBias Done");
+            }];
+        
+        AVCaptureWhiteBalanceMode whiteBalanceMode = AVCaptureWhiteBalanceModeAutoWhiteBalance;
+        if ([captureDevice isWhiteBalanceModeSupported: whiteBalanceMode])
+            captureDevice.whiteBalanceMode = whiteBalanceMode;
+        
+        [captureDevice unlockForConfiguration];
+    } else {
+        // something went wrong, the device was probably already locked
+        NSLog(@"ERROR: trying to lockForConfiguration camera: %@", error.localizedDescription);
+        return;
+    }
+    
+    AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    //stillImageOutput.capturingStillImage = YES;
+    NSDictionary *outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
+    [stillImageOutput setOutputSettings:outputSettings];
+    if ([session canAddOutput:stillImageOutput]) {
+        [session addOutput:stillImageOutput];
+    }
+    
+    AVCaptureConnection *videoConnection = nil;
+    for (AVCaptureConnection *connection in stillImageOutput.connections) {
+        for (AVCaptureInputPort *port in [connection inputPorts]) {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
+                videoConnection = connection;
+                break;
+            }
+        }
+        if (videoConnection) {break;}
+    }
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        
+        [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+            [session stopRunning];
+            if (imageDataSampleBuffer != NULL && error == nil) {
+                NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                UIImage *capturedImage = [UIImage imageWithData:imageData];
+                if (captureDevice == [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo].lastObject) {
+                    capturedImage = [[UIImage alloc] initWithCGImage:capturedImage.CGImage scale:1.0f orientation:
+                                     UIImageOrientationUp];
+                }
+                if (handler)
+                    handler(capturedImage);
+            }
+        }];
+        
+    });
+}
+
++ (void)gxGetAppUpdated:(void (^)(BOOL update))complete
+{
+    NSString *perVersion = [GXUserDefaults stringForKey:@"gxGetAppUpdated"];
+    NSString *curVersion = GXSharedApp.gxAppVersion;
+    if ([perVersion isEqualToString:curVersion]) {
+        if (complete) {
+            complete(NO);
+        }
+    } else {
+        if (complete) {
+            complete(YES);
+        }
+    }
+    [GXUserDefaults setObject:curVersion forKey:@"gxGetAppUpdated"];
+    [GXUserDefaults synchronize];
+}
 
 @end

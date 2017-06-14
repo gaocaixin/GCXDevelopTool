@@ -57,6 +57,25 @@
 
 - (void)gxUpdateNavBarAppearanceFont:(UIFont *)font titleColor:(UIColor *)titleColor barBgColor:(UIColor *)barBgColor
 {
+    union{
+        long l_number;
+        int8_t i8_number;
+    } number;
+    
+    number.l_number = -0.5;
+    
+    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number.i8_number);
+    
+    self.titleTextAttributes =
+    @{NSFontAttributeName: font,
+      NSForegroundColorAttributeName: titleColor,
+      NSKernAttributeName : (__bridge id)num
+      
+      };
+    self.backgroundColor = barBgColor;
+}
+- (void)gxUpdateNavBarAppearanceFont:(UIFont *)font titleColor:(UIColor *)titleColor spaec:(CGFloat)space barBgColor:(UIColor *)barBgColor
+{
     self.titleTextAttributes =
     @{NSFontAttributeName: font,
       NSForegroundColorAttributeName: titleColor};

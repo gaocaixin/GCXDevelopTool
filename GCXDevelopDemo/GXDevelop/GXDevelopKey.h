@@ -80,21 +80,22 @@
  *    颜色
  */
 // 256颜色表示
-#define GXColorFromRGBA(R,G,B,A) [UIColor colorWithRed:(R)/256.f green:(G)/256.f blue:(B)/256.f alpha:(A)]
+#define GXColorFromRGBA(R,G,B,A) [UIColor colorWithRed:(R)/255.f green:(G)/255.f blue:(B)/255.f alpha:(A)]
 // 16进制颜色表示
 #define GXColorFromRGBhue(RGBhue) [UIColor colorWithRed:((float)((RGBhue & 0xFF0000) >> 16))/255.0 green:((float)((RGBhue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBhue & 0x0000FF))/255.0 alpha:1.0]
 #define GXColorFromRGBhueA(RGBhue, A) [UIColor colorWithRed:((float)((RGBhue & 0xFF0000) >> 16))/255.0 green:((float)((RGBhue & 0x00FF00) >> 8))/255.0 blue:((float)(RGBhue & 0x0000FF))/255.0 alpha:A]
 // 随机颜色
 #define GXColorRandom [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
 
-/**
- *自定义log (发布版本不打印任何信息)
- */
+
 #ifdef DEBUG
-#define GXLog(...) NSLog(__VA_ARGS__)
+#define GXLog(...) NSLog(__VA_ARGS__) //自定义log (发布版本不打印任何信息)
+#define GXASSERT assert // 自定义assert (发布版本不打印任何信息)
 #else
 #define GXLog(...)
+#define GXASSERT(...) ((void)(0))
 #endif
+
 
 //A better version of NSLog
 //#ifdef DEBUG
@@ -114,9 +115,9 @@
 // 打印函数名及函数的调用者 (测试使用:如-[MyViewController dealloc])
 #define GXLogFunc             GXLog(@"%s",__func__);
 #define GXLogFuncId(id)         GXLog(@"%s__%@",__func__, id);
-#define GXLogMsg(msgName,msg) GXLog(@"%@--%@",msgName,msg);
+#define GXLogMsg(msg) GXLog(@"msg-%@",msg);
+#define GXLogMsgnameAndMsg(msgName,msg) GXLog(@"%@--%@",msgName,msg);
 #define GXLogMsgFloat(msgName,msg) GXLog(@"%@--%lf",msgName,msg);
-
 #define GXLogFuncMsg(msg) GXLog(@"%s-%@",__func__,msg);
 
 /**

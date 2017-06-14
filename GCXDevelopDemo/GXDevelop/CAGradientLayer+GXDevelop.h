@@ -13,6 +13,7 @@
 typedef enum : NSUInteger {
     GXGradientLayerDirectionTopToDown,
     GXGradientLayerDirectionLeftToRight,
+    GXGradientLayerDirectionRightToLeft,
     GXGradientLayerDirectionTopLeftToDownRight,
     GXGradientLayerDirectionTopRightToDownLeft,
     GXGradientLayerDirectionOther
