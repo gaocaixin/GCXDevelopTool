@@ -236,7 +236,7 @@
     [toColor getRed:&r2 green:&g2 blue:&b2 alpha:&a2];
     return [UIColor colorWithRed:(r+percent*(r2-r))
                            green:(g+percent*(g2-g))
-                            blue:(b+percent*(b2-b2))
+                            blue:(b+percent*(b2-b))
                            alpha:(a+percent*(a2-a))];
 }
 + (NSMutableArray *)gxColorGetRGBAfromUicolor:(UIColor*)color{

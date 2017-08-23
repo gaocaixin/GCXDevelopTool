@@ -31,4 +31,6 @@
 - (nullable NSData *)gxGunzippedData;
 - (BOOL)gxIsGzippedData;
 
+- (NSData *_Nullable)gxDecodeEncryptedData;
+
 @end

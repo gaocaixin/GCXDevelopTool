@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 //  宽度，高度适配
 func kFitWid(_ wid: CGFloat) -> CGFloat {
@@ -58,5 +59,15 @@ func kScreenBounds() ->CGRect{
 }
 //颜色
 func kThemeColor() ->UIColor{  //app主题色
-    return UIColor.gxColor(with: 119.313, green: 53.2, blue: 255)
+//    return UIColor.gxColor(with: 119.313, green: 53.2, blue: 255)
+    return UIColor.gxColor(with: 0, green: 158, blue: 255)
+}
+
+//统计
+func logFBEvent(_ event:String, _ param:[AnyHashable : Any]? = nil){
+    if param == nil {
+        FBSDKAppEvents.logEvent(event);
+    } else {
+        FBSDKAppEvents.logEvent(event, parameters: param)
+    }
 }

@@ -14,6 +14,7 @@
 #import <sys/utsname.h>
 #import <LocalAuthentication/LAContext.h>
 #import "GXDevelopKey.h"
+#import <Photos/Photos.h>
 
 #define IPHONE_3GS_NAMESTRING @"iPhone2,1"
 #define IPHONE_4S_NAMESTRING @"iPhone4,1"
@@ -145,6 +146,52 @@
         }
         case AVAuthorizationStatusDenied:
         case AVAuthorizationStatusRestricted:
+            // 用户明确地拒绝授权，或者相机设备无法访问
+            authenticateCompletion(NO, nil);
+            break;
+        default:
+            break;
+    }
+}
++ (void)gxGetPhotoAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion {
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    switch (status) {
+        case PHAuthorizationStatusNotDetermined:{
+            // 许可对话没有出现，发起授权许可
+            
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                
+                switch (status) {
+                    case PHAuthorizationStatusNotDetermined:{
+                        // 许可对话没有出现，发起授权许可
+                        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                            
+                        }];
+                        break;
+                    }
+                    case PHAuthorizationStatusAuthorized:{
+                        // 已经开启授权，可继续
+                        authenticateCompletion(YES, nil);
+                        break;
+                    }
+                    case PHAuthorizationStatusDenied:
+                    case PHAuthorizationStatusRestricted:
+                        // 用户明确地拒绝授权，或者相机设备无法访问
+                        authenticateCompletion(NO, nil);
+                        break;
+                    default:
+                        break;
+                }
+            }];
+            break;
+        }
+        case PHAuthorizationStatusAuthorized:{
+            // 已经开启授权，可继续
+            authenticateCompletion(YES, nil);
+            break;
+        }
+        case PHAuthorizationStatusDenied:
+        case PHAuthorizationStatusRestricted:
             // 用户明确地拒绝授权，或者相机设备无法访问
             authenticateCompletion(NO, nil);
             break;

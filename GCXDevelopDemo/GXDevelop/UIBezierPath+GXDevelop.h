@@ -24,4 +24,5 @@ typedef enum : NSUInteger {
  *放回一个UIBezierPath. 矩形去掉莫一边半圆的 path   用于绘制图形
  */
 + (UIBezierPath *)gxBezierPathRectRemoveSemicircular:(CGRect)rect directionOption:(GXBezierPathRemoveSemicircularDirectionOption)directionOption;
++ (CGFloat)getAnglesWithThreePoint:(CGPoint)pointA pointB:(CGPoint)pointB pointC:(CGPoint)pointC;
 @end

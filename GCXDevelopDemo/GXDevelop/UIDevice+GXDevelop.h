@@ -33,6 +33,9 @@
 + (BOOL)gxCanCamera;
 // 获取相机授权许可
 + (void)gxGetCameraAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion;
+// 获取照片授权许可
++ (void)gxGetPhotoAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion;
+
 
 + (void)gxGetAppUpdated:(void (^)(BOOL update))complete;
 
