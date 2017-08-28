@@ -101,27 +101,17 @@
     if (self.length > 0) {
         
         if (font) {
-        [strAttri addAttribute:NSFontAttributeName
-                         value:font
-                         range:NSMakeRange(0, [strAttri length])];
+            [strAttri addAttribute:NSFontAttributeName
+                             value:font
+                             range:NSMakeRange(0, [strAttri length])];
         }
         [strAttri addAttribute:NSForegroundColorAttributeName
                          value:fontColor
                          range:NSMakeRange(0, [strAttri length])];
         
-        union{
-            long l_number;
-            int8_t i8_number;
-        } number;
-        
-        number.l_number = spacing;
-        
-        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number.i8_number);
-        [strAttri addAttribute:(id)kCTKernAttributeName
-                         value:(__bridge id)num
+        [strAttri addAttribute:NSKernAttributeName
+                         value:[NSNumber numberWithFloat:spacing]
                          range:NSMakeRange(0, [strAttri length]-1)];
-        CFRelease(num);
-        
     }
     return strAttri;
 }
