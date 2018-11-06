@@ -32,12 +32,13 @@
 // 设备是否可用
 + (BOOL)gxCanCamera;
 // 获取相机授权许可
++ (void)gxGetAudioAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion;
 + (void)gxGetCameraAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion;
 // 获取照片授权许可
 + (void)gxGetPhotoAuthorizationCompletion:(void (^)(BOOL allow, NSError * authenticationError))authenticateCompletion;
 
-
-+ (void)gxGetAppUpdated:(void (^)(BOOL update))complete;
+// app 更新相关信息
++ (void)gxGetAppUpdated:(void (^)(NSString *perVersion, NSString *curVersion , BOOL install,BOOL update))complete;
 
 + (BOOL) gxIsRunningOn3GS;
 + (BOOL) gxIsRunningOn4S;
@@ -48,25 +49,26 @@
 + (BOOL) gxIsRunningOniPad;      //iPad
 + (BOOL) gxIsRunningOniPod;      //iPod
 + (CGFloat)gxGetSystemVersion;
-
++ (BOOL) gxIsIphoneX;
++ (BOOL) gxIsIphoneXMax;
++ (BOOL) gxIsiPad;
 // AppItunesURL 
 + (NSURL *)gxGetAppItunesURL:(NSString *)appid;
 // AppItunesURLstr
 + (NSString *)gxGetAppItunesURLString:(NSString *)appid;
-
++ (NSString *)gxOsVersionBuild;
 // 打印系统支持的字体
 + (void)gxLogDeviceFont;
 //打印系统支持的滤镜
 +(void)gxShowAllFilters;
-
+// 打印
++ (void)gxLogDocumentPath;
 // 多点 open Url
 + (void)gxOpenURL:(NSString*)url fromViewController:(UIViewController *)vc;
 
 // 跳转到 app 设置页面
 + (NSURL *)gxGetAppSettingsURLString;
 
-// 设置各种 url
-+ (NSURL *)gxGetSettingsWith:(NSInteger)idx;
 
 + (void)gxShareItems:(NSArray *)items controller:(UIViewController *)controller;
 
@@ -74,4 +76,8 @@
 +(void)gxGetCameraCapture:(void(^)(UIImage *))handler;
 
 +(AVCaptureDevice *)gxGetFrontFacingCameraIfAvailable;
+
+// 检测设备是否越狱 不准
++ (BOOL)gxIsPrisonBreak;
+
 @end

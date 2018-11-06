@@ -27,16 +27,20 @@
     return [self gxValidateWithRegexStr:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
 }
 - (CGSize )gxSizeWithLimitSize:(CGSize )limitSize  font:(UIFont *)font {
+    CGSize limitSizeptr = limitSize;
+    if (limitSizeptr.width == 0 || limitSizeptr.height == 0) {
+        limitSizeptr = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+    }
     CGSize size;
     if([[UIDevice currentDevice].systemVersion doubleValue] >=7.0)
     {
         NSDictionary * attributes = @{NSFontAttributeName:font};
         NSAttributedString *attributedText =[[NSAttributedString alloc]initWithString:self attributes:attributes];
-        return [attributedText gxSizeWithLimitSize:limitSize];
+        return [attributedText gxSizeWithLimitSize:limitSizeptr];
     }
     else
     {
-        CGRect rect = [self boundingRectWithSize: limitSize
+        CGRect rect = [self boundingRectWithSize: limitSizeptr
                                          options: (NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
                                       attributes: @{NSFontAttributeName:font}
                                          context: nil];
@@ -61,54 +65,25 @@
     
         return  NSLocalizedString(key, nil);
 
-//    NSString* s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:@"Localizable2"];
-//    if ([s isEqualToString:key])
-//        s = [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil];
-//    // We look recursively for ${...}
-//    //ASSERT(s);
-//    
-//    while (s && [s rangeOfString:@"${"].location != NSNotFound) {
-//        NSRange r1, t, s2r;
-//        r1 = [s rangeOfString:@"${"];
-//        NSUInteger i1 = r1.location;
-//        t.location = r1.location;
-//        t.length = [s length] - r1.location;
-//        NSUInteger i2 = [s rangeOfString:@"}" options:NSLiteralSearch range:t].location;
-//        // We now replace the string between i1 and i2
-//        // Make s2r range from ${ to },
-//        s2r.location = i1+2;
-//        s2r.length = i2 - i1 - 2;
-//        // s2 is the localized with replacement
-//        NSString *subkey = [s substringWithRange:s2r];
-//        NSString *s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:@"Localizable2"];
-//        if ([s2 isEqualToString:subkey])
-//            s2 = [[NSBundle mainBundle] localizedStringForKey:(subkey) value:@"" table:nil];
-//        // Make s2r range from ${ to }
-//        s2r.location = i1;
-//        s2r.length = i2 - i1 + 1;
-//        s = [s stringByReplacingCharactersInRange:s2r withString:s2];
-//    }
-//    return s;
 }
 
 /**
  * 添加文字间距
  */
-- (NSMutableAttributedString *) gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(long)spacing
+- (NSMutableAttributedString *) gxAttributeStringWithFont:(UIFont *)font color:(UIColor *)fontColor spacing:(CGFloat)spacing
 {
     NSMutableAttributedString *strAttri = [[NSMutableAttributedString alloc] initWithString:self];
     
     if (self.length > 0) {
         
         if (font) {
-            [strAttri addAttribute:NSFontAttributeName
-                             value:font
-                             range:NSMakeRange(0, [strAttri length])];
+        [strAttri addAttribute:NSFontAttributeName
+                         value:font
+                         range:NSMakeRange(0, [strAttri length])];
         }
         [strAttri addAttribute:NSForegroundColorAttributeName
                          value:fontColor
                          range:NSMakeRange(0, [strAttri length])];
-        
         [strAttri addAttribute:NSKernAttributeName
                          value:[NSNumber numberWithFloat:spacing]
                          range:NSMakeRange(0, [strAttri length]-1)];
@@ -118,7 +93,7 @@
 /**
  * 添加文字间距 行间距
  */
-- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
 {
     NSMutableAttributedString *attr = [self gxAttributeStringWithFont:font color:fontColor spacing:spacing];
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -128,7 +103,7 @@
     return attr;
 }
 
-- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(long)spacing alignment:(NSTextAlignment)alignment
+- (NSMutableAttributedString *)gxAttributeStringWithFont:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing alignment:(NSTextAlignment)alignment
 {
     NSMutableAttributedString *attr = [self gxAttributeStringWithFont:font color:fontColor spacing:spacing];
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];

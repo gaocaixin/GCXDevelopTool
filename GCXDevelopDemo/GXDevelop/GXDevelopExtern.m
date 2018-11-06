@@ -42,6 +42,18 @@
     [self refreshDataIfNeed];
     return _gxScreenHeightRatio;
 }
+- (CGFloat)gxScreenHeightRatioWithSubHeight:(CGFloat)sub
+{
+    [self refreshDataIfNeed];
+    
+    return  (_gxScreenHeight - sub )/(GXDesignSize.height - sub);
+}
+- (CGFloat)gxScreenHeightRatioWithSubHeight:(CGFloat)sub DesignSubHeight:(CGFloat)sub2
+{
+    [self refreshDataIfNeed];
+    
+    return  (_gxScreenHeight - sub )/(GXDesignSize.height - sub2);
+}
 - (CGFloat)gxScreenMinRatio
 {
     [self refreshDataIfNeed];
@@ -55,7 +67,7 @@
 
 - (void)refreshDataIfNeed
 {
-    if (_gxScreenWidth != [UIScreen mainScreen].bounds.size.width) {
+    if (_gxScreenWidth != [UIScreen mainScreen].bounds.size.width || _gxScreenHeight != [UIScreen mainScreen].bounds.size.height) {
         [self refreshData];
     }
 }

@@ -49,6 +49,10 @@
 @property (nonatomic )  CGFloat  gxScreenRatio;         // 屏幕宽高比
 
 //@property (nonatomic )  GXScreenRatioType  screenRatioType; // 屏幕类型
+    
+    // for 完美适配 sub当前屏幕的差值 sub2设计稿的差值
+- (CGFloat)gxScreenHeightRatioWithSubHeight:(CGFloat)sub;
+- (CGFloat)gxScreenHeightRatioWithSubHeight:(CGFloat)sub DesignSubHeight:(CGFloat)sub2;
 
 - (void)refreshData;
 - (void)refreshDataIfNeed;

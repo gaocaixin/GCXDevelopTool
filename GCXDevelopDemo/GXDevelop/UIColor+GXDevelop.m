@@ -60,6 +60,20 @@
     NSString *str = [NSString stringWithFormat:@"#%08X", value];
     return str;
 }
++ (UIColor *)gxColorWithoutAlpha:(UIColor *)color{
+    if(color == nil){
+        return nil;
+    }
+    CGFloat red = 0.0;
+    CGFloat green = 0.0;
+    CGFloat blue = 0.0;
+    CGFloat alpha = 0.0;
+    [color getRed:&red green:&green blue:&blue alpha:&alpha];
+    UIColor *newColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    return newColor;
+}
+
+
 + (UIColor *)gxColorWithString:(NSString *)str{
     NSArray *arr = [str componentsSeparatedByString:@","];// "255,255,255"
     if (arr.count == 3){
@@ -81,7 +95,7 @@
             if (!str || [str isEqualToString:@"none"] || !(str.length == 3 || str.length == 4 || str.length == 6 || str.length == 8))
             return nil;
             
-            if (str.length == 3) {
+            if (str.length == 3) { // "fff"
                 str = [NSString stringWithFormat:@"FF%@%@%@%@%@%@", [NSString stringWithFormat:@"%C", [str characterAtIndex:0]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:0]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:1]],
@@ -89,7 +103,7 @@
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:2]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:2]]];
             }
-            else if (str.length == 4) {
+            else if (str.length == 4) {// "ffff"
                 str = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@", [NSString stringWithFormat:@"%C", [str characterAtIndex:0]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:0]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:1]],
@@ -98,10 +112,15 @@
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:2]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:3]],
                        [NSString stringWithFormat:@"%C", [str characterAtIndex:3]]];
-            }else if (str.length == 6)
-            str = [NSString stringWithFormat:@"FF%@", str];
-            
-            
+            }else if (str.length == 6) {//"ffffff"
+                str = [NSString stringWithFormat:@"FF%@", str];
+            } else if (str.length == 8) {//"ffffff"
+                str = str;
+            } else { //未识别的格式
+                return  nil;
+            }
+        
+            // "ffffffff"
             unsigned int rgbValue = 0;
             NSScanner *scanner = [NSScanner scannerWithString:str];
             [scanner scanHexInt:&rgbValue];
@@ -281,5 +300,9 @@
              @"G":@(g),
              @"B":@(b),
              @"A":@(a)};
+}
+
++ (UIColor *)gxGirlyBaseColor {
+    return [self gxColorWith:255 green:74 blue:100];
 }
 @end

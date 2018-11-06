@@ -25,6 +25,6 @@
 
 - (CGSize)gxPrefersizeWith:(CGSize)size withLastLine:(CGRect *)rect;
 
-+ (NSAttributedString *)gxAttributeStringWith:(NSString *)str font:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
++ (NSMutableAttributedString *)gxAttributeStringWith:(NSString *)str font:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment;
 
 @end

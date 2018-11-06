@@ -16,6 +16,9 @@
 
 - (NSString *)gxRGBHexString;
 + (UIColor *)gxColorWithString:(NSString *)str;
++ (UIColor *)gxColorWithoutAlpha:(UIColor *)color;
+
++ (UIColor *)gxGirlyBaseColor;
 
 
 + (UIColor *)gxColorWith:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;

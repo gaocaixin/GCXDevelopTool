@@ -43,7 +43,7 @@
 #import "NSData+GXDevelop.h"
 #import "PHAsset+GXDevelop.h"
 #import "NSObject+GXDevelop.h"
-
+#import "NSLocale+GXDevelop.h"
 
 // UI -view //快速创建方法
 
@@ -59,11 +59,11 @@
 #import "UIViewController+GXDevelop.h"
 #import "UIColor+GXDevelop.h"
 #import "UIScrollView+GXDevelop.h"
-
+#import "GXApp.h"
 // UI - layer
 #import "CAGradientLayer+GXDevelop.h"
 #import "CALayer+GXDevelop.h"
-
+#import "GXBarBgView.h" // 快速创建导航栏下背景 view
 // path
 #import "UIBezierPath+GXDevelop.h"
 

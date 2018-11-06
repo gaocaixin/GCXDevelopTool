@@ -9,6 +9,7 @@
 #import <Photos/Photos.h>
 
 @interface PHAsset (GXDevelop)
+// 
 - (void)gxGetImageWithSize:(CGSize)size contentMode:(PHImageContentMode)mode networkAllowed:(BOOL)networkAllowed onComplete:(void (^)( PHAsset*asset, UIImage * img,  NSDictionary *info))complete;
 - (UIImage *)gxGetImageWithSize:(CGSize)size contentMode:(PHImageContentMode)mode networkAllowed:(BOOL)networkAllowed;
 @end

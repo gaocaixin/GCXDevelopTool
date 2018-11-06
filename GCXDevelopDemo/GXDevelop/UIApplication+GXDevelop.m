@@ -19,6 +19,14 @@
 {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
 }
+- (BOOL)gxDEBUG
+{
+#ifdef DEBUG
+    return YES;
+#else
+    return NO;
+#endif
+}
 
 @end
 

@@ -149,6 +149,10 @@
 
 - (NSArray *)gxArrayValueForKey:(NSString *)key defaultValue:(NSArray *)defaultValue {
     id value = [self objectForKey:key];
+    if([value isKindOfClass:[NSString class]]){
+        id obj = [NSJSONSerialization JSONObjectWithData:[value dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        return ( obj && [ obj isKindOfClass:[NSArray class]]) ?  obj : defaultValue;
+    }
     return (value && [value isKindOfClass:[NSArray class]]) ? value : defaultValue;
 }
 

@@ -131,7 +131,7 @@
     
 }
 
-+ (NSAttributedString *)gxAttributeStringWith:(NSString *)str font:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
++ (NSMutableAttributedString *)gxAttributeStringWith:(NSString *)str font:(UIFont *)font  color:(UIColor *)fontColor spacing:(CGFloat)spacing lineSpacing:(CGFloat)linespacing alignment:(NSTextAlignment)alignment
 {
     return [str gxAttributeStringWithFont:font color:fontColor spacing:spacing lineSpacing:linespacing alignment:alignment];
 }

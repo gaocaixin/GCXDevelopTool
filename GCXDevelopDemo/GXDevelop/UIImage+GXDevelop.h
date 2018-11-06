@@ -13,7 +13,10 @@
 @class AVURLAsset;
 
 @interface UIImage (GXDevelop)
-
+/**
+ *将图片的颜色更改
+ */
+- (UIImage *)gxImageWithTintColor:(UIColor *)tintColor blendMode:(CGBlendMode)blendMode;
 /**
  *将图片的颜色更改  用于小图标绘制
  */
@@ -112,7 +115,7 @@
 - (UIImage *)gxApplyExtraLightEffect;
 - (UIImage *)gxApplyDarkEffect;
 - (UIImage *)gxApplyTintEffectWithColor:(UIColor *)tintColor;
-- (UIImage *)gxApplyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage;
+- (UIImage *)gxApplyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(nullable UIImage *)maskImage;
 - (UIImage *)gxApplyGaussianBlur:(CGFloat)blurLevel;
 - (UIImage *)gxApplyBlur:(CGFloat)blur;
 

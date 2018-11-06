@@ -13,5 +13,6 @@
 @property (nonatomic, copy, readonly) NSString * gxAppVersion;
 @property (nonatomic, copy, readonly) NSString * gxAppVersionBuild;
 
+@property (nonatomic, assign, readonly)BOOL gxDEBUG;
 
 @end
